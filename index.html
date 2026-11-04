@@ -105,8 +105,9 @@ const FX_KEY='salary-flow-fx-cache-v1';
 const CURRENCY_CHOICES=["USD","KRW","EUR","JPY","GBP","CAD","AUD","CHF","CNY","INR","SGD","HKD","TWD","MXN","PHP","THB","VND","BRL","AED","NZD"];
 let activeCurrency='USD',fxRate=1,fxDate='',fxLoadedAt=0,fxPending=false,fxFailed=false,fxRequestId=0;
 function money(n,dp=2){
- const digits=(activeCurrency==='KRW'||activeCurrency==='JPY'||activeCurrency==='VND')&&dp===2?0:dp;
- return new Intl.NumberFormat('en-US',{style:'currency',currency:activeCurrency,currencyDisplay:'symbol',minimumFractionDigits:digits,maximumFractionDigits:digits}).format((Number.isFinite(n)?n:0)*fxRate);
+ const displayCurrency=activeCurrency!=='USD'&&!fxLoadedAt?'USD':activeCurrency;
+ const digits=(displayCurrency==='KRW'||displayCurrency==='JPY'||displayCurrency==='VND')&&dp===2?0:dp;
+ return new Intl.NumberFormat('en-US',{style:'currency',currency:displayCurrency,currencyDisplay:'symbol',minimumFractionDigits:digits,maximumFractionDigits:digits}).format((Number.isFinite(n)?n:0)*fxRate);
 }
 function updateFxStatus(){
  const status=$('#fxStatus');if(!status)return;
