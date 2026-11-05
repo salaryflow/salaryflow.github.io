@@ -502,6 +502,7 @@ async function loadReferenceData(){
  const {tax,us,world,payroll,arizona}=selected;
  return {tax:tax.values,us:us.values,world:world.values,payroll,arizona,years:{tax:tax.taxYear,us:us.editionYear,usIncome:us.incomeYear,world:world.incomeYear,payroll:payroll.taxYear,arizona:arizona.taxYear}};
 }
+enhanceSelects(document);
 const REFERENCE_DATA=await loadReferenceData();
 if(Object.values(REFERENCE_SOURCES).some(v=>v!=='live')){
  const versions=REFERENCE_DATA.years;
