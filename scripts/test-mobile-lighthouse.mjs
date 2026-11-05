@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const html=readFileSync('index.html','utf8');
+const css=html.slice(html.indexOf('<style>')+7,html.indexOf('</style>'));
+assert(html.includes('<meta name="google-adsense-account"'),'Org-specific AdSense verification must remain');
+assert(/<meta name="description" content="[^"]{80,}/.test(html),'Search results need a meaningful meta description');
+assert(css.includes('.dashboard{min-height:505px}'),'Reserve mobile hero space during asynchronous initialization');
+assert(css.includes('.dashboard{min-height:565px}'),'Reserve extra vertical space for stacked narrow-screen mini cards');
+assert(css.includes('.dashboard #worked{min-height:48px'),'Reserve breakdown slot');
+assert(css.includes('.dashboard #endCountdown{min-height:45px'),'Reserve countdown slot');
+assert(!css.includes('transition:width .3s'),'Progress bar must not animate layout property width');
+assert(css.includes('.worked-separator,.end-countdown .end-separator{color:#566d7c}'),'Secondary text contrast must improve');
+assert(html.includes('data-money="today"'),'Live earnings counter must remain');
+assert(html.includes("const otAllWindows=overtimeWindows(j,historyStart,dayS+48*3600)"),'Recurring overtime calculation must remain unchanged');
+console.log('PASS: mobile layout reservations, organization metadata, reduced animation and unchanged earnings behavior');
