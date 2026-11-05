@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "taxYear": 2026,
+  "source": "https://www.ssa.gov/news/en/cola/factsheets/2026.html",
+  "retrieval": "SSA official 2026 COLA factsheet; employee payroll tax rates and Social Security taxable maximum. Additional Medicare thresholds follow IRS law.",
+  "socialSecurityWageBase": 184500,
+  "socialSecurityRate": 0.062,
+  "medicareRate": 0.0145,
+  "additionalMedicareRate": 0.009,
+  "additionalMedicareThresholds": {
+    "single": 200000,
+    "mfj": 250000,
+    "mfs": 125000,
+    "hoh": 200000
+  }
+}
