@@ -7,7 +7,7 @@ const html=readFileSync('index.html','utf8');
 const begin=html.indexOf('const REFERENCE_BASELINE=');
 const end=html.indexOf('const REFERENCE_DATA=await loadReferenceData();',begin);
 assert(begin>0&&end>begin,'Browser reference loader missing');
-const loader=html.slice(begin,end);
+const loader=html.slice(begin,end).replace('enhanceSelects(document);',''); // VM tests only data loader; UI prepaint init is tested separately.
 const manifest=JSON.parse(readFileSync('data/manifest.json','utf8'));
 const keys=['tax','payroll','arizona'];
 const types=[...keys,'us','world'];
