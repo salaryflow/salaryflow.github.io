@@ -5,7 +5,17 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f8fc">
 <title>Salary Flow — Today, earned.</title>
 <style>
-:root{color-scheme:dark;--bg:#090f19;--panel:#121e2d;--panel2:#172638;--border:#2d4054;--text:#eef6ff;--muted:#9aadc1;--green:#67e8b4;--yellow:#f5c87d;--red:#ffb1b1}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 85% 50% at 50% -10%,#213c50 0%,#0c1521 58%,#080e17 100%);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:2px}.wrap{width:min(100%,980px);margin:auto;padding:30px 18px 65px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.brand{font-size:12px;letter-spacing:.19em;font-weight:800;color:var(--green)}h1{font-size:clamp(32px,5vw,47px);letter-spacing:-.05em;line-height:1.15;margin:12px 0 7px}.sub{color:var(--muted);margin:0 0 24px}.ghost,.smallbtn{border:1px solid #455d6e;color:#d6e8f6;background:#1c2e40;border-radius:11px;padding:9px 13px;font-size:13px;font-weight:650}.ghost:hover,.smallbtn:hover{background:#294258}.mode{display:inline-flex;gap:4px;border:1px solid #375265;background:#111f2d;padding:5px;border-radius:13px}.mode button{background:transparent;border:0;border-radius:9px;color:#abc0ce;padding:10px 19px;font-weight:800}.mode button[aria-pressed="true"]{background:#2b574e;color:#84f8c6}.dashboard{background:linear-gradient(145deg,#203b48,#122131 70%);border:1px solid #385b62;border-radius:25px;padding:27px;margin-top:17px;box-shadow:0 15px 45px #0002}.eyeline{display:flex;align-items:center;gap:9px;color:#adc2cd;font-size:12px;font-weight:700;letter-spacing:.08em}.pulse{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 13px #67e8b4}.pulse.off{background:var(--yellow);box-shadow:none}.clock{margin-left:auto;color:#adbecc;font-variant-numeric:tabular-nums;letter-spacing:0}.primary-label{font-size:18px;font-weight:700;margin-top:23px}.moneyline{display:grid;grid-template-columns:minmax(0,1fr) 40px;align-items:center;column-gap:8px;min-width:0}.moneyline>[data-money]{min-width:0;overflow-wrap:anywhere}.moneyline>.privacy{grid-column:2;grid-row:1;justify-self:center;align-self:center;margin:0;flex:none;width:40px;height:40px;touch-action:manipulation}.dashboard .moneyline{align-items:center}.dashboard .moneyline>.privacy{margin:0;align-self:center}.amount{font-variant-numeric:tabular-nums;font-weight:850;letter-spacing:-.055em;overflow-wrap:anywhere}.huge{font-size:clamp(45px,9.2vw,92px);color:var(--green);line-height:1.18;padding:10px 0}.privacy{background:transparent;border:0;color:#a6bfce;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;width:35px;height:35px;flex:0 0 35px}.privacy:hover{background:#30495b}.privacy svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.masked{letter-spacing:0!important;color:#8da4b3!important} .amount.masked{line-height:inherit} .huge.masked{line-height:1.18}.muted{color:var(--muted)}.fine{font-size:12px;color:var(--muted)}.bar{background:#344b59;border-radius:30px;height:9px;overflow:hidden;margin:24px 0 9px}.bar>div{width:0;height:100%;background:linear-gradient(90deg,#46ba9c,#8bf3c4);transition:width .3s}.spread{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.triples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}.mini strong{font-size:clamp(18px,2.8vw,24px);font-variant-numeric:tabular-nums}.mini .fine{margin-bottom:4px}.total{border:1px solid #354d60;background:#172638;border-radius:21px;margin-top:15px;padding:21px 25px}.total .amount{font-size:clamp(29px,5vw,49px)}.total .mini-label{font-size:15px;font-weight:800}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0 0}.stat{border:1px solid var(--border);background:var(--panel);padding:17px;border-radius:16px}.stat .amount{font-size:clamp(18px,3vw,27px);margin:7px 0}.section{border:1px solid var(--border);background:var(--panel);border-radius:20px;padding:23px;margin-top:23px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap;margin-bottom:16px}h2{font-size:19px;letter-spacing:-.025em;margin:0}.pill{border:1px solid #355c58;border-radius:30px;background:#193b37;color:#98ecc7;font-size:11px;padding:5px 10px}.jobs{display:grid;gap:14px}.job{border:1px solid #314759;background:#0e1927;border-radius:15px;padding:18px}.job-toggle{display:flex;align-items:center;gap:9px;flex:1;min-width:0;background:none;border:0;color:inherit;padding:5px 0;text-align:left;cursor:pointer}.job-chevron{font-size:20px;line-height:1;display:inline-block;transition:transform .18s ease;color:var(--muted)}.job.is-collapsed .job-chevron{transform:rotate(-90deg)}.job.is-collapsed .job-body{display:none}.job.is-collapsed .job-head{margin-bottom:0}.job-toggle:focus-visible{outline:2px solid #12856c;outline-offset:3px;border-radius:5px}.bonus-output{font-size:12px;color:var(--muted);margin-top:6px}.bonus-choice{margin:12px 0;display:flex;gap:9px;align-items:center;font-size:13px}.bonus-choice input{width:18px;height:18px;accent-color:#16846e}.job-head{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:17px}.job-title{font-size:17px;font-weight:800}.job-head .remove{border:0;background:transparent;color:#e6a6a6;padding:6px 9px;border-radius:8px}.job-head .remove:hover{background:#5b2834}.form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.field{min-width:0}.field label{display:block;color:#b6cad8;font-size:12px;font-weight:650;margin-bottom:6px}.field input,.field select{width:100%;min-width:0;background:#142538;color:#f3f7fd;border:1px solid #3c556d;border-radius:10px;padding:10px 11px;min-height:43px}.field input[type="date"]{color-scheme:dark}.field .help{font-size:11px;color:#859bae;margin-top:5px}.field.wide{grid-column:span 2}.job-divider{border:0;border-top:1px solid #294052;margin:18px 0 16px}.fieldmark{font-size:12px;font-weight:750;color:#b8d2dd;margin-bottom:12px}.weekdays{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:5px}.weekday{border:1px solid #41536b;background:#1b2a3a;border-radius:9px;color:#b5c3d4;padding:8px 12px;min-width:42px}.weekday.active{background:#215747;color:#a6f3cb;border-color:#55b997}.field .inputeye{position:relative}.field .inputeye input{padding-right:47px}.inputeye .privacy{position:absolute;right:5px;top:4px}.job-note{margin:15px 0 0;font-size:12px;color:#97aebd}.net-info{padding:13px 15px;background:#1a2c3b;border:1px solid #365369;border-radius:12px;font-size:12px;color:#b4c8d8;margin-bottom:16px}.notice{background:#1b2735;border-left:3px solid #e7c17a;padding:12px 14px;border-radius:7px;color:#c4d1df;font-size:12px;margin-top:15px}.actions{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}.linkbtn{background:transparent;color:#a3d6ff;border:0;font-weight:700}.footer{font-size:12px;color:#8398ad;margin:25px 0;text-align:center}.status{color:#90a5b6;font-size:12px}#hintError{color:var(--red)}@media(max-width:700px){.wrap{padding:23px 12px 50px}.dashboard{padding:20px}.triples{gap:8px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.form{grid-template-columns:repeat(2,minmax(0,1fr))}.huge{font-size:clamp(42px,10vw,64px)}.mini strong{font-size:18px}.section{padding:17px}}@media(max-width:400px){.stats,.form{grid-template-columns:1fr}.field.wide{grid-column:auto}.triples{grid-template-columns:1fr}.triples .mini{display:flex;justify-content:space-between;align-items:center}.mode button{padding:9px 14px}}
+:root{color-scheme:dark;--bg:#090f19;--panel:#121e2d;--panel2:#172638;--border:#2d4054;--text:#eef6ff;--muted:#9aadc1;--green:#67e8b4;--yellow:#f5c87d;--red:#ffb1b1}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 85% 50% at 50% -10%,#213c50 0%,#0c1521 58%,#080e17 100%);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:2px}.wrap{width:min(100%,980px);margin:auto;padding:30px 18px 65px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.brand{font-size:12px;letter-spacing:.19em;font-weight:800;color:var(--green)}h1{font-size:clamp(32px,5vw,47px);letter-spacing:-.05em;line-height:1.15;margin:12px 0 7px}.sub{color:var(--muted);margin:0 0 24px}.ghost,.smallbtn{border:1px solid #455d6e;color:#d6e8f6;background:#1c2e40;border-radius:11px;padding:9px 13px;font-size:13px;font-weight:650}.ghost:hover,.smallbtn:hover{background:#294258}.mode{display:inline-flex;gap:4px;border:1px solid #375265;background:#111f2d;padding:5px;border-radius:13px}.mode button{background:transparent;border:0;border-radius:9px;color:#abc0ce;padding:10px 19px;font-weight:800}.mode button[aria-pressed="true"]{background:#2b574e;color:#84f8c6}.dashboard{background:linear-gradient(145deg,#203b48,#122131 70%);border:1px solid #385b62;border-radius:25px;padding:27px;margin-top:17px;box-shadow:0 15px 45px #0002}.eyeline{display:flex;align-items:center;gap:9px;color:#adc2cd;font-size:12px;font-weight:700;letter-spacing:.08em}.pulse{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 13px #67e8b4}.pulse.off{background:var(--yellow);box-shadow:none}.clock{margin-left:auto;color:#adbecc;font-variant-numeric:tabular-nums;letter-spacing:0}.primary-label{font-size:18px;font-weight:700;margin-top:23px}.moneyline{display:grid;grid-template-columns:minmax(0,1fr) 40px;align-items:center;column-gap:8px;min-width:0}.moneyline>[data-money]{min-width:0;overflow-wrap:anywhere}.moneyline>.privacy{grid-column:2;grid-row:1;justify-self:center;align-self:center;margin:0;flex:none;width:40px;height:40px;touch-action:manipulation}.dashboard .moneyline{align-items:center}.dashboard .moneyline>.privacy{margin:0;align-self:center}.amount{font-variant-numeric:tabular-nums;font-weight:850;letter-spacing:-.055em;overflow-wrap:anywhere}.huge{font-size:clamp(45px,9.2vw,92px);color:var(--green);line-height:1.18;padding:10px 0}.privacy{background:transparent;border:0;color:#a6bfce;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;width:35px;height:35px;flex:0 0 35px}.privacy:hover{background:#30495b}.privacy svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.masked{letter-spacing:0!important;color:#8da4b3!important} .amount.masked{line-height:inherit} .huge.masked{line-height:1.18}.muted{color:var(--muted)}.fine{font-size:12px;color:var(--muted)}.bar{background:#344b59;border-radius:30px;height:9px;overflow:hidden;margin:24px 0 9px}.bar>div{width:0;height:100%;background:linear-gradient(90deg,#46ba9c,#8bf3c4);transition:width .3s}.spread{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.triples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}.mini strong{font-size:clamp(18px,2.8vw,24px);font-variant-numeric:tabular-nums}.mini .fine{margin-bottom:4px}.total{border:1px solid #354d60;background:#172638;border-radius:21px;margin-top:15px;padding:21px 25px}.total .amount{font-size:clamp(29px,5vw,49px)}.total .mini-label{font-size:15px;font-weight:800}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0 0}.stat{border:1px solid var(--border);background:var(--panel);padding:17px;border-radius:16px}.stat .amount{font-size:clamp(18px,3vw,27px);margin:7px 0}.section{border:1px solid var(--border);background:var(--panel);border-radius:20px;padding:23px;margin-top:23px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap;margin-bottom:16px}h2{font-size:19px;letter-spacing:-.025em;margin:0}.pill{border:1px solid #355c58;border-radius:30px;background:#193b37;color:#98ecc7;font-size:11px;padding:5px 10px}.jobs{display:grid;gap:14px}.job{border:1px solid #314759;background:#0e1927;border-radius:15px;padding:18px}.job-toggle{display:flex;align-items:center;gap:9px;flex:1;min-width:0;background:none;border:0;color:inherit;padding:5px 0;text-align:left;cursor:pointer}.job-chevron{font-size:20px;line-height:1;display:inline-block;transition:transform .18s ease;color:var(--muted)}.job.is-collapsed .job-chevron{transform:rotate(-90deg)}.job.is-collapsed .job-body{display:none}.job.is-collapsed .job-head{margin-bottom:0}.job-toggle:focus-visible{outline:2px solid #12856c;outline-offset:3px;border-radius:5px}.bonus-output{font-size:12px;color:var(--muted);margin-top:6px}.bonus-choice{margin:12px 0;display:flex;gap:9px;align-items:center;font-size:13px}.bonus-choice input{width:18px;height:18px;accent-color:#16846e}.job-head{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:17px}.job-title{font-size:17px;font-weight:800}.job-head .remove{border:0;background:transparent;color:#e6a6a6;padding:6px 9px;border-radius:8px}.job-head .remove:hover{background:#5b2834}.form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.field{min-width:0}.field label{display:block;color:#b6cad8;font-size:12px;font-weight:650;margin-bottom:6px}.field input,.field select{width:100%;min-width:0;background:#142538;color:#f3f7fd;border:1px solid #3c556d;border-radius:10px;padding:10px 11px;min-height:43px}.field input[type="date"]{color-scheme:dark}.field .help{font-size:11px;color:#859bae;margin-top:5px}.field.wide{grid-column:span 2}.job-divider{border:0;border-top:1px solid #294052;margin:18px 0 16px}.fieldmark{font-size:12px;font-weight:750;color:#b8d2dd;margin-bottom:12px}
+.overtime-panel{margin-top:18px;padding:18px;border:2px solid #7dbfa7;border-radius:14px;background:linear-gradient(135deg,#e8f7ee,#edf6ff);box-shadow:0 5px 16px #175d4512}
+.overtime-panel .fieldmark{margin-bottom:15px;padding-left:10px;border-left:4px solid #16846e;color:#145d49;font-size:14px}
+.overtime-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.overtime-grid .field{min-width:0}
+.overtime-grid .field label{color:#284d52}
+.overtime-grid .field input,.overtime-grid .field select{background:#fff;border-color:#96bcae}
+.overtime-grid .job-note{color:#42645d}
+.overtime-grid .job-note{grid-column:1/-1;margin-top:0}
+@media(max-width:520px){.overtime-panel{padding:13px}.overtime-grid{grid-template-columns:1fr}}
+.weekdays{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:5px}.weekday{border:1px solid #41536b;background:#1b2a3a;border-radius:9px;color:#b5c3d4;padding:8px 12px;min-width:42px}.weekday.active{background:#215747;color:#a6f3cb;border-color:#55b997}.field .inputeye{position:relative}.field .inputeye input{padding-right:47px}.inputeye .privacy{position:absolute;right:5px;top:4px}.job-note{margin:15px 0 0;font-size:12px;color:#97aebd}.net-info{padding:13px 15px;background:#1a2c3b;border:1px solid #365369;border-radius:12px;font-size:12px;color:#b4c8d8;margin-bottom:16px}.notice{background:#1b2735;border-left:3px solid #e7c17a;padding:12px 14px;border-radius:7px;color:#c4d1df;font-size:12px;margin-top:15px}.actions{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}.linkbtn{background:transparent;color:#a3d6ff;border:0;font-weight:700}.footer{font-size:12px;color:#8398ad;margin:25px 0;text-align:center}.status{color:#90a5b6;font-size:12px}#hintError{color:var(--red)}@media(max-width:700px){.wrap{padding:23px 12px 50px}.dashboard{padding:20px}.triples{gap:8px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.form{grid-template-columns:repeat(2,minmax(0,1fr))}.huge{font-size:clamp(42px,10vw,64px)}.mini strong{font-size:18px}.section{padding:17px}}@media(max-width:400px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stats .stat{padding:11px;min-width:0}.stats .stat .amount{font-size:clamp(15px,4.5vw,22px)}.stats .moneyline{min-width:0}.form{grid-template-columns:1fr}.field.wide{grid-column:auto}.triples{grid-template-columns:1fr}.triples .mini{display:flex;justify-content:space-between;align-items:center}.mode button{padding:9px 14px}}
 .tax-panel{margin-top:24px}.tax-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.tax-results>div{padding:13px;background:#142638;border:1px solid #2c4257;border-radius:11px;display:flex;flex-direction:column;gap:4px}.tax-results small{font-size:11px;color:#9eb4c9}.tax-results strong{font-size:19px;color:#7be3bc;font-variant-numeric:tabular-nums}.tax-panel .help{font-size:11px;color:#91a6bb}@media(max-width:700px){.tax-results{grid-template-columns:repeat(2,minmax(0,1fr))}}.top-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.lang-switch{display:flex;align-items:center;padding:3px;background:#152a39;border:1px solid #3d586c;border-radius:11px}.lang-switch button{background:transparent;border:0;color:#aabfd0;padding:7px 11px;font-size:12px;font-weight:750;border-radius:8px}.lang-switch button[aria-pressed="true"],.lang-switch button.is-active{background:#315447!important;color:#b4ffdc!important;box-shadow:inset 0 0 0 1px #60bd96,0 1px 4px #0005}.lang-switch button.is-active{font-weight:900}.lang-switch button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .paycheck-help{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.auto-net{font-size:12px!important;padding:2px 6px!important;color:var(--green)!important}.auto-net:disabled{opacity:.4;cursor:default}
 /* Tax section is a distinct collapsible panel; content remains available to JS while collapsed. */
@@ -70,6 +80,84 @@ body{background:linear-gradient(160deg,#f1f7fa 0%,#f8fafc 52%,#edf5f4 100%);colo
 .rank-footer{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:14px}.rank-source{margin-top:8px}.rank-source a{color:#12689c}
 @media(max-width:620px){.rank-grid{grid-template-columns:1fr}.rank-card{padding:13px}.rank-value{font-size:26px}.rank-section{padding:17px}}
 
+
+.ref-status-panel{margin-top:13px;border:1px solid #aec9df;border-radius:13px;background:#edf5fc;padding:15px 17px;color:#18364c}
+.ref-status-panel summary{cursor:pointer;font-weight:800;color:#173b56;font-size:14px}
+.ref-status-panel[open] summary{margin-bottom:10px}
+.ref-status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.ref-status-item{padding:12px;border:1px solid #c6d9e8;border-radius:9px;min-width:0;background:#fff;color:#243e53}
+.ref-status-name{font-size:13px;font-weight:800;color:#173b56}
+.ref-status-year{font-size:12px;color:#35576e;margin:4px 0}
+.ref-status-state{font-size:12px;font-weight:750;color:#35576e}
+.ref-status-state[data-source="live"]{color:#16744d}
+.ref-status-state[data-source="cached"]{color:#935b00}
+.ref-status-state[data-source="default"]{color:#a12a34}
+.ref-status-item a{display:inline-block;font-size:12px;color:#075b9c;overflow-wrap:anywhere;margin-top:5px;text-decoration:underline}
+.ref-status-note{font-size:11px;color:#486378;margin-top:8px}
+@media(max-width:620px){.ref-status-grid{grid-template-columns:1fr}}
+
+.ref-audit{border-top:1px solid #c6d9e8;margin-top:12px;padding-top:11px}
+.ref-audit-title{font-size:13px;font-weight:800;color:#173b56}
+.ref-audit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:8px}
+.ref-audit-item{border:1px solid #c6d9e8;background:#fff;border-radius:9px;padding:12px;min-width:0;color:#243e53}
+.ref-audit-name{font-weight:800;font-size:13px;color:#173b56}
+.ref-audit-state{font-size:12px;margin-top:4px;color:#486378}
+.ref-audit-state[data-conclusion="success"]{color:#16744d}
+.ref-audit-state[data-conclusion="failure"]{color:#a12a34}
+.ref-audit-state[data-conclusion="unknown"]{color:#935b00}
+.ref-audit-time{font-size:11px;color:#486378;margin-top:3px}
+.ref-audit-item a{display:inline-block;font-size:12px;color:#075b9c;margin-top:5px;text-decoration:underline}
+.ref-audit-hint{font-size:11px;color:#486378;margin-top:7px}
+@media(max-width:620px){.ref-audit-grid{grid-template-columns:1fr}}
+
+/* Browser-native select popups cannot be styled consistently; use accessible custom menus. */
+.sf-select-wrap{position:relative;display:block;width:100%;min-width:0}
+.currency-control .sf-select-wrap{width:auto;min-width:85px}
+.currency-control .sf-select-trigger{min-height:34px;padding:6px 9px;font-size:12px;font-weight:700}
+.intl-controls .sf-select-wrap{max-width:210px;flex:1}
+.sf-select-wrap .sf-select-trigger{box-shadow:none}
+.sf-select-wrap .sf-native-select{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;margin:0!important;opacity:0!important;pointer-events:none!important;clip-path:inset(50%)!important;overflow:hidden!important}
+.sf-select-trigger{width:100%;min-width:0;min-height:43px;display:flex;align-items:center;gap:10px;justify-content:space-between;text-align:left;background:#fff;color:#243c4d;border:1px solid #c9d9e4;border-radius:10px;padding:10px 11px;font:inherit;cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s}
+.sf-select-trigger:hover:not(:disabled){border-color:#69a58f;background:#f6fffa}
+.sf-select-trigger:focus-visible{outline:2px solid #16846e;outline-offset:2px}
+.sf-select-trigger[aria-expanded="true"]{border-color:#16846e;box-shadow:0 0 0 3px #16846e24}
+.sf-select-trigger:disabled{cursor:not-allowed;opacity:.53;background:#f0f3f5}
+.sf-select-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
+.sf-select-chevron{width:9px;height:9px;flex:0 0 9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.7;transition:transform .15s}
+.sf-select-trigger[aria-expanded="true"] .sf-select-chevron{transform:rotate(225deg) translate(-2px,-2px)}
+.sf-select-menu{position:fixed;z-index:10000;box-sizing:border-box;padding:6px;max-height:min(320px,48vh);overflow-y:auto;overscroll-behavior:contain;background:#fff;border:1px solid #c9d9e4;border-radius:13px;box-shadow:0 16px 45px #18334f30,0 3px 10px #18334f18}
+.sf-select-option{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:37px;padding:9px 11px;border:0;border-radius:8px;background:transparent;color:#283f51;text-align:left;font:inherit;font-size:13px;cursor:pointer;white-space:normal}
+.sf-select-option:hover,.sf-select-option.is-focused{background:#eaf5f0;color:#126849}
+.sf-select-option[aria-selected="true"]{background:#e1f3e9;color:#086246;font-weight:750}
+.sf-select-option[aria-selected="true"]::after{content:"✓";font-weight:800;flex:0 0 auto}
+.sf-select-option:disabled{opacity:.4;cursor:not-allowed}
+.overtime-panel .sf-select-trigger{border-color:#96bcae}
+.tax-panel .sf-select-trigger{background:#fff;border-color:#b8a8cf}
+@media(max-width:520px){.sf-select-menu{max-height:min(280px,45vh)}}
+@media(prefers-reduced-motion:reduce){.sf-select-trigger,.sf-select-chevron{transition:none}}
+
+.overtime-switch-row{display:flex;align-items:center;gap:12px;cursor:pointer;min-height:42px}
+.overtime-switch-label{font-size:13px;font-weight:750;color:#195c49;flex:1}
+.overtime-switch-row input[type=checkbox]{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.overtime-switch-track{position:relative;flex:0 0 46px;width:46px;height:26px;background:#b7c5cb;border:1px solid #98aab2;border-radius:99px;transition:background .15s,border-color .15s}
+.overtime-switch-track::after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #243b5030;transition:transform .15s}
+.overtime-switch-row input:checked+.overtime-switch-track{background:#138260;border-color:#138260}
+.overtime-switch-row input:checked+.overtime-switch-track::after{transform:translateX(20px)}
+.overtime-switch-row input:focus-visible+.overtime-switch-track{outline:3px solid #1e9175;outline-offset:3px}
+.overtime-switch-state{min-width:27px;font-size:11px;font-weight:800;color:#326656;text-align:right}
+.overtime-details{margin-top:15px;padding-top:15px;border-top:1px solid #a8d4c2}
+.overtime-details[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){.overtime-switch-track,.overtime-switch-track::after{transition:none}}
+
+.overtime-recurring{margin-top:12px;padding:17px;border:1px solid #9bb7d3;border-radius:14px;background:linear-gradient(125deg,#eef5fd,#f6f9ff)}
+.overtime-recurring-header{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:10px}
+.overtime-recurring-header .fieldmark{margin-bottom:0;color:#264a70}
+.overtime-recurring-tag{font-size:10px;font-weight:750;border:1px solid #b6d2e7;border-radius:99px;padding:5px 9px;color:#285f88;background:#fff}
+.overtime-recurring .overtime-switch-label{color:#284c75}
+.overtime-recurring .overtime-grid .field label{color:#385a7e}
+.overtime-recurring .overtime-grid .field.wide{grid-column:1/-1}
+.overtime-recurring .job-note{color:#54708a}
+@media(max-width:520px){.overtime-recurring{padding:13px}}
 </style>
 </head>
 <body><main class="wrap">
@@ -78,26 +166,26 @@ body{background:linear-gradient(160deg,#f1f7fa 0%,#f8fafc 52%,#edf5f4 100%);colo
 <div class="mode" role="group" aria-label="표시할 수입 기준"><button id="grossBtn" type="button" aria-pressed="true">Gross · 세전</button><button id="netBtn" type="button" aria-pressed="false">Net · 실수령</button></div>
 <section class="dashboard" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div><div class="bar"><div id="progress"></div></div><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
 <section class="total"><div class="mini-label">TOTAL · 입사 이후 누적 수입 (추정)</div><div class="moneyline"><div class="amount" data-money="lifetime">$0.00</div><button class="privacy" data-hide="lifetime"></button></div><div class="fine" id="careerExplain">각 직장의 입사일과 현재 연봉을 기준으로 추정</div></section>
-<div class="stats"><div class="stat"><div class="fine">이번 주 수입</div><div class="moneyline"><div class="amount" data-money="week">$0.00</div><button class="privacy" data-hide="week"></button></div></div><div class="stat"><div class="fine">올해 수입</div><div class="moneyline"><div class="amount" data-money="year">$0.00</div><button class="privacy" data-hide="year"></button></div></div><div class="stat"><div class="fine">하루 수입 (오늘)</div><div class="moneyline"><div class="amount" data-money="day">$0.00</div><button class="privacy" data-hide="day"></button></div></div></div>
+<div class="stats"><div class="stat"><div class="fine">이번 주 수입</div><div class="moneyline"><div class="amount" data-money="week">$0.00</div><button class="privacy" data-hide="week"></button></div></div><div class="stat"><div class="fine">이번 달 수입</div><div class="moneyline"><div class="amount" data-money="month">$0.00</div><button class="privacy" data-hide="month"></button></div></div><div class="stat"><div class="fine">올해 수입</div><div class="moneyline"><div class="amount" data-money="year">$0.00</div><button class="privacy" data-hide="year"></button></div></div><div class="stat"><div class="fine">하루 수입 (오늘)</div><div class="moneyline"><div class="amount" data-money="day">$0.00</div><button class="privacy" data-hide="day"></button></div></div></div>
 <details class="rank-section" id="incomeRankSection" aria-label="Income percentile estimates">
 <summary class="rank-heading"><div><div class="rank-kicker">INCOME RANK · 2026</div><h2 id="rankTitle">내 소득은 상위 몇 %?</h2><div class="rank-meta" id="rankDataYear">2026 발표 · 2025년 개인 소득 자료 · 세전 기준</div></div><span class="rank-chevron" aria-hidden="true"></span></summary>
 <div class="rank-content"><div class="rank-toolbar"><button type="button" class="privacy" id="rankHide" title="소득 랭킹 숨기기" aria-label="소득 랭킹 숨기기"></button></div>
 <div class="rank-grid"><div class="rank-card"><div class="rank-label" id="rankUsLabel">미국 전체</div><div class="rank-value" id="rankUS">—</div><div class="rank-detail" id="rankUsMedian">중앙값: —</div></div><div class="rank-card"><div class="rank-label" id="rankHomeLabel">거주 주</div><div class="rank-value" id="rankHome">—</div><div class="rank-detail" id="rankHomeMedian">중앙값: —</div></div><div class="rank-card"><label class="rank-label" id="rankCompareLabel" for="rankCompareState">비교할 주</label><select id="rankCompareState" aria-label="비교할 주"><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select><div class="rank-value" id="rankCompare">—</div><div class="rank-detail" id="rankCompareMedian">중앙값: —</div></div></div>
-<div class="rank-footer"><span id="rankIncomeNote">비교 연소득: —</span><span id="rankAccuracy">4개 백분위 기준점 사이의 거친 추정값 · 정확한 순위 아님</span></div><div class="rank-source"><a href="https://dqydj.com/income-by-state/" target="_blank" rel="noopener noreferrer">Source: DQYDJ / CPS ASEC (2026)</a> · <span id="rankSourceNote">개인 소득 통계이며 가구 소득·세후 소득 순위가 아닙니다.</span></div></div><div class="international-rank"><div class="intl-heading"><strong id="intlTitle">국가별 소득 상위 % 비교</strong><span id="intlYear">WID 2024 · 국제 비교</span></div><div class="intl-controls"><label id="intlCountryLabel" for="intlCountry">비교할 국가</label><select id="intlCountry"><option value="KR">South Korea</option><option value="JP">Japan</option><option value="CA">Canada</option><option value="GB">United Kingdom</option><option value="AU">Australia</option><option value="FR">France</option><option value="ES">Spain</option><option value="IT">Italy</option><option value="US">United States</option></select></div><div class="intl-grid"><div><span id="intlUSLabel">미국 소득 상위 비율 · WID</span><strong id="intlUSRank">—</strong></div><div><span id="intlRankLabel">해당 국가 상위 비율</span><strong id="intlRank">—</strong></div><div><span id="intlIncomeLabel">현지 통화로 환산한 연봉</span><strong id="intlIncome">—</strong></div><div><span id="intlMedianLabel">해당 국가 소득 중앙값</span><strong id="intlMedian">—</strong></div></div><div id="intlNotice" class="intl-notice"></div><div class="intl-source"><a href="https://wid.world/data/" target="_blank" rel="noopener noreferrer">WID.world</a> · <a id="intlDetailLink" href="https://rankmyincome.com/countries/south-korea/" target="_blank" rel="noopener noreferrer">2024 income thresholds</a></div></div>
+<div class="rank-footer"><span id="rankIncomeNote">비교 연소득: —</span><span id="rankAccuracy">4개 백분위 기준점 사이의 거친 추정값 · 정확한 순위 아님</span></div><div class="rank-source"><a id="rankSourceLink" href="https://dqydj.com/income-by-state/" target="_blank" rel="noopener noreferrer">Source: DQYDJ / CPS ASEC (2026)</a> · <span id="rankSourceNote">개인 소득 통계이며 가구 소득·세후 소득 순위가 아닙니다.</span></div></div><div class="international-rank"><div class="intl-heading"><strong id="intlTitle">국가별 소득 상위 % 비교</strong><span id="intlYear">WID 2024 · 국제 비교</span></div><div class="intl-controls"><label id="intlCountryLabel" for="intlCountry">비교할 국가</label><select id="intlCountry"><option value="KR">South Korea</option><option value="JP">Japan</option><option value="CA">Canada</option><option value="GB">United Kingdom</option><option value="AU">Australia</option><option value="FR">France</option><option value="ES">Spain</option><option value="IT">Italy</option><option value="US">United States</option></select></div><div class="intl-grid"><div><span id="intlUSLabel">미국 소득 상위 비율 · WID</span><strong id="intlUSRank">—</strong></div><div><span id="intlRankLabel">해당 국가 상위 비율</span><strong id="intlRank">—</strong></div><div><span id="intlIncomeLabel">현지 통화로 환산한 연봉</span><strong id="intlIncome">—</strong></div><div><span id="intlMedianLabel">해당 국가 소득 중앙값</span><strong id="intlMedian">—</strong></div></div><div id="intlNotice" class="intl-notice"></div><div class="intl-source"><a href="https://wid.world/data/" target="_blank" rel="noopener noreferrer">WID.world</a> · <a id="intlDetailLink" href="https://rankmyincome.com/countries/south-korea/" target="_blank" rel="noopener noreferrer">2024 income thresholds</a></div></div>
 </details>
 <details class="section tax-panel" id="taxPanel">
 <summary class="tax-summary"><span class="tax-icon" aria-hidden="true">%</span><span class="tax-summary-label"><span class="tax-kicker">TAX ESTIMATE · 2026</span><span class="tax-title" id="stateTaxTitle">Arizona · 2026 세후 추정</span><span class="tax-subtitle" id="stateTaxSubtitle">Federal + Arizona + Social Security + Medicare</span></span><span class="tax-chevron" aria-hidden="true"></span></summary>
 <div class="tax-body">
-<div class="net-info" id="taxIntro">세금 자동 추정은 <b>2026년 Arizona 거주 W-2 급여</b> 기준의 단순화한 연간 계산입니다. W-4 원천징수, 세액공제, 기타 소득·공제, 과거 연도 세율까지 재현하지 않습니다. 실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.</div>
+<details class="ref-status-panel" id="referenceStatusPanel"><summary id="referenceStatusHeading">세금 기준 데이터 상태 · Tax data sources</summary><div class="ref-status-grid" id="referenceStatusGrid" aria-live="polite"></div><div class="ref-status-note" id="referenceStatusNote"></div><div class="ref-audit" id="referenceAudit"><div class="ref-audit-title" id="referenceAuditTitle">최근 GitHub 자동 검사</div><div class="ref-audit-grid" id="referenceAuditGrid" aria-live="polite"></div><div class="ref-audit-hint" id="referenceAuditHint"></div></div></details><div class="net-info" id="taxIntro">세금 자동 추정은 <b>2026년 Arizona 거주 W-2 급여</b> 기준의 단순화한 연간 계산입니다. W-4 원천징수, 세액공제, 기타 소득·공제, 과거 연도 세율까지 재현하지 않습니다. 실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.</div>
 <div class="form">
-<div class="field"><label for="taxState">거주 주 (2026)</label><select id="taxState"><option value="AZ">Arizona</option><option value="AK">Alaska</option><option value="FL">Florida</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="WA">Washington</option><option value="WY">Wyoming</option></select><div class="help" id="stateHelp">현재 Arizona 및 주 급여 소득세가 없는 9개 주를 지원합니다.</div></div><div class="field"><label for="filing">신고 상태</label><select id="filing"><option value="single">Single</option><option value="mfj">Married Filing Jointly</option><option value="hoh">Head of Household</option><option value="mfs">Married Filing Separately</option></select></div>
+<div class="field"><label id="taxStateYearLabel" for="taxState">거주 주 (2026)</label><select id="taxState"><option value="AZ">Arizona</option><option value="AK">Alaska</option><option value="FL">Florida</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="WA">Washington</option><option value="WY">Wyoming</option></select><div class="help" id="stateHelp">현재 Arizona 및 주 급여 소득세가 없는 9개 주를 지원합니다.</div></div><div class="field"><label for="filing">신고 상태</label><select id="filing"><option value="single">Single</option><option value="mfj">Married Filing Jointly</option><option value="hoh">Head of Household</option><option value="mfs">Married Filing Separately</option></select></div>
 <div class="field"><label for="outside">기타 가구 W-2 소득 (연간 $)</label><input id="outside" type="number" min="0" step="100" value="0"><div class="help">배우자 등, 아래 직장 외 소득. 세율 계산에만 반영</div></div>
 <div class="field"><label for="hsa">HSA 세전 공제 (연간 $)</label><input id="hsa" type="number" min="0" step="100" value="0"></div>
 <div class="field"><label for="extraDeduction">기타 세전 공제 (연간 $)</label><input id="extraDeduction" type="number" min="0" step="100" value="0"><div class="help">예: 세전 건강보험료. FICA에서도 제외한다고 가정</div></div>
-<div class="field" id="azDeductionField"><label for="azDeduction">Arizona 주 표준공제 (조정 가능 $)</label><input id="azDeduction" type="number" min="0" step="100" value="16100"><div class="help">연도별 최종 규정 확인 후 변경 가능</div></div></div>
+<div class="field" id="azDeductionField"><label for="azDeduction">Arizona 주 표준공제 (조정 가능 $)</label><input id="azDeduction" type="number" min="0" step="100" value="15750"><div class="help" id="azDeductionYearHelp">Arizona 2026년 법정 기본공제; 변경 시 사용자 설정 유지</div></div></div>
 <div class="tax-results"><div><small>세전 총연봉</small><strong id="taxGross">$0</strong></div><div><small>Federal 추정</small><strong id="taxFederal">$0</strong></div><div><small id="stateTaxLabel">Arizona 추정</small><strong id="taxAz">$0</strong></div><div><small>FICA 추정</small><strong id="taxFica">$0</strong></div><div><small>연간 세후 현금 수입 추정</small><strong id="taxNet">$0</strong></div><div><small>세금·공제 합계 비율</small><strong id="taxPct">0%</strong></div></div>
-<div class="notice">복수 직장: 연방·주 소득세는 총소득 기준으로 계산합니다. Social Security는 각 고용주별 연간 상한을 반영하고, 최종 신고 시 초과 납부분의 환급 가능성은 추정 결과에 반영합니다. Net 분배는 직장별 연봉 비율로 배분하는 근사치입니다. 과거 누적 Net 역시 현재 2026년 세율을 적용한 추정입니다.</div></div></details>
-<section class="section"><div class="section-head"><h2>직장별 수입 설정</h2><span class="pill">모든 데이터는 이 브라우저에만 저장</span></div><div class="net-info"><b>급여 1회 실수령액은 자동 계산됩니다.</b> 각 직장 연봉과 Arizona 세금 추정치를 급여 지급 주기에 맞춰 환산합니다. 실제 급여명세서와 다르면 값을 직접 수정할 수 있고, 언제든 자동 계산으로 되돌릴 수 있습니다.</div><label class="bonus-choice"><input type="checkbox" id="includeBonusDaily"><span id="bonusDailyLabel">보너스를 오늘 번 돈 카운터에도 포함 (기본: 제외)</span></label><div id="jobs" class="jobs"></div><div class="actions"><button id="addJob" class="smallbtn" type="button">+ 직장 추가</button><button id="reset" class="linkbtn" type="button">모든 데이터 초기화</button></div><div class="notice">수입은 실제 입금 내역이 아닌 <b>근무 일정 기반 추정치</b>입니다. 공휴일, 휴가, 보너스, 이직 전 연봉 차이는 자동 반영하지 않습니다. Net은 2026년 Arizona 세금 자동 추정 또는 수동 실수령액으로 계산합니다. 정확한 급여명세서나 세금 신고 결과와 다를 수 있습니다.</div></section>
+<div class="notice" id="taxYearsNotice">복수 직장: 연방·주 소득세는 총소득 기준으로 계산합니다. Social Security는 각 고용주별 연간 상한을 반영하고, 최종 신고 시 초과 납부분의 환급 가능성은 추정 결과에 반영합니다. Net 분배는 직장별 연봉 비율로 배분하는 근사치입니다. 과거 누적 Net 역시 현재 2026년 세율을 적용한 추정입니다.</div></div></details>
+<section class="section"><div class="section-head"><h2>직장별 수입 설정</h2><span class="pill">모든 데이터는 이 브라우저에만 저장</span></div><div class="net-info"><b>급여 1회 실수령액은 자동 계산됩니다.</b> 각 직장 연봉과 Arizona 세금 추정치를 급여 지급 주기에 맞춰 환산합니다. 실제 급여명세서와 다르면 값을 직접 수정할 수 있고, 언제든 자동 계산으로 되돌릴 수 있습니다.</div><label class="bonus-choice"><input type="checkbox" id="includeBonusDaily"><span id="bonusDailyLabel">보너스를 오늘 번 돈 카운터에도 포함 (기본: 제외)</span></label><div id="jobs" class="jobs"></div><div class="actions"><button id="addJob" class="smallbtn" type="button">+ 직장 추가</button><button id="reset" class="linkbtn" type="button">모든 데이터 초기화</button></div><div class="notice" id="earningsYearsNotice">수입은 실제 입금 내역이 아닌 <b>근무 일정 기반 추정치</b>입니다. 공휴일, 휴가, 보너스, 이직 전 연봉 차이는 자동 반영하지 않습니다. Net은 2026년 Arizona 세금 자동 추정 또는 수동 실수령액으로 계산합니다. 정확한 급여명세서나 세금 신고 결과와 다를 수 있습니다.</div></section>
 <!-- AdSense: fill in AD_CLIENT and AD_SLOT in the script below after approval. -->
 <section class="ad-zone" id="adZone" aria-label="Advertisement" hidden>
  <div id="adCaption" class="ad-caption">광고 · Advertisement</div>
@@ -106,8 +194,384 @@ body{background:linear-gradient(160deg,#f1f7fa 0%,#f8fafc 52%,#edf5f4 100%);colo
 <div class="footer">무료 · 서버 없음 · 계정 없음 · GitHub Pages 배포 가능 · USD 기준</div>
 </main>
 <script>
-(()=>{'use strict';
+(async()=>{'use strict';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+// Enhance native selects without replacing their data model or change handlers.
+// All selection changes dispatch the original "change" event so current logic stays intact.
+let activeSelectMenu=null,customSelectCounter=0;
+const enhancedSelects=new Set();
+function closeCustomSelect(restoreFocus=false){
+ if(!activeSelectMenu)return;
+ const {trigger,menu}=activeSelectMenu;
+ menu.remove();trigger.setAttribute('aria-expanded','false');trigger.removeAttribute('aria-activedescendant');trigger.removeAttribute('aria-controls');
+ activeSelectMenu=null;
+ if(restoreFocus&&trigger.isConnected)trigger.focus();
+}
+function syncCustomSelect(select){
+ const wrap=select.closest('.sf-select-wrap');
+ if(!wrap)return;
+ const button=wrap.querySelector('.sf-select-trigger');
+ const selected=select.selectedOptions[0];
+ const label=selected?selected.textContent.trim():'';
+ const text=button.querySelector('.sf-select-value');
+ if(text.textContent!==label)text.textContent=label;
+ if(button.disabled!==select.disabled)button.disabled=select.disabled;
+ if(button.getAttribute('aria-label')!==select.getAttribute('aria-label')&&select.getAttribute('aria-label')){
+  button.setAttribute('aria-label',select.getAttribute('aria-label'));
+ }
+ if(activeSelectMenu?.select===select){
+  if(select.disabled){closeCustomSelect();return;}
+  for(const option of activeSelectMenu.menu.querySelectorAll('.sf-select-option')){
+   const current=option.dataset.value===select.value;
+   option.setAttribute('aria-selected',String(current));
+  }
+ }
+}
+function syncCustomSelects(root=document){
+ const nodes=root.querySelectorAll?.('.sf-native-select')||[];
+ nodes.forEach(syncCustomSelect);
+}
+function positionCustomSelect(){
+ if(!activeSelectMenu)return;
+ const {trigger,menu}=activeSelectMenu;
+ if(!trigger.isConnected){closeCustomSelect();return;}
+ const r=trigger.getBoundingClientRect();
+ const margin=10,width=Math.max(160,Math.min(r.width,window.innerWidth-2*margin));
+ const left=Math.max(margin,Math.min(r.left,window.innerWidth-width-margin));
+ menu.style.width=width+'px';menu.style.left=left+'px';
+ const bottomRoom=window.innerHeight-r.bottom-8;
+ const topRoom=r.top-8;
+ const goUp=bottomRoom<Math.min(220,menu.scrollHeight)&&topRoom>bottomRoom;
+ const limit=Math.max(90,Math.min(320,(goUp?topRoom:bottomRoom)-margin));
+ menu.style.maxHeight=limit+'px';
+ if(goUp)menu.style.top=Math.max(margin,r.top-menu.offsetHeight-5)+'px';
+ else menu.style.top=Math.min(window.innerHeight-margin,r.bottom+5)+'px';
+}
+function openCustomSelect(select,trigger){
+ if(activeSelectMenu?.select===select){closeCustomSelect();return;}
+ closeCustomSelect();
+ if(select.disabled)return;
+ const menu=document.createElement('div');
+ menu.className='sf-select-menu';
+ const id='sf-options-'+(++customSelectCounter);
+ menu.id=id;menu.setAttribute('role','listbox');
+ menu.setAttribute('aria-label',select.getAttribute('aria-label')||select.labels?.[0]?.textContent?.trim()||select.closest('.field')?.querySelector('label')?.textContent?.trim()||'Options');
+ let focused=Math.max(0,select.selectedIndex);
+ const options=[...select.options];
+ if(!options.length)return;
+ for(let i=0;i<options.length;i++){
+  const item=options[i],button=document.createElement('button');
+  button.type='button';button.className='sf-select-option';
+  button.setAttribute('role','option');button.id=id+'-'+i;
+  button.setAttribute('aria-selected',String(item.selected));
+  button.dataset.value=item.value;
+  button.textContent=item.textContent;
+  button.disabled=item.disabled;
+  button.tabIndex=-1;
+  button.addEventListener('pointermove',()=>{focused=i;setFocused()});
+  button.addEventListener('click',()=>{
+   if(item.disabled)return;
+   const changed=select.value!==item.value;
+   select.value=item.value;
+   closeCustomSelect(true);
+   syncCustomSelect(select);
+   if(changed)select.dispatchEvent(new Event('change',{bubbles:true}));
+   syncCustomSelects();
+  });
+  menu.appendChild(button);
+ }
+ function setFocused(scroll=false){
+  const buttons=[...menu.querySelectorAll('.sf-select-option')];
+  buttons.forEach((b,i)=>b.classList.toggle('is-focused',i===focused));
+  trigger.setAttribute('aria-activedescendant',id+'-'+focused);
+  if(scroll)buttons[focused]?.scrollIntoView({block:'nearest'});
+ }
+ document.body.appendChild(menu);
+ activeSelectMenu={select,trigger,menu,onKey(event){
+  if(event.key==='Escape'){event.preventDefault();closeCustomSelect(true);return;}
+  if(['ArrowDown','ArrowUp','Home','End','Enter',' '].includes(event.key)){
+   event.preventDefault();
+   if(event.key==='Enter'||event.key===' '){menu.querySelectorAll('.sf-select-option')[focused]?.click();return;}
+   if(event.key==='Home')focused=0;
+   else if(event.key==='End')focused=options.length-1;
+   else{
+    const delta=event.key==='ArrowDown'?1:-1;
+    let candidate=focused;
+    for(let i=0;i<options.length;i++){
+     candidate=(candidate+delta+options.length)%options.length;
+     if(!options[candidate].disabled){focused=candidate;break;}
+    }
+   }
+   if(options[focused]?.disabled)focused=options.findIndex(o=>!o.disabled);
+   setFocused(true);
+   return;
+  }
+  if(event.key.length===1&&!event.ctrlKey&&!event.metaKey&&!event.altKey){
+   const char=event.key.toLocaleLowerCase();
+   const found=options.findIndex((o,i)=>!o.disabled&&i>focused&&o.textContent.trim().toLocaleLowerCase().startsWith(char));
+   const wrapFound=options.findIndex(o=>!o.disabled&&o.textContent.trim().toLocaleLowerCase().startsWith(char));
+   const next=found>=0?found:wrapFound;
+   if(next>=0){focused=next;setFocused(true);}
+  }
+ }};
+ trigger.setAttribute('aria-controls',id);
+ trigger.setAttribute('aria-expanded','true');
+ setFocused(true);positionCustomSelect();
+}
+function enhanceSelects(root=document){
+ const selects=root.querySelectorAll?.('select:not(.sf-native-select)')||[];
+ selects.forEach(select=>{
+  if(select.closest('.sf-select-wrap'))return;
+  const wrap=document.createElement('span');
+  wrap.className='sf-select-wrap';
+  const button=document.createElement('button');
+  button.className='sf-select-trigger';button.type='button';
+  button.setAttribute('aria-haspopup','listbox');button.setAttribute('aria-expanded','false');
+  const accessibleName=select.getAttribute('aria-label')||select.labels?.[0]?.textContent?.trim()||select.closest('.field')?.querySelector('label')?.textContent?.trim();
+  if(accessibleName)button.setAttribute('aria-label',accessibleName);
+  const value=document.createElement('span');value.className='sf-select-value';
+  const chevron=document.createElement('span');chevron.className='sf-select-chevron';chevron.setAttribute('aria-hidden','true');
+  button.append(value,chevron);
+  select.parentNode.insertBefore(wrap,select);
+  wrap.append(select,button);
+  select.classList.add('sf-native-select');
+  select.tabIndex=-1;select.setAttribute('aria-hidden','true');
+  button.addEventListener('click',()=>openCustomSelect(select,button));
+  button.addEventListener('keydown',event=>{
+   if(event.key==='ArrowDown'||event.key==='ArrowUp'||event.key==='Enter'||event.key===' '){
+    if(!activeSelectMenu||activeSelectMenu.select!==select){event.preventDefault();event.stopPropagation();openCustomSelect(select,button);}
+   }
+  });
+  select.addEventListener('change',()=>syncCustomSelect(select));
+  enhancedSelects.add(select);
+  syncCustomSelect(select);
+ });
+}
+document.addEventListener('keydown',event=>{
+ if(activeSelectMenu)activeSelectMenu.onKey(event);
+});
+document.addEventListener('focusin',event=>{
+ if(activeSelectMenu&&!activeSelectMenu.menu.contains(event.target)&&!activeSelectMenu.trigger.contains(event.target))closeCustomSelect();
+});
+document.addEventListener('pointerdown',event=>{
+ if(activeSelectMenu&&!activeSelectMenu.menu.contains(event.target)&&!activeSelectMenu.trigger.contains(event.target))closeCustomSelect();
+});
+window.addEventListener('resize',positionCustomSelect);
+window.addEventListener('scroll',positionCustomSelect,true);
+
+// Generated from active data/manifest.json. Update only via scripts/sync-reference-baseline.mjs.
+const REFERENCE_BASELINE={"tax":{"schema":1,"taxYear":2026,"source":"https://www.irs.gov/filing/federal-income-tax-rates-and-brackets","retrieval":"snapshot from existing Salary Flow code; verify before changing","values":{"single":{"ded":16100,"br":[12400,50400,105700,201775,256225,640600]},"mfj":{"ded":32200,"br":[24800,100800,211400,403550,512450,768700]},"hoh":{"ded":24150,"br":[17700,67450,105700,201750,256200,640600]},"mfs":{"ded":16100,"br":[12400,50400,105700,201775,256225,384350]}}},"us":{"schema":1,"editionYear":2026,"incomeYear":2025,"source":"https://dqydj.com/income-by-state/","retrieval":"snapshot from existing Salary Flow code; verify before changing","values":{"AL":[30000,54000,88943,408699],"AK":[32010,61600,104001,371300],"AZ":[30500,55000,92866,604425],"AR":[27500,50000,80000,458400],"CA":[31200,60000,109000,503670],"CO":[35111,63000,103370,593201],"CT":[31360,65002,117640,707913],"DE":[30006,56031,97010,462000],"DC":[48301,90705,150610,609024],"FL":[30000,50101,88000,509999],"GA":[30000,52000,95000,485000],"HI":[30010,54005,92020,400052],"ID":[29552,52000,85400,359100],"IL":[32001,60000,102000,522500],"IN":[28501,52020,86002,368196],"IA":[30000,55024,90125,494250],"KS":[30021,52510,90156,417260],"KY":[27505,50000,85511,363850],"LA":[25000,50000,79005,407600],"ME":[34700,61040,101688,399865],"MD":[35500,67600,120607,501727],"MA":[35000,65000,120001,692500],"MI":[26096,50402,90505,720000],"MN":[30500,55650,94396,454650],"MS":[25000,45180,75100,400000],"MO":[30008,52000,85000,295400],"MT":[30000,55010,94183,511520],"NE":[35000,60000,97810,651200],"NV":[30150,52500,86165,520091],"NH":[35040,61120,104007,600000],"NJ":[35005,67206,127325,873000],"NM":[24000,48005,83655,358000],"NY":[30017,57904,100515,553012],"NC":[30000,53270,91454,501021],"ND":[33000,57005,96000,360000],"OH":[28783,53850,93570,496000],"OK":[27560,50000,81152,439601],"OR":[30000,57015,99320,518100],"PA":[33000,57968,96027,510654],"RI":[30000,62000,100421,532715],"SC":[29502,54000,90666,571022],"SD":[30000,55861,85468,352801],"TN":[30000,52001,91200,378038],"TX":[27501,52000,95324,510000],"UT":[29940,54060,94000,533100],"VT":[35051,60000,93152,411709],"VA":[30503,60000,112701,457800],"WA":[38020,71111,119875,541500],"WV":[29000,50000,81621,376000],"WI":[30730,55370,87251,504800],"WY":[28010,55602,93650,415100],"US":[30000,55584,99500,507102]}},"world":{"schema":1,"incomeYear":2024,"source":"https://wid.world/data/","retrieval":"snapshot from existing Salary Flow code; verify before changing","values":{"KR":{"name":"South Korea","ko":"대한민국","currency":"KRW","points":[17928549,33572879,55369466,89108078,117851802,247605837]},"JP":{"name":"Japan","ko":"일본","currency":"JPY","points":[1764317,3871255,4708274,6977260,15226777,43387598]},"CA":{"name":"Canada","ko":"캐나다","currency":"CAD","points":[30504,65154,108654,168970,230182,444266]},"GB":{"name":"United Kingdom","ko":"영국","currency":"GBP","points":[23061,36348,55598,85995,118856,238788]},"AU":{"name":"Australia","ko":"호주","currency":"AUD","points":[37924,85031,141068,214259,277451,563430]},"FR":{"name":"France","ko":"프랑스","currency":"EUR","points":[20756,37524,56638,82817,107541,233032]},"ES":{"name":"Spain","ko":"스페인","currency":"EUR","points":[17964,27803,40634,57819,78634,163711]},"IT":{"name":"Italy","ko":"이탈리아","currency":"EUR","points":[17682,30296,45044,65922,90977,171078]},"US":{"name":"United States","ko":"미국","currency":"USD","points":[25450,52806,100188,174245,253031,583732]}}}};
+REFERENCE_BASELINE.payroll={"schema":1,"taxYear":2026,"source":"https://www.ssa.gov/news/en/cola/factsheets/2026.html","retrieval":"SSA official 2026 COLA factsheet; employee payroll tax rates and Social Security taxable maximum. Additional Medicare thresholds follow IRS law.","socialSecurityWageBase":184500,"socialSecurityRate":0.062,"medicareRate":0.0145,"additionalMedicareRate":0.009,"additionalMedicareThresholds":{"single":200000,"mfj":250000,"mfs":125000,"hoh":200000}};
+REFERENCE_BASELINE.arizona={"schema":1,"taxYear":2026,"source":"https://www.azleg.gov/legtext/57leg/2R/summary/S.4168-1861ATT_ASENACTED.DOCX.htm","retrieval":"Enacted Arizona HB4168/SB1861 (2026-2027 omnibus) standard deduction amounts and Arizona Department of Revenue flat 2.5% state taxable income rate. Wage-only estimate; special income additions/subtractions and credits excluded.","rate":0.025,"standardDeduction":{"single":15750,"mfs":15750,"mfj":31500,"hoh":23625},"charityMax":{"single":1000,"mfs":1000,"mfj":2000,"hoh":1000}};
+const REFERENCE_CACHE_KEY='salary-flow-reference-last-good-v1';
+const REFERENCE_SOURCES={};
+const REFERENCE_DETAILS={};
+const REF_RISING=(a,n)=>Array.isArray(a)&&a.length===n&&a.every((v,i)=>Number.isFinite(v)&&v>0&&(i===0||v>a[i-1]));
+function referenceValid(type,data,expected){
+ if(!data||data.schema!==1||!expected||!Number.isInteger(expected.year))return false;
+ if(type==='arizona')return data.taxYear===expected.year&&data.rate>0&&data.rate<0.1&&Object.keys(data.standardDeduction||{}).sort().join(',')==='hoh,mfj,mfs,single'&&Object.values(data.standardDeduction).every(v=>Number.isSafeInteger(v)&&v>=0&&v<100000)&&Object.keys(data.charityMax||{}).sort().join(',')==='hoh,mfj,mfs,single'&&Object.values(data.charityMax).every(v=>Number.isSafeInteger(v)&&v>=0&&v<=5000);
+ if(type==='payroll')return data.taxYear===expected.year&&Number.isFinite(data.socialSecurityWageBase)&&data.socialSecurityWageBase>100000&&data.socialSecurityWageBase<500000&&data.socialSecurityRate===0.062&&data.medicareRate===0.0145&&data.additionalMedicareRate===0.009&&JSON.stringify(data.additionalMedicareThresholds)===JSON.stringify(REFERENCE_BASELINE.payroll.additionalMedicareThresholds);
+ if(!data.values)return false;
+ if(type==='tax')return data.taxYear===expected.year&&Object.keys(data.values).sort().join(',')==='hoh,mfj,mfs,single'&&Object.values(data.values).every(v=>Number.isFinite(v.ded)&&v.ded>=0&&REF_RISING(v.br,6));
+ if(type==='us')return data.editionYear===expected.year&&data.incomeYear===expected.incomeYear&&Object.keys(data.values).sort().join(',')===Object.keys(REFERENCE_BASELINE.us.values).sort().join(',')&&Object.values(data.values).every(a=>REF_RISING(a,4));
+ if(type==='world')return data.incomeYear===expected.year&&Object.keys(data.values).sort().join(',')===Object.keys(REFERENCE_BASELINE.world.values).sort().join(',')&&Object.entries(data.values).every(([k,v])=>v.name&&v.ko&&v.currency===REFERENCE_BASELINE.world.values[k].currency&&REF_RISING(v.points,6));
+ return false;
+}
+const TAX_REFERENCE_KINDS=['tax','payroll','arizona'];
+const TAX_REFERENCE_CACHE_KEY='salary-flow-tax-bundle-last-good-v2';
+function baselineEntry(k){
+ const data=REFERENCE_BASELINE[k];
+ const year=k==='us'?data.editionYear:k==='world'?data.incomeYear:data.taxYear;
+ const path=k==='us'?'income-us':k==='world'?'income-world':k;
+ return {path:'data/'+path+'-'+year+'.json',year,...(k==='us'?{incomeYear:data.incomeYear}:{})};
+}
+function validTaxBundle(bundle){
+ if(!bundle||typeof bundle!=='object')return false;
+ const year=bundle.tax?.taxYear;
+ return Number.isSafeInteger(year)&&year>=REFERENCE_BASELINE.tax.taxYear
+  &&TAX_REFERENCE_KINDS.every(k=>bundle[k]?.taxYear===year&&referenceValid(k,bundle[k],{year}));
+}
+function taxManifestReady(manifest){
+ if(!manifest)return false;
+ const year=manifest.tax?.year;
+ return Number.isSafeInteger(year)&&year>=REFERENCE_BASELINE.tax.taxYear
+  &&TAX_REFERENCE_KINDS.every(k=>{
+   const e=manifest[k];
+   return e?.year===year&&e.path==='data/'+k+'-'+year+'.json';
+  });
+}
+async function fetchReference(url){
+ const controller=new AbortController();
+ const timeout=setTimeout(()=>controller.abort(),8000);
+ try{return await fetch(url,{cache:'no-cache',signal:controller.signal})}
+ finally{clearTimeout(timeout)}
+}
+async function loadReferenceData(){
+ let manifest;
+ try{
+  const response=await fetchReference('./data/manifest.json');
+  if(!response.ok)throw Error('Manifest HTTP '+response.status);
+  manifest=await response.json();
+  if(manifest.schema!==1)throw Error('Manifest version');
+ }catch(error){console.warn('Reference manifest unavailable; using stored or built-in baseline',error);manifest=null;}
+ let stored={},storedTax=null;
+ try{stored=JSON.parse(localStorage.getItem(REFERENCE_CACHE_KEY)||'{}')||{}}catch(error){}
+ try{storedTax=JSON.parse(localStorage.getItem(TAX_REFERENCE_CACHE_KEY)||'null')}catch(error){}
+ const selected={};
+ const baselineTax=Object.fromEntries(TAX_REFERENCE_KINDS.map(k=>[k,REFERENCE_BASELINE[k]]));
+ let activeTax=null,taxSource='default';
+ if(taxManifestReady(manifest)){
+  try{
+   // Stage all three before making even one value visible to the calculator.
+   const entries=await Promise.all(TAX_REFERENCE_KINDS.map(async k=>{
+    const response=await fetchReference('./'+manifest[k].path);
+    if(!response.ok)throw Error(k+' HTTP '+response.status);
+    return [k,await response.json()];
+   }));
+   const proposed=Object.fromEntries(entries);
+   if(!validTaxBundle(proposed)||proposed.tax.taxYear!==manifest.tax.year)
+    throw Error('IRS, SSA and Arizona must share the published tax year');
+   activeTax=proposed;taxSource='live';
+  }catch(error){console.warn('Incomplete tax reference bundle; using entire cached or built-in bundle',error);}
+ }else{console.warn('Tax manifest missing or inconsistent; refusing partial tax reference update');}
+ if(!activeTax){
+  // Legacy per-file cache is accepted only if all three form one complete valid set.
+  const legacy=Object.fromEntries(TAX_REFERENCE_KINDS.map(k=>[k,stored[k]]));
+  const candidate=validTaxBundle(storedTax)?storedTax:validTaxBundle(legacy)?legacy:null;
+  if(candidate&&(!taxManifestReady(manifest)||candidate.tax.taxYear<=manifest.tax.year)){
+   activeTax=candidate;taxSource='cached';
+  }
+ }
+ if(!activeTax){activeTax=baselineTax;taxSource='default';}
+ for(const k of TAX_REFERENCE_KINDS){
+  selected[k]=activeTax[k];
+  REFERENCE_SOURCES[k]=taxSource;
+  REFERENCE_DETAILS[k]={year:activeTax[k].taxYear,source:activeTax[k].source||''};
+ }
+ // A last-good tax cache is always written as one validated bundle, never partial files.
+ if(taxSource==='live'||taxSource==='cached'){
+  try{localStorage.setItem(TAX_REFERENCE_CACHE_KEY,JSON.stringify(activeTax))}catch(error){}
+ }
+ for(const k of ['us','world']){
+  const v=manifest?.[k],baseline=baselineEntry(k);
+  const validPath=v&&/^data\/[a-z0-9-]+\.json$/.test(v.path)&&Number.isInteger(v.year)&&(k!=='us'||v.incomeYear===v.year-1);
+  const entry=validPath?v:baseline;
+  let value;
+  if(validPath){
+   try{
+    const response=await fetchReference('./'+entry.path);
+    if(!response.ok)throw Error('Dataset HTTP '+response.status);
+    const candidate=await response.json();
+    if(!referenceValid(k,candidate,entry))throw Error('Invalid dataset '+k);
+    value=candidate;REFERENCE_SOURCES[k]='live';
+   }catch(error){console.warn('Invalid or missing '+k+' dataset; using saved or default baseline',error);}
+  }
+  if(!value){
+   const cached=stored[k];
+   const ce=cached&&(k==='us'?{year:cached.editionYear,incomeYear:cached.incomeYear}:{year:cached.incomeYear});
+   if(ce&&referenceValid(k,cached,ce)&&ce.year>=baseline.year){value=cached;REFERENCE_SOURCES[k]='cached';}
+  }
+  if(!value){value=REFERENCE_BASELINE[k];REFERENCE_SOURCES[k]='default';}
+  selected[k]=value;
+  REFERENCE_DETAILS[k]={year:k==='us'?value.editionYear:value.incomeYear,source:value.source||''};
+ }
+ // Preserve legacy cache for the independent income datasets; never cache mixed tax inputs.
+ try{localStorage.setItem(REFERENCE_CACHE_KEY,JSON.stringify({us:selected.us,world:selected.world}))}catch(error){}
+ const {tax,us,world,payroll,arizona}=selected;
+ return {tax:tax.values,us:us.values,world:world.values,payroll,arizona,years:{tax:tax.taxYear,us:us.editionYear,usIncome:us.incomeYear,world:world.incomeYear,payroll:payroll.taxYear,arizona:arizona.taxYear}};
+}
+const REFERENCE_DATA=await loadReferenceData();
+if(Object.values(REFERENCE_SOURCES).some(v=>v!=='live')){
+ const versions=REFERENCE_DATA.years;
+ const alert=document.createElement('div');alert.setAttribute('role','status');
+ alert.style.cssText='margin:8px auto;max-width:980px;padding:9px 14px;border-radius:9px;background:#fff5e6;color:#705321;font:12px/1.5 system-ui;border:1px solid #efcf9b';
+ alert.textContent='일부 최신 통계 데이터를 불러오지 못해 저장된 정상값 또는 기본값을 사용합니다. / Some reference data is unavailable; last valid or built-in baseline is being used. (Tax '+versions.tax+', US '+versions.us+', World '+versions.world+')';
+ document.body.prepend(alert);
+}
+
+
+const REFERENCE_WORKFLOWS=[
+ {id:'validate-data.yml',name:'Validate reference data'},
+ {id:'audit-reference-data.yml',name:'Audit reference data'}
+];
+const REFERENCE_AUDIT={started:false,pending:false,results:{},queriedAt:null};
+function auditState(run){
+ if(!run)return 'unknown';
+ if(run.status!=='completed')return 'in_progress';
+ return run.conclusion==='success'?'success':run.conclusion==='failure'?'failure':'other';
+}
+function renderReferenceAudit(){
+ const grid=$('#referenceAuditGrid'),hint=$('#referenceAuditHint');
+ if(!grid||!hint)return;
+ $('#referenceAuditTitle').textContent=tr('최근 GitHub 자동 검사','Latest GitHub Actions checks');
+ grid.replaceChildren();
+ for(const workflow of REFERENCE_WORKFLOWS){
+  const value=REFERENCE_AUDIT.results[workflow.id],run=value?.run,state=value?.error?'unknown':auditState(run);
+  const item=document.createElement('div');item.className='ref-audit-item';
+  const title=document.createElement('div');title.className='ref-audit-name';title.textContent=workflow.name;item.append(title);
+  const status=document.createElement('div');status.className='ref-audit-state';status.dataset.conclusion=state;
+  status.textContent=REFERENCE_AUDIT.pending&&!value?tr('조회 중…','Checking…'):state==='success'?tr('성공','Success'):state==='failure'?tr('실패','Failed'):state==='in_progress'?tr('실행 중','In progress'):state==='other'?tr('완료 (기타 결과)','Completed (other)'):tr('확인 불가','Unavailable');
+  item.append(status);
+  if(run){
+   const dt=new Date(run.updated_at||run.created_at);
+   if(!Number.isNaN(dt.getTime())){
+    const time=document.createElement('div');time.className='ref-audit-time';
+    time.textContent=tr('마지막 실행: ','Last run: ')+new Intl.DateTimeFormat(lang==='ko'?'ko-KR':'en-US',{dateStyle:'medium',timeStyle:'short'}).format(dt);
+    item.append(time);
+   }
+  }
+  grid.append(item);
+ }
+ hint.textContent=tr('이 상태는 공개 GitHub Actions의 main 브랜치 최근 실행 기록입니다. 현재 열린 웹페이지 버전의 배포 성공 여부를 보증하지 않습니다. 조회 실패 시 급여 계산은 계속됩니다.','These are the latest public GitHub Actions runs on main, not proof that this open page is deployed from the same commit. Failed lookups do not affect earnings calculations.');
+}
+async function loadReferenceAudit(){
+ if(REFERENCE_AUDIT.started)return;
+ REFERENCE_AUDIT.started=true;REFERENCE_AUDIT.pending=true;
+ renderReferenceAudit();
+ await Promise.all(REFERENCE_WORKFLOWS.map(async workflow=>{
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),6500);
+  try{
+   const url='https://api.github.com/repos/mooyoungoh/salaryflow/actions/workflows/'+workflow.id+'/runs?branch=main&per_page=1';
+   const response=await fetch(url,{headers:{Accept:'application/vnd.github+json'},signal:controller.signal});
+   if(!response.ok)throw Error('GitHub API '+response.status);
+   const payload=await response.json(),run=payload?.workflow_runs?.[0];
+   if(!run||!Number.isSafeInteger(run.id))throw Error('No workflow run');
+   REFERENCE_AUDIT.results[workflow.id]={run:{id:run.id,status:run.status,conclusion:run.conclusion,updated_at:run.updated_at,created_at:run.created_at}};
+  }catch(error){
+   console.warn('Reference audit lookup unavailable for '+workflow.id,error);
+   REFERENCE_AUDIT.results[workflow.id]={error:true};
+  }finally{clearTimeout(timeout);renderReferenceAudit();}
+ }));
+ REFERENCE_AUDIT.pending=false;REFERENCE_AUDIT.queriedAt=Date.now();
+ renderReferenceAudit();
+}
+
+function renderReferenceStatus(){
+ const grid=$('#referenceStatusGrid'),note=$('#referenceStatusNote');
+ if(!grid||!note)return;
+ $('#referenceStatusHeading').textContent=tr('세금 기준 데이터 상태 · 출처 확인','Tax reference data status · sources');
+ const labels={tax:'IRS · Federal',payroll:'SSA · Payroll',arizona:'Arizona · State'};
+ const sources={live:['배포된 JSON','Loaded JSON'],cached:['브라우저 저장값','Browser cache'],default:['내장 기본값','Built-in default']};
+ const allowed={tax:'www.irs.gov',payroll:'www.ssa.gov'};
+ grid.replaceChildren();
+ for(const key of ['tax','payroll','arizona']){
+  const info=REFERENCE_DETAILS[key]||{},kind=REFERENCE_SOURCES[key]||'default',parts=sources[kind]||sources.default;
+  const card=document.createElement('div');card.className='ref-status-item';
+  const name=document.createElement('div');name.className='ref-status-name';name.textContent=labels[key];card.append(name);
+  const year=document.createElement('div');year.className='ref-status-year';
+  year.textContent=tr('적용 연도: ','Applied year: ')+(info.year||REFERENCE_DATA.years[key]);card.append(year);
+  const state=document.createElement('div');state.className='ref-status-state';state.dataset.source=kind;
+  state.textContent=lang==='ko'?parts[0]:parts[1];card.append(state);
+  try{
+   const url=new URL(info.source);
+   const secure=url.protocol==='https:'&&(key==='arizona'?['azdor.gov','www.azdor.gov','azleg.gov','www.azleg.gov'].includes(url.hostname):url.hostname===allowed[key]);
+   if(secure){const a=document.createElement('a');a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=tr('공식 자료 출처','Official source');card.append(a);}
+  }catch(error){}
+  grid.append(card);
+ }
+ note.textContent=tr('적용 연도는 현재 계산에 사용한 값입니다. 로드 상태는 이 브라우저 기준이며, 공식 발표 날짜나 GitHub 자동검사 결과를 뜻하지 않습니다.','Applied years are used in calculations. Load status is browser-specific; it is not the official publication date or CI audit result.');
+}
+
 const KEY='salary-flow-public-v1';
 // AdSense credentials are public identifiers, not passwords.
 // To enable ads after AdSense approval, set both values below.
@@ -173,19 +637,49 @@ async function loadDisplayCurrency(code){
 }
 
 const LANG_KEY='salary-flow-lang';let lang='ko';try{lang=localStorage.getItem(LANG_KEY)==='en'?'en':'ko'}catch(e){}
-const enDict={"거주 주 (2026)":"State of residence (2026)","AIP 보너스 (기본급의 %)":"AIP bonus (% of base salary)","비정기 보너스 (연간 예상 $)":"Occasional bonus (estimated annual $)","예상 연간 보너스:":"Estimated annual bonus:","예상 총보상:":"Estimated total compensation:","직장 설정 접기 또는 펼치기":"Collapse or expand job settings","전체 숨기기": "Hide all", "전체 표시": "Show all", "오늘도, 돈은 쌓이는 중.": "Watch your earnings grow.", "오늘 번 돈을 실시간으로 확인하세요. 세전·실수령액을 전환하고 여러 직장을 합산할 수 있습니다.": "See what you earned today in real time. Switch between gross and take-home pay, and combine multiple jobs.", "Gross · 세전": "Gross · Before tax", "Net · 실수령": "Net · Take-home", "근무 일정 계산 중": "Calculating schedule", "TODAY EARNED · 오늘 번 돈": "TODAY EARNED", "오늘 근무 시간에 따라 누적된 금액": "Earnings accumulated during today’s working hours", "오늘 하루 예상 총수입": "Projected total today", "오늘 남은 수입": "Remaining today", "현재 근무 중 수입 속도": "Current earning rate", "TOTAL · 입사 이후 누적 수입 (추정)": "TOTAL · Estimated career earnings", "각 직장의 입사일과 현재 연봉을 기준으로 추정": "Estimated from each job’s start date and salary", "이번 주 수입": "Earned this week", "올해 수입": "Earned this year", "하루 수입 (오늘)": "Full-day earnings (today)", "Arizona · 2026 세후 추정": "Arizona · 2026 take-home estimate", "세금 자동 추정은 ": "The automatic tax estimate uses a simplified annual calculation for ", "2026년 Arizona 거주 W-2 급여": "2026 W-2 wages earned by Arizona residents", " 기준의 단순화한 연간 계산입니다. W-4 원천징수, 세액공제, 기타 소득·공제, 과거 연도 세율까지 재현하지 않습니다. 실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.": ". It does not reproduce exact W-4 withholding, credits, other income or deductions, or prior-year rules. Use manual entry if you know your actual take-home pay.", "Net 계산 방식": "Net calculation method", "Arizona 세금 자동 추정": "Estimate Arizona taxes", "급여명세서 Net 직접 입력": "Enter take-home pay manually", "신고 상태": "Filing status", "기타 가구 W-2 소득 (연간 $)": "Other household W-2 income (annual $)", "배우자 등, 아래 직장 외 소득. 세율 계산에만 반영": "e.g. spouse’s wages, outside listed jobs; used only for tax rates", "HSA 세전 공제 (연간 $)": "Pre-tax HSA contribution (annual $)", "기타 세전 공제 (연간 $)": "Other pre-tax deductions (annual $)", "예: 세전 건강보험료. FICA에서도 제외한다고 가정": "e.g. pre-tax health insurance; assumed exempt from FICA", "Arizona 주 표준공제 (조정 가능 $)": "Arizona standard deduction (adjustable $)", "연도별 최종 규정 확인 후 변경 가능": "Adjust after verifying current tax rules", "세전 총연봉": "Total gross salary", "Federal 추정": "Estimated federal tax", "Arizona 추정": "Estimated Arizona tax", "FICA 추정": "Estimated FICA", "연간 세후 현금 수입 추정": "Estimated annual take-home pay", "세금·공제 합계 비율": "Total taxes and deductions (%)", "복수 직장: 연방·주 소득세는 총소득 기준으로 계산합니다. Social Security는 각 고용주별 연간 상한을 반영하고, 최종 신고 시 초과 납부분의 환급 가능성은 추정 결과에 반영합니다. Net 분배는 직장별 연봉 비율로 배분하는 근사치입니다. 과거 누적 Net 역시 현재 2026년 세율을 적용한 추정입니다.": "Multiple jobs: federal and state taxes are estimated using combined wages. Social Security withholding rules and potential excess withholding adjustments are approximated. Estimated net pay is allocated to jobs by gross salary share; historical net earnings also use 2026 rates.", "직장별 수입 설정": "Job & earnings settings", "모든 데이터는 이 브라우저에만 저장": "Data stored only in this browser", "Net 계산 방법:": "How manual net works:", " 급여명세서의 ": " Enter the ", "1회 실수령액": "take-home amount per paycheck", "과 지급 주기를 입력하세요. 주마다/격주/월 2회/매월 지급을 지원하며, 세금·401(k)·보험 등 실제 공제가 반영된 금액으로 계산합니다. 최종 세금 신고액과는 다를 수 있습니다.": " and pay frequency from your paystub. Weekly, biweekly, semimonthly, and monthly payments are supported. Net includes the deductions reflected in your paycheck, but can differ from your final tax liability.", "+ 직장 추가": "+ Add job", "모든 데이터 초기화": "Reset all data", "수입은 실제 입금 내역이 아닌 ": "Earnings are ", "근무 일정 기반 추정치": "estimates based on work schedules", "입니다. 공휴일, 휴가, 보너스, 이직 전 연봉 차이는 자동 반영하지 않습니다. Net은 2026년 Arizona 세금 자동 추정 또는 수동 실수령액으로 계산합니다. 정확한 급여명세서나 세금 신고 결과와 다를 수 있습니다.": ". Holidays, leave, bonuses, and prior salary changes are not automatically reflected. Net uses an Arizona 2026 tax estimate or manually entered take-home pay; actual paystubs and filed returns may differ.", "무료 · 서버 없음 · 계정 없음 · GitHub Pages 배포 가능 · USD 기준": "Free · No server · No account · GitHub Pages ready · USD", "삭제": "Remove", "직장 이름": "Job name", "세전 연봉 (USD)": "Gross annual salary (USD)", "세전 Traditional 401(k) 공제 (연간 $)": "Traditional 401(k) pre-tax deduction (annual $)", "입사일": "Start date", "급여 1회 실수령액 (USD)": "Take-home pay per paycheck (USD)", "급여 지급 주기": "Pay frequency", "매주 (52회)": "Weekly (52/year)", "격주 (26회)": "Biweekly (26/year)", "월 2회 (24회)": "Twice monthly (24/year)", "매월 (12회)": "Monthly (12/year)", "연평균 연봉 인상률 (%)": "Average annual salary growth (%)", "근무 스케줄": "Work schedule", "출근 시간": "Work start time", "하루 근무시간 (휴식 제외)": "Working hours (excluding break)", "점심/휴식시간 (분)": "Lunch / break duration (minutes)", "점심/휴식 시작 시각": "Lunch / break start time", "점심/휴식 수입 계산": "Lunch / break earnings", "근무 요일": "Working days", "일": "Sun", "월": "Mon", "화": "Tue", "수": "Wed", "목": "Thu", "금": "Fri", "토": "Sat", "Net 직접 입력 연환산: ": "Annualized manually entered net: ", " · 점심/휴식은 근무 시작 후 약 4시간 시점에 적용됩니다.": " · Break is modeled about 4 hours after the shift begins.", "표시할 수입 기준": "Earnings display basis", "오늘 번 돈": "Today’s earnings", "세전 연봉 숨기기": "Hide gross salary", "실수령액 숨기기": "Hide take-home pay", "금액 표시": "Show amount", "금액 숨기기": "Hide amount", "급여 1회 실수령액은 자동 계산됩니다.": "Take-home pay per paycheck is calculated automatically.", "각 직장 연봉과 Arizona 세금 추정치를 급여 지급 주기에 맞춰 환산합니다. 실제 급여명세서와 다르면 값을 직접 수정할 수 있고, 언제든 자동 계산으로 되돌릴 수 있습니다.": "Your Arizona tax estimate is converted to your pay frequency. Edit the value to match your actual paycheck, or reset to auto at any time.", "실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.": "You can edit the take-home amount for each job to match your actual paystub.", "예상 연간 실수령액:": "Estimated annual take-home:", "자동 계산 · Arizona 세금 추정": "Auto-calculated · Arizona tax estimate", "직접 수정한 금액": "Manually adjusted", "자동 계산으로 복원": "Reset to auto"};
+const enDict={"거주 주 (2026)":"State of residence (2026)","AIP 보너스 (기본급의 %)":"AIP bonus (% of base salary)","비정기 보너스 (연간 예상 $)":"Occasional bonus (estimated annual $)","예상 연간 보너스:":"Estimated annual bonus:","예상 총보상:":"Estimated total compensation:","직장 설정 접기 또는 펼치기":"Collapse or expand job settings","전체 숨기기": "Hide all", "전체 표시": "Show all", "오늘도, 돈은 쌓이는 중.": "Watch your earnings grow.", "오늘 번 돈을 실시간으로 확인하세요. 세전·실수령액을 전환하고 여러 직장을 합산할 수 있습니다.": "See what you earned today in real time. Switch between gross and take-home pay, and combine multiple jobs.", "Gross · 세전": "Gross · Before tax", "Net · 실수령": "Net · Take-home", "근무 일정 계산 중": "Calculating schedule", "TODAY EARNED · 오늘 번 돈": "TODAY EARNED", "오늘 근무 시간에 따라 누적된 금액": "Earnings accumulated during today’s working hours", "오늘 하루 예상 총수입": "Projected total today", "오늘 남은 수입": "Remaining today", "현재 근무 중 수입 속도": "Current earning rate", "TOTAL · 입사 이후 누적 수입 (추정)": "TOTAL · Estimated career earnings", "각 직장의 입사일과 현재 연봉을 기준으로 추정": "Estimated from each job’s start date and salary", "이번 주 수입": "Earned this week", "이번 달 수입": "Earned this month", "올해 수입": "Earned this year", "하루 수입 (오늘)": "Full-day earnings (today)", "Arizona · 2026 세후 추정": "Arizona · 2026 take-home estimate", "세금 자동 추정은 ": "The automatic tax estimate uses a simplified annual calculation for ", "2026년 Arizona 거주 W-2 급여": "2026 W-2 wages earned by Arizona residents", " 기준의 단순화한 연간 계산입니다. W-4 원천징수, 세액공제, 기타 소득·공제, 과거 연도 세율까지 재현하지 않습니다. 실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.": ". It does not reproduce exact W-4 withholding, credits, other income or deductions, or prior-year rules. Use manual entry if you know your actual take-home pay.", "Net 계산 방식": "Net calculation method", "Arizona 세금 자동 추정": "Estimate Arizona taxes", "급여명세서 Net 직접 입력": "Enter take-home pay manually", "신고 상태": "Filing status", "기타 가구 W-2 소득 (연간 $)": "Other household W-2 income (annual $)", "배우자 등, 아래 직장 외 소득. 세율 계산에만 반영": "e.g. spouse’s wages, outside listed jobs; used only for tax rates", "HSA 세전 공제 (연간 $)": "Pre-tax HSA contribution (annual $)", "기타 세전 공제 (연간 $)": "Other pre-tax deductions (annual $)", "예: 세전 건강보험료. FICA에서도 제외한다고 가정": "e.g. pre-tax health insurance; assumed exempt from FICA", "Arizona 주 표준공제 (조정 가능 $)": "Arizona standard deduction (adjustable $)", "연도별 최종 규정 확인 후 변경 가능": "Adjust after verifying current tax rules", "세전 총연봉": "Total gross salary", "Federal 추정": "Estimated federal tax", "Arizona 추정": "Estimated Arizona tax", "FICA 추정": "Estimated FICA", "연간 세후 현금 수입 추정": "Estimated annual take-home pay", "세금·공제 합계 비율": "Total taxes and deductions (%)", "복수 직장: 연방·주 소득세는 총소득 기준으로 계산합니다. Social Security는 각 고용주별 연간 상한을 반영하고, 최종 신고 시 초과 납부분의 환급 가능성은 추정 결과에 반영합니다. Net 분배는 직장별 연봉 비율로 배분하는 근사치입니다. 과거 누적 Net 역시 현재 2026년 세율을 적용한 추정입니다.": "Multiple jobs: federal and state taxes are estimated using combined wages. Social Security withholding rules and potential excess withholding adjustments are approximated. Estimated net pay is allocated to jobs by gross salary share; historical net earnings also use 2026 rates.", "직장별 수입 설정": "Job & earnings settings", "모든 데이터는 이 브라우저에만 저장": "Data stored only in this browser", "Net 계산 방법:": "How manual net works:", " 급여명세서의 ": " Enter the ", "1회 실수령액": "take-home amount per paycheck", "과 지급 주기를 입력하세요. 주마다/격주/월 2회/매월 지급을 지원하며, 세금·401(k)·보험 등 실제 공제가 반영된 금액으로 계산합니다. 최종 세금 신고액과는 다를 수 있습니다.": " and pay frequency from your paystub. Weekly, biweekly, semimonthly, and monthly payments are supported. Net includes the deductions reflected in your paycheck, but can differ from your final tax liability.", "+ 직장 추가": "+ Add job", "모든 데이터 초기화": "Reset all data", "수입은 실제 입금 내역이 아닌 ": "Earnings are ", "근무 일정 기반 추정치": "estimates based on work schedules", "입니다. 공휴일, 휴가, 보너스, 이직 전 연봉 차이는 자동 반영하지 않습니다. Net은 2026년 Arizona 세금 자동 추정 또는 수동 실수령액으로 계산합니다. 정확한 급여명세서나 세금 신고 결과와 다를 수 있습니다.": ". Holidays, leave, bonuses, and prior salary changes are not automatically reflected. Net uses an Arizona 2026 tax estimate or manually entered take-home pay; actual paystubs and filed returns may differ.", "무료 · 서버 없음 · 계정 없음 · GitHub Pages 배포 가능 · USD 기준": "Free · No server · No account · GitHub Pages ready · USD", "삭제": "Remove", "직장 이름": "Job name", "세전 연봉 (USD)": "Gross annual salary (USD)", "세전 Traditional 401(k) 공제 (연간 $)": "Traditional 401(k) pre-tax deduction (annual $)", "입사일": "Start date", "급여 1회 실수령액 (USD)": "Take-home pay per paycheck (USD)", "급여 지급 주기": "Pay frequency", "매주 (52회)": "Weekly (52/year)", "격주 (26회)": "Biweekly (26/year)", "월 2회 (24회)": "Twice monthly (24/year)", "매월 (12회)": "Monthly (12/year)", "연평균 연봉 인상률 (%)": "Average annual salary growth (%)", "근무 스케줄": "Work schedule", "출근 시간": "Work start time", "하루 근무시간 (휴식 제외)": "Working hours (excluding break)", "점심/휴식시간 (분)": "Lunch / break duration (minutes)", "점심/휴식 시작 시각": "Lunch / break start time", "점심/휴식 수입 계산": "Lunch / break earnings", "근무 요일": "Working days", "일": "Sun", "월": "Mon", "화": "Tue", "수": "Wed", "목": "Thu", "금": "Fri", "토": "Sat", "Net 직접 입력 연환산: ": "Annualized manually entered net: ", " · 점심/휴식은 근무 시작 후 약 4시간 시점에 적용됩니다.": " · Break is modeled about 4 hours after the shift begins.", "표시할 수입 기준": "Earnings display basis", "오늘 번 돈": "Today’s earnings", "세전 연봉 숨기기": "Hide gross salary", "실수령액 숨기기": "Hide take-home pay", "금액 표시": "Show amount", "금액 숨기기": "Hide amount", "급여 1회 실수령액은 자동 계산됩니다.": "Take-home pay per paycheck is calculated automatically.", "각 직장 연봉과 Arizona 세금 추정치를 급여 지급 주기에 맞춰 환산합니다. 실제 급여명세서와 다르면 값을 직접 수정할 수 있고, 언제든 자동 계산으로 되돌릴 수 있습니다.": "Your Arizona tax estimate is converted to your pay frequency. Edit the value to match your actual paycheck, or reset to auto at any time.", "실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.": "You can edit the take-home amount for each job to match your actual paystub.", "예상 연간 실수령액:": "Estimated annual take-home:", "자동 계산 · Arizona 세금 추정": "Auto-calculated · Arizona tax estimate", "직접 수정한 금액": "Manually adjusted", "자동 계산으로 복원": "Reset to auto"};
 const originalText=new WeakMap();
-function translateTree(root){const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){if(node.parentElement?.closest('script,style'))continue;if(!originalText.has(node))originalText.set(node,node.nodeValue);const original=originalText.get(node);const trimmed=original.trim();if(!trimmed)continue;const translated=lang==='en'&&Object.prototype.hasOwnProperty.call(enDict,trimmed)?enDict[trimmed]:trimmed;node.nodeValue=original.replace(trimmed,translated)}}
+function translateTree(root){const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){if(node.parentElement?.closest('script,style,#earningsYearsNotice,#taxYearsNotice'))continue;if(!originalText.has(node))originalText.set(node,node.nodeValue);const original=originalText.get(node);const trimmed=original.trim();if(!trimmed)continue;const translated=lang==='en'&&Object.prototype.hasOwnProperty.call(enDict,trimmed)?enDict[trimmed]:trimmed;node.nodeValue=original.replace(trimmed,translated)}}
 function tr(ko,en){return lang==='en'?en:ko}
-function refreshLanguage(){const adCaption=$('#adCaption');if(adCaption)adCaption.textContent=tr('광고 · Advertisement','Advertisement');updateFxStatus();const intro=$('#taxIntro');if(intro)intro.innerHTML=lang==='en'?'This is a simplified annual tax estimate based on <b>2026 W-2 wages earned by residents of the selected state</b>. It does not fully reproduce W-4 withholding, tax credits, other income or deductions, or prior-year tax rules. You can adjust take-home pay for each job using your actual pay stub.':'세금 자동 추정은 <b>2026년 선택한 주 거주자의 W-2 급여</b> 기준의 단순화한 연간 계산입니다. W-4 원천징수, 세액공제, 기타 소득·공제, 과거 연도 세율까지 재현하지 않습니다. 실제 급여명세서가 있다면 직장별 실수령액을 수정할 수 있습니다.';const bonusDailyLabel=$('#bonusDailyLabel');if(bonusDailyLabel)bonusDailyLabel.textContent=tr('보너스를 오늘 번 돈 카운터에도 포함 (기본: 제외)','Include bonuses in today’s earnings counter (off by default)');document.documentElement.lang=lang;document.title=tr('Salary Flow — 오늘 번 돈','Salary Flow — Today’s earnings');translateTree(document.querySelector('main'));document.querySelectorAll('[title],[aria-label]').forEach(el=>{for(const attr of ['title','aria-label']){if(!el.hasAttribute(attr))continue;const key='data-original-'+attr; if(!el.hasAttribute(key))el.setAttribute(key,el.getAttribute(attr));const raw=el.getAttribute(key);el.setAttribute(attr,lang==='en'?(enDict[raw]||raw):raw)}});$('#langKo').setAttribute('aria-pressed',String(lang==='ko'));$('#langEn').setAttribute('aria-pressed',String(lang==='en'));$('#langKo').classList.toggle('is-active',lang==='ko');$('#langEn').classList.toggle('is-active',lang==='en');drawJobs();render()}
+function updateReferenceYearLabels(){
+ const years=REFERENCE_DATA.years;
+ const taxYear=years.tax,azYear=years.arizona,usYear=years.us,worldYear=years.world;
+ document.querySelector('.tax-kicker').textContent='TAX ESTIMATE · '+taxYear;
+ $('#taxStateYearLabel').textContent=tr('거주 주 ('+taxYear+')','State of residence ('+taxYear+')');
+ $('#azDeductionYearHelp').textContent=tr('Arizona '+azYear+'년 표준공제 기준 · 직접 수정한 값은 유지','Arizona '+azYear+' standard deduction · custom values are preserved');
+ $('#rankSourceLink').textContent='Source: DQYDJ / CPS ASEC ('+usYear+')';
+ $('#taxYearsNotice').textContent=tr(
+  '복수 직장: 연방·주 소득세는 총소득 기준으로 계산합니다. Social Security는 각 고용주별 연간 상한을 반영하고, 최종 신고 시 초과 납부분의 환급 가능성은 추정 결과에 반영합니다. Net 분배는 직장별 연봉 비율로 배분하는 근사치입니다. 과거 누적 Net 역시 현재 적용된 '+taxYear+'년 세율을 사용하는 추정입니다.',
+  'Multiple jobs: federal and state taxes are estimated using combined wages. Social Security withholding and possible excess contributions are approximated. Net pay is allocated by job gross salary. Historical net earnings are also estimated using the currently loaded '+taxYear+' tax rates.');
+ $('#earningsYearsNotice').textContent=lang==='en'
+  ?'Earnings are based on work schedules, not actual deposits. Holidays, leave, bonuses and past salary changes are not automatically included. Net uses '+taxYear+' federal, '+azYear+' Arizona and '+years.payroll+' payroll reference data or manually entered take-home pay. Results may differ from paystubs and tax returns.'
+  :'수입은 실제 입금 내역이 아닌 근무 일정 기반 추정치입니다. 공휴일, 휴가, 보너스, 이직 전 연봉 차이는 자동 반영하지 않습니다. Net은 '+taxYear+'년 연방세, '+azYear+'년 Arizona 주세, '+years.payroll+'년 급여세 기준 또는 직접 입력한 실수령액으로 계산합니다. 실제 급여명세서나 신고 결과와 다를 수 있습니다.';
+}
+function refreshLanguage(){renderReferenceStatus();renderReferenceAudit();const adCaption=$('#adCaption');if(adCaption)adCaption.textContent=tr('광고 · Advertisement','Advertisement');updateFxStatus();const intro=$('#taxIntro');if(intro)intro.innerHTML=lang==='en'?`This is a simplified annual estimate using federal tax year ${REFERENCE_DATA.years.tax}, Arizona tax year ${REFERENCE_DATA.years.arizona}, and payroll rules year ${REFERENCE_DATA.years.payroll}. Actual withholding, credits, deductions and other income may differ. Use your paystub for exact take-home amounts.`:`선택한 주 거주자 W-2 급여에 대한 단순화한 추정입니다. 연방세 ${REFERENCE_DATA.years.tax}년 · Arizona ${REFERENCE_DATA.years.arizona}년 · 급여세 ${REFERENCE_DATA.years.payroll}년 자료를 적용합니다. 실제 원천징수·세액공제·소득·공제는 다를 수 있으니 정확한 실수령액은 급여명세서를 사용하세요.`;const bonusDailyLabel=$('#bonusDailyLabel');if(bonusDailyLabel)bonusDailyLabel.textContent=tr('보너스를 오늘 번 돈 카운터에도 포함 (기본: 제외)','Include bonuses in today’s earnings counter (off by default)');document.documentElement.lang=lang;document.title=tr('Salary Flow — 오늘 번 돈','Salary Flow — Today’s earnings');translateTree(document.querySelector('main'));document.querySelectorAll('[title],[aria-label]').forEach(el=>{for(const attr of ['title','aria-label']){if(!el.hasAttribute(attr))continue;const key='data-original-'+attr; if(!el.hasAttribute(key))el.setAttribute(key,el.getAttribute(attr));const raw=el.getAttribute(key);el.setAttribute(attr,lang==='en'?(enDict[raw]||raw):raw)}});$('#langKo').setAttribute('aria-pressed',String(lang==='ko'));$('#langEn').setAttribute('aria-pressed',String(lang==='en'));$('#langKo').classList.toggle('is-active',lang==='ko');$('#langEn').classList.toggle('is-active',lang==='en');updateReferenceYearLabels();drawJobs();render()}
 $('#langKo').onclick=()=>{lang='ko';try{localStorage.setItem(LANG_KEY,lang)}catch(e){}refreshLanguage()};
 $('#langEn').onclick=()=>{lang='en';try{localStorage.setItem(LANG_KEY,lang)}catch(e){}refreshLanguage()};
 const eyeOn='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
 const eyeOff='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.5 5.1A11 11 0 0 1 12 5c6.5 0 10 7 10 7a14.3 14.3 0 0 1-4.3 5.5"/><path d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 7 10 7c1.1 0 2.2-.2 3.2-.6"/><path d="M10 10a3 3 0 0 0 4 4"/></svg>';
 const todayISO=()=>{let d=new Date();d.setFullYear(d.getFullYear()-3);return d.toLocaleDateString('en-CA').match(/^\d{4}-\d{2}-\d{2}$/)?.[0]||`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
-let seq=1;const newJob=(n=1)=>({id:'job'+Date.now()+Math.random().toString(36).slice(2,7),name:'Job '+n,gross:90000,aipPercent:0,extraBonus:0,pretax401:0,netOverride:null,frequency:'biweekly',start:'09:00',hours:8,breakMinutes:60,breakMode:'unpaid',breakStart:'12:00',weekdays:[1,2,3,4,5],hireDate:todayISO(),raise:0});
-let config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azDeduction:16100,jobs:[newJob()]};try{const old=JSON.parse(localStorage.getItem(KEY)||'null');if(old&&Array.isArray(old.jobs)&&old.jobs.length)config={...config,...old,netMethod:'auto',jobs:old.jobs.slice(0,8).map((j,i)=>({...newJob(i+1),...j,netOverride:Number.isFinite(j.netOverride)&&j.netOverride>=0?j.netOverride:null}))}}catch(e){}
-let hidden=new Set(),inputHidden=new Set();const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(config))}catch(e){}};
+let seq=1;const newJob=(n=1)=>({id:'job'+Date.now()+Math.random().toString(36).slice(2,7),name:'Job '+n,gross:90000,aipPercent:0,extraBonus:0,pretax401:0,netOverride:null,frequency:'biweekly',start:'09:00',hours:8,breakMinutes:60,breakMode:'unpaid',breakStart:'12:00',weekdays:[1,2,3,4,5],hireDate:todayISO(),raise:0,overtimeRecords:{},overtimeWeeklyRules:[]});
+const ARIZONA_RULES=REFERENCE_DATA.arizona;
+const standardArizonaDeduction=filing=>ARIZONA_RULES.standardDeduction[filing]??ARIZONA_RULES.standardDeduction.single;
+let config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azDeduction:standardArizonaDeduction('single'),azDeductionCustomized:false,jobs:[newJob()]};try{const old=JSON.parse(localStorage.getItem(KEY)||'null');if(old&&Array.isArray(old.jobs)&&old.jobs.length){config={...config,...old,netMethod:'auto',jobs:old.jobs.slice(0,8).map((j,i)=>({...newJob(i+1),...j,netOverride:Number.isFinite(j.netOverride)&&j.netOverride>=0?j.netOverride:null,overtimeRecords:j.overtimeRecords&&typeof j.overtimeRecords==='object'&&!Array.isArray(j.overtimeRecords)?j.overtimeRecords:{},overtimeWeeklyRules:Array.isArray(j.overtimeWeeklyRules)?j.overtimeWeeklyRules.slice(-300):[]}))};if(old.azDeductionCustomized===undefined){config.azDeductionCustomized=Number.isFinite(old.azDeduction)&&old.azDeduction!==16100&&old.azDeduction!==standardArizonaDeduction(old.filing||'single');}if(!config.azDeductionCustomized)config.azDeduction=standardArizonaDeduction(config.filing);}}catch(e){}
+let hidden=new Set(),inputHidden=new Set(),earningsRevision=0;
+let pendingSave=null;
+function flushSave(){
+ if(pendingSave!==null){clearTimeout(pendingSave);pendingSave=null;}
+ try{localStorage.setItem(KEY,JSON.stringify(config))}catch(e){}
+}
+function save(){
+ // Recalculate immediately on every edit, but persist only after typing settles.
+ earningsRevision++;
+ if(pendingSave!==null)clearTimeout(pendingSave);
+ pendingSave=setTimeout(flushSave,300);
+}
+// Preserve the most recent edit if the user switches tabs or navigates immediately.
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&pendingSave!==null)flushSave()});
+window.addEventListener('pagehide',()=>{if(pendingSave!==null)flushSave()});
 const num=(v,max=1e9)=>Math.max(0,Math.min(max,Number(v)||0));
 const secClock=t=>{const [h,m]=String(t||'09:00').split(':').map(Number);return Math.min(86340,Math.max(0,(h||0)*3600+(m||0)*60))};
 const startDay=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
@@ -212,14 +706,155 @@ function durationCountdown(seconds){
  return lang==='ko'?hrs+'시간 '+String(minutes).padStart(2,'0')+'분 '+String(secs).padStart(2,'0')+'초':hrs+'h '+String(minutes).padStart(2,'0')+'m '+String(secs).padStart(2,'0')+'s';
 }
 function elapsedWork(from,to,j){if(to<=from)return 0;let day=startDay(new Date(from*1000));day.setDate(day.getDate()-1);const end=startDay(new Date(to*1000));let total=0,limit=0;while(day<=end&&limit++<370){total+=Math.max(0,workSeconds(day,to,j)-workSeconds(day,from,j));day.setDate(day.getDate()+1)}return total}
+function cachedDayWorkClock(day,j){
+ // Freeze the workSeconds(day,t,j) schedule constants once per job/day.
+ if(!j.weekdays.includes(day.getDay()))return ()=>0;
+ const base=startDay(day).getTime()/1000,start=base+secClock(j.start);
+ const hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60,end=start+hours+breakSeconds;
+ const paid=j.breakMode==='paid'||breakSeconds===0;
+ const chosen=base+secClock(j.breakStart||'12:00');
+ const fallback=start+Math.min(4*3600,hours/2);
+ const breakStart=chosen>=start&&chosen+breakSeconds<=end?chosen:fallback;
+ const breakEnd=breakStart+breakSeconds;
+ return t=>{
+  const elapsed=Math.max(0,Math.min(end,t)-start);
+  if(paid)return Math.min(hours+breakSeconds,elapsed);
+  const paused=Math.max(0,Math.min(breakEnd,t)-breakStart);
+  return Math.min(hours,Math.max(0,elapsed-paused));
+ };
+}
+function cachedTodayWorkClock(day,j){
+ // The original elapsedWork(dayStart, now) covers today's shift and yesterday's overnight shift.
+ const dayStart=day.getTime()/1000;
+ const yesterday=new Date(day);yesterday.setDate(yesterday.getDate()-1);
+ const clocks=[cachedDayWorkClock(yesterday,j),cachedDayWorkClock(day,j)];
+ const bases=clocks.map(f=>f(dayStart));
+ // Immediately after midnight, the old 1-second activity check also includes a
+ // shift started two calendar days ago (possible with a 24h shift + 4h break).
+ const priorDay=new Date(yesterday);priorDay.setDate(priorDay.getDate()-1);
+ const priorClock=cachedDayWorkClock(priorDay,j);
+ const elapsed=(from,to)=>to<=from?0:clocks.reduce((sum,f)=>sum+Math.max(0,f(to)-f(from)),0);
+ const today=ts=>clocks.reduce((sum,f,i)=>sum+Math.max(0,f(ts)-bases[i]),0);
+ return {today,active:ts=>elapsed(ts-1,ts)+(ts-1<dayStart?Math.max(0,priorClock(ts)-priorClock(ts-1)):0)};
+}
+
+const overtimeDate=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+const overtimeMultiplier=r=>Number.isFinite(Number(r?.multiplier))?Math.max(0,Math.min(10,Number(r.multiplier))):1.5;
+const overtimeHours=r=>r?.enabled?Math.max(0,Math.min(12,Number(r.hours)||0)):0;
+function overtimeWindow(dateKey,j,record){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(dateKey)||!record||!overtimeHours(record))return null;
+ const [y,m,d]=dateKey.split('-').map(Number),date=new Date(y,m-1,d);
+ if(date.getFullYear()!==y||date.getMonth()!==m-1||date.getDate()!==d)return null;
+ // On days off, overtime begins at the configured shift start instead of after a nonexistent shift.
+ const base=date.getTime()/1000,scheduled=j.weekdays.includes(date.getDay());
+ const fallback=scheduled?shiftEndTime(date,j):base+secClock(j.start);
+ // Existing saved entries without a start time retain their original schedule-based timing.
+ let start=fallback;
+ if(/^([01]\d|2[0-3]):[0-5]\d$/.test(String(record.startTime||''))){
+  const selected=secClock(record.startTime);
+  // A night shift may finish after midnight; e.g. 20:00–01:00 means 01:00 next day.
+  const nextDay=scheduled&&fallback>=base+86400&&selected<secClock(j.start);
+  start=base+selected+(nextDay?86400:0);
+ }
+ return {start,end:start+overtimeHours(record)*3600,multiplier:overtimeMultiplier(record)};
+}
+function overtimeRate(j){
+ // Gross: base salary only, not bonuses. Net: effective estimated base take-home.
+ const base=config.mode==='gross'?num(j.gross):annualNet(j,false);
+ return base/(52*(j.weekdays.length||5)*Math.max(.1,paidHours(j))*3600);
+}
+
+function weeklyOvertimeRule(j,date){
+ const key=overtimeDate(date);
+ const rules=Array.isArray(j.overtimeWeeklyRules)?j.overtimeWeeklyRules:[];
+ // The latest rule on or before the requested date wins; old settings are never
+ // retroactively overwritten by edits made today.
+ let rule=null;
+ for(const r of rules){
+  if(r&&typeof r.effectiveFrom==='string'&&r.effectiveFrom<=key&&(!rule||r.effectiveFrom>=rule.effectiveFrom))rule=r;
+ }
+ return rule;
+}
+function overtimeForDate(j,date){
+ const key=overtimeDate(date);
+ // A manually entered date overrides the recurring schedule, even if disabled.
+ if(Object.prototype.hasOwnProperty.call(j.overtimeRecords||{},key))return j.overtimeRecords[key];
+ const rule=weeklyOvertimeRule(j,date);
+ if(!rule||!rule.enabled||!Array.isArray(rule.weekdays)||!rule.weekdays.includes(date.getDay()))return {enabled:false,hours:0,multiplier:1.5};
+ return {enabled:true,startTime:rule.startTime,hours:rule.hours,multiplier:rule.multiplier};
+}
+function overtimeWindows(j,from,to){
+ if(to<=from)return [];
+ const entries=[];
+ const manual=j.overtimeRecords||{};
+ for(const [key,value] of Object.entries(manual)){
+  const window=overtimeWindow(key,j,value);
+  if(window&&window.end>from&&window.start<to)entries.push(window);
+ }
+ const rules=j.overtimeWeeklyRules;
+ if(!Array.isArray(rules)||!rules.length)return entries;
+ let earliest=null;
+ for(const rule of rules){
+  if(rule&&/^\d{4}-\d{2}-\d{2}$/.test(rule.effectiveFrom||'')&&(earliest===null||rule.effectiveFrom<earliest))earliest=rule.effectiveFrom;
+ }
+ if(!earliest)return entries;
+ const [y,m,d]=earliest.split('-').map(Number);
+ const first=new Date(y,m-1,d);
+ if(first.getFullYear()!==y||first.getMonth()!==m-1||first.getDate()!==d)return entries;
+ const start=new Date(Math.max(first.getTime(),startDay(new Date(from*1000)).getTime()-2*86400000));
+ const end=startDay(new Date(to*1000));
+ let date=startDay(start);
+ // Generate only necessary days, not every 200ms. The live ticker passes cached windows.
+ for(let limit=0;date<=end&&limit<36525;limit++,date.setDate(date.getDate()+1)){
+  const key=overtimeDate(date);
+  if(Object.prototype.hasOwnProperty.call(manual,key))continue;
+  const record=overtimeForDate(j,date);
+  const window=overtimeWindow(key,j,record);
+  if(window&&window.end>from&&window.start<to)entries.push(window);
+ }
+ return entries;
+}
+function currentWeeklyOvertime(j,now=new Date()){
+ const rule=weeklyOvertimeRule(j,now);
+ return rule?{enabled:!!rule.enabled,weekdays:Array.isArray(rule.weekdays)?rule.weekdays:[],startTime:rule.startTime||overtimeDefaultStart(j,now),hours:Math.max(0,Number(rule.hours)||0),multiplier:overtimeMultiplier(rule)}
+  :{enabled:false,weekdays:[1,2,3,4,5],startTime:overtimeDefaultStart(j,now),hours:1,multiplier:1.5};
+}
+function setWeeklyOvertime(j,changes,now=new Date()){
+ const key=overtimeDate(now),current={...currentWeeklyOvertime(j,now),...changes};
+ j.overtimeWeeklyRules??=[];
+ // Only replace edits effective today; earlier rules must remain unchanged.
+ j.overtimeWeeklyRules=j.overtimeWeeklyRules.filter(r=>r&&r.effectiveFrom!==key);
+ j.overtimeWeeklyRules.push({effectiveFrom:key,enabled:!!current.enabled,weekdays:[...new Set(current.weekdays.filter(n=>Number.isInteger(n)&&n>=0&&n<=6))],startTime:current.startTime,hours:Math.max(0,Math.min(12,Number(current.hours)||0)),multiplier:overtimeMultiplier(current)});
+}
+function overtimeAccrued(from,to,j,baseRate,preparedWindows){
+ if(to<=from)return {money:0,seconds:0,activeRate:0};
+ let money=0,seconds=0,activeRate=0;
+ const perSecond=baseRate??overtimeRate(j);
+ const windows=preparedWindows??overtimeWindows(j,from,to);
+ for(const window of windows){
+  if(!window||window.end<=from||window.start>=to)continue;
+  const overlap=Math.max(0,Math.min(to,window.end)-Math.max(from,window.start));
+  if(!overlap)continue;
+  seconds+=overlap;money+=overlap*perSecond*window.multiplier;
+  if(window.start<to&&window.end>=to)activeRate+=perSecond*window.multiplier;
+ }
+ return {money,seconds,activeRate};
+}
+function overtimeDefaultStart(j,now=new Date()){
+ const start=j.weekdays.includes(now.getDay())?shiftEndTime(now,j):startDay(now).getTime()/1000+secClock(j.start);
+ const result=new Date(start*1000);
+ return String(result.getHours()).padStart(2,'0')+':'+String(result.getMinutes()).padStart(2,'0');
+}
+function todaysOvertime(j,now=new Date()){return overtimeForDate(j,now)}
 const TAX_STATES={AZ:'Arizona',AK:'Alaska',FL:'Florida',NV:'Nevada',NH:'New Hampshire',SD:'South Dakota',TN:'Tennessee',TX:'Texas',WA:'Washington',WY:'Wyoming'};
 const ZERO_WAGE_STATES=new Set(['AK','FL','NV','NH','SD','TN','TX','WA','WY']);
-const TAX2026={single:{ded:16100,br:[12400,50400,105700,201775,256225,640600]},mfj:{ded:32200,br:[24800,100800,211400,403550,512450,768700]},hoh:{ded:24150,br:[17700,67450,105700,201750,256200,640600]},mfs:{ded:16100,br:[12400,50400,105700,201775,256225,384350]}};
+const TAX2026=REFERENCE_DATA.tax;
+const PAYROLL_RULES=REFERENCE_DATA.payroll;
 function progressive(value,limits){const rates=[.10,.12,.22,.24,.32,.35,.37];let x=Math.max(0,value),prev=0,total=0;for(let i=0;i<rates.length;i++){let upper=i<limits.length?limits[i]:Infinity;total+=Math.max(0,Math.min(x,upper)-prev)*rates[i];prev=upper;if(x<=upper)break}return total}
 const annualBonus=j=>num(j.gross)*num(j.aipPercent,100)/100+num(j.extraBonus);
 const totalComp=j=>num(j.gross)+annualBonus(j);
-function taxEstimate(){const filing=TAX2026[config.filing]||TAX2026.single, gross=config.jobs.reduce((n,j)=>n+totalComp(j),0),other=num(config.outside),hsa=num(config.hsa),extra=num(config.extraDeduction),pretax401=config.jobs.reduce((n,j)=>n+num(j.pretax401),0);const totalPretax=Math.min(gross,hsa+extra+pretax401),outsideBase=Math.max(0,other-filing.ded),combinedBase=Math.max(0,other+gross-totalPretax-filing.ded);const federal=Math.max(0,progressive(combinedBase,filing.br)-progressive(outsideBase,filing.br));const azDed=num(config.azDeduction,100000),az=ZERO_WAGE_STATES.has(config.taxState)?0:Math.max(0,(Math.max(0,other+gross-totalPretax-azDed)-Math.max(0,other-azDed))*.025);const medicareBase=Math.max(0,gross-extra-hsa);const ss=Math.min(184500,Math.max(0,gross-extra-hsa))*.062;const med=medicareBase*.0145;const threshold=config.filing==='mfj'?250000:config.filing==='mfs'?125000:200000;const addMed=Math.max(0,(other+medicareBase)-threshold)*.009-Math.max(0,other-threshold)*.009;const fica=ss+med+Math.max(0,addMed);const net=Math.max(0,gross-totalPretax-federal-az-fica);return {gross,federal,az,fica,pretax:totalPretax,net,pct:gross?(gross-net)/gross*100:0}}
-function displayTax(){const state=TAX_STATES[config.taxState]||'Arizona';$('#stateTaxTitle').textContent=tr(state+' · 2026 세후 추정',state+' · 2026 take-home estimate');$('#stateTaxSubtitle').textContent='Federal + '+state+' + Social Security + Medicare';$('#stateTaxLabel').textContent=tr(state+' 추정',state+' estimate');$('#azDeductionField').hidden=ZERO_WAGE_STATES.has(config.taxState);$('#stateHelp').textContent=tr(config.taxState==='WA'?'Washington의 주 소득세는 0이지만 Paid Leave/WA Cares 등의 급여 공제는 포함되지 않습니다.':'Arizona 및 급여에 주 소득세가 없는 9개 주를 지원합니다. 지방세·기타 주별 급여 공제는 제외됩니다.',config.taxState==='WA'?'Washington has no wage income tax, but Paid Leave and WA Cares payroll premiums are not included.':'Arizona and nine no-wage-income-tax states are supported. Local taxes and other state payroll deductions are excluded.');const t=taxEstimate();$('#taxGross').textContent=money(t.gross);$('#taxFederal').textContent=money(t.federal);$('#taxAz').textContent=money(t.az);$('#taxFica').textContent=money(t.fica);$('#taxNet').textContent=money(t.net);$('#taxPct').textContent=t.pct.toFixed(1)+'%'}
+function taxEstimate(){const filing=TAX2026[config.filing]||TAX2026.single, gross=config.jobs.reduce((n,j)=>n+totalComp(j),0),other=num(config.outside),hsa=num(config.hsa),extra=num(config.extraDeduction),pretax401=config.jobs.reduce((n,j)=>n+num(j.pretax401),0);const totalPretax=Math.min(gross,hsa+extra+pretax401),outsideBase=Math.max(0,other-filing.ded),combinedBase=Math.max(0,other+gross-totalPretax-filing.ded);const federal=Math.max(0,progressive(combinedBase,filing.br)-progressive(outsideBase,filing.br));const azDed=num(config.azDeduction,100000),az=ZERO_WAGE_STATES.has(config.taxState)?0:Math.max(0,(Math.max(0,other+gross-totalPretax-azDed)-Math.max(0,other-azDed))*ARIZONA_RULES.rate);const medicareBase=Math.max(0,gross-extra-hsa);const ss=Math.min(PAYROLL_RULES.socialSecurityWageBase,Math.max(0,gross-extra-hsa))*PAYROLL_RULES.socialSecurityRate;const med=medicareBase*PAYROLL_RULES.medicareRate;const threshold=PAYROLL_RULES.additionalMedicareThresholds[config.filing]||PAYROLL_RULES.additionalMedicareThresholds.single;const addMed=Math.max(0,(other+medicareBase)-threshold)*PAYROLL_RULES.additionalMedicareRate-Math.max(0,other-threshold)*PAYROLL_RULES.additionalMedicareRate;const fica=ss+med+Math.max(0,addMed);const net=Math.max(0,gross-totalPretax-federal-az-fica);return {gross,federal,az,fica,pretax:totalPretax,net,pct:gross?(gross-net)/gross*100:0}}
+function displayTax(){const state=TAX_STATES[config.taxState]||'Arizona';const taxYear=REFERENCE_DATA.years.tax,azYear=REFERENCE_DATA.years.arizona,payrollYear=REFERENCE_DATA.years.payroll;const mismatch=config.taxState==='AZ'&&taxYear!==azYear;$('#stateTaxTitle').textContent=tr(state+' · '+taxYear+' 세후 추정'+(mismatch?' (AZ '+azYear+' 기준)':''),state+' · '+taxYear+' take-home estimate'+(mismatch?' (AZ '+azYear+' reference)':''));$('#stateTaxSubtitle').textContent='Federal '+taxYear+' + '+state+(config.taxState==='AZ'?' '+azYear:'')+' + Social Security / Medicare '+payrollYear;$('#stateTaxLabel').textContent=tr(state+' 추정',state+' estimate');$('#azDeductionField').hidden=ZERO_WAGE_STATES.has(config.taxState);$('#stateHelp').textContent=tr(config.taxState==='WA'?'Washington의 주 소득세는 0이지만 Paid Leave/WA Cares 등의 급여 공제는 포함되지 않습니다.':'Arizona 및 급여에 주 소득세가 없는 9개 주를 지원합니다. 지방세·기타 주별 급여 공제는 제외됩니다.',config.taxState==='WA'?'Washington has no wage income tax, but Paid Leave and WA Cares payroll premiums are not included.':'Arizona and nine no-wage-income-tax states are supported. Local taxes and other state payroll deductions are excluded.');const t=taxEstimate();$('#taxGross').textContent=money(t.gross);$('#taxFederal').textContent=money(t.federal);$('#taxAz').textContent=money(t.az);$('#taxFica').textContent=money(t.fica);$('#taxNet').textContent=money(t.net);$('#taxPct').textContent=t.pct.toFixed(1)+'%'}
 const payPeriods=j=>({weekly:52,biweekly:26,semimonthly:24,monthly:12}[j.frequency]||26);
 function estimatedAnnualNet(j){const t=taxEstimate();return t.gross>0?t.net*totalComp(j)/t.gross:0}
 function estimatedBonusNet(j){return totalComp(j)>0?estimatedAnnualNet(j)*annualBonus(j)/totalComp(j):0}
@@ -250,10 +885,62 @@ function career(j,now){
  return history+currentYearWork*yearlyRate(j);
 }
 function escaped(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')}
-const collapsedJobs=new Set();
-function drawJobs(){const el=$('#jobs');el.innerHTML=config.jobs.map((j,i)=>`<article class="job ${collapsedJobs.has(j.id)?'is-collapsed':''}" data-id="${escaped(j.id)}"><div class="job-head"><button class="job-toggle" data-toggle-job type="button" aria-expanded="${!collapsedJobs.has(j.id)}" aria-label="${tr('직장 설정 접기 또는 펼치기','Collapse or expand job settings')}"><span class="job-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span><span class="job-title">${escaped(j.name||'Job '+(i+1))}</span></button>${config.jobs.length>1?'<button class="remove" data-remove="1" type="button">삭제</button>':''}</div><div class="job-body"><div class="form"><div class="field"><label>직장 이름</label><input data-prop="name" value="${escaped(j.name)}" maxlength="40"></div><div class="field"><label>세전 연봉 (USD)</label><div class="inputeye"><input data-prop="gross" type="${inputHidden.has(j.id+':gross')?'password':'number'}" inputmode="decimal" min="0" value="${num(j.gross)}"><button class="privacy" data-inputhide="gross" type="button" aria-label="세전 연봉 숨기기">${inputHidden.has(j.id+':gross')?eyeOff:eyeOn}</button></div></div><div class="field"><label>AIP 보너스 (기본급의 %)</label><input data-prop="aipPercent" type="number" min="0" max="100" step=".5" value="${num(j.aipPercent,100)}"></div><div class="field"><label>비정기 보너스 (연간 예상 $)</label><input data-prop="extraBonus" type="number" min="0" step="100" value="${num(j.extraBonus)}"></div><div class="field"><label>세전 Traditional 401(k) 공제 (연간 $)</label><input data-prop="pretax401" type="number" min="0" step="100" value="${num(j.pretax401)}"></div><div class="field"><label>입사일</label><input data-prop="hireDate" type="date" value="${escaped(j.hireDate)}"></div><div class="field"><label>급여 1회 실수령액 (USD)</label><div class="inputeye"><input data-prop="netOverride" type="${inputHidden.has(j.id+':netOverride')?'password':'number'}" inputmode="decimal" min="0" step="0.01" value="${(j.netOverride!==null?num(j.netOverride):autoPaycheck(j)).toFixed(2)}"><button class="privacy" data-inputhide="netOverride" type="button" aria-label="실수령액 숨기기">${inputHidden.has(j.id+':netOverride')?eyeOff:eyeOn}</button></div><div class="paycheck-help"><span class="paycheck-source">${j.netOverride===null?'자동 계산 · Arizona 세금 추정':'직접 수정한 금액'}</span><button class="linkbtn auto-net" type="button" ${j.netOverride===null?'disabled':''}>자동 계산으로 복원</button></div></div><div class="field"><label>급여 지급 주기</label><select data-prop="frequency">${[['weekly','매주 (52회)'],['biweekly','격주 (26회)'],['semimonthly','월 2회 (24회)'],['monthly','매월 (12회)']].map(([v,t])=>`<option value="${v}" ${j.frequency===v?'selected':''}>${t}</option>`).join('')}</select></div><div class="field"><label>연평균 연봉 인상률 (%)</label><input data-prop="raise" type="number" min="-50" max="100" step=".5" value="${Number(j.raise)||0}"></div></div><hr class="job-divider"><div class="fieldmark">근무 스케줄</div><div class="form"><div class="field"><label>출근 시간</label><input data-prop="start" type="time" value="${escaped(j.start)}"></div><div class="field"><label>하루 근무시간 (휴식 제외)</label><input data-prop="hours" type="number" min=".5" max="24" step=".5" value="${num(j.hours,24)}"></div><div class="field"><label>점심/휴식시간 (분)</label><input data-prop="breakMinutes" type="number" min="0" max="240" step="15" value="${num(j.breakMinutes,240)}"></div><div class="field"><label>점심/휴식 시작 시각</label><input data-prop="breakStart" type="time" value="${escaped(j.breakStart||'12:00')}"></div><div class="field"><label>점심/휴식 수입 계산</label><select data-prop="breakMode"><option value="unpaid" ${j.breakMode!=='paid'?'selected':''}>${tr('제외 (무급 · 카운터 정지)','Exclude (unpaid · counter pauses)')}</option><option value="paid" ${j.breakMode==='paid'?'selected':''}>${tr('포함 (유급 · 계속 증가)','Include (paid · keeps counting)')}</option></select><div class="help">${tr('유급 선택 시 휴식시간도 하루 총 유급시간에 포함돼 시간당 수입이 낮아집니다.','With a paid break, the same daily salary is spread over more paid hours, so the hourly rate is lower.')}</div></div><div class="field wide"><label>근무 요일</label><div class="weekdays">${[['일',0],['월',1],['화',2],['수',3],['목',4],['금',5],['토',6]].map(([t,d])=>`<button class="weekday ${j.weekdays.includes(d)?'active':''}" data-day="${d}" type="button" aria-pressed="${j.weekdays.includes(d)}">${t}</button>`).join('')}</div></div></div><p class="job-note">예상 연간 보너스: <b class="bonus-value">${money(annualBonus(j))}</b> · 예상 총보상: <b class="comp-value">${money(totalComp(j))}</b> · 예상 연간 실수령액: <b class="net-value">${money(annualNet(j))}</b></p><p class="job-note">${tr('휴식 제외: 설정한 시각부터 금액 정지 · 휴식 포함: 근무 시작부터 퇴근까지 계속 증가','Unpaid: counter pauses at break start · Paid: earnings continue through the break')}</p></div></article>`).join('');translateTree(el);
- $$('.job').forEach(box=>{const j=config.jobs.find(x=>x.id===box.dataset.id);box.querySelector('[data-toggle-job]')?.addEventListener('click',()=>{const closed=!collapsedJobs.has(j.id);if(closed)collapsedJobs.add(j.id);else collapsedJobs.delete(j.id);box.classList.toggle('is-collapsed',closed);box.querySelector('[data-toggle-job]').setAttribute('aria-expanded',String(!closed));});box.querySelectorAll('[data-prop]').forEach(input=>{const prop=input.dataset.prop;const update=()=>{j[prop]=['gross','netOverride','hours','breakMinutes','raise','pretax401','aipPercent','extraBonus'].includes(prop)?Number(input.value):input.value;save();render();if(prop==='netOverride'){const btn=box.querySelector('.auto-net');if(btn)btn.disabled=false;} const title=box.querySelector('.job-title');if(prop==='name'&&title)title.textContent=j.name||'직장'};input.addEventListener('input',update);input.addEventListener('change',update)});box.querySelectorAll('[data-day]').forEach(btn=>btn.addEventListener('click',()=>{const d=Number(btn.dataset.day);if(j.weekdays.includes(d)){if(j.weekdays.length===1)return;j.weekdays=j.weekdays.filter(x=>x!==d)}else{j.weekdays=[...j.weekdays,d].sort()}btn.classList.toggle('active',j.weekdays.includes(d));btn.setAttribute('aria-pressed',String(j.weekdays.includes(d)));save();render()}));box.querySelector('.auto-net')?.addEventListener('click',()=>{j.netOverride=null;save();render()});box.querySelector('[data-remove]')?.addEventListener('click',()=>{config.jobs=config.jobs.filter(x=>x.id!==j.id);save();drawJobs();render()});box.querySelectorAll('[data-inputhide]').forEach(btn=>btn.addEventListener('click',()=>{const key=j.id+':'+btn.dataset.inputhide;inputHidden.has(key)?inputHidden.delete(key):inputHidden.add(key);const inp=box.querySelector(`[data-prop="${btn.dataset.inputhide}"]`);inp.type=inputHidden.has(key)?'password':'number';btn.innerHTML=inputHidden.has(key)?eyeOff:eyeOn;btn.setAttribute('aria-pressed',String(inputHidden.has(key)))}))})}
-const INCOME_RANK_2026={"AL":[30000,54000,88943,408699],"AK":[32010,61600,104001,371300],"AZ":[30500,55000,92866,604425],"AR":[27500,50000,80000,458400],"CA":[31200,60000,109000,503670],"CO":[35111,63000,103370,593201],"CT":[31360,65002,117640,707913],"DE":[30006,56031,97010,462000],"DC":[48301,90705,150610,609024],"FL":[30000,50101,88000,509999],"GA":[30000,52000,95000,485000],"HI":[30010,54005,92020,400052],"ID":[29552,52000,85400,359100],"IL":[32001,60000,102000,522500],"IN":[28501,52020,86002,368196],"IA":[30000,55024,90125,494250],"KS":[30021,52510,90156,417260],"KY":[27505,50000,85511,363850],"LA":[25000,50000,79005,407600],"ME":[34700,61040,101688,399865],"MD":[35500,67600,120607,501727],"MA":[35000,65000,120001,692500],"MI":[26096,50402,90505,720000],"MN":[30500,55650,94396,454650],"MS":[25000,45180,75100,400000],"MO":[30008,52000,85000,295400],"MT":[30000,55010,94183,511520],"NE":[35000,60000,97810,651200],"NV":[30150,52500,86165,520091],"NH":[35040,61120,104007,600000],"NJ":[35005,67206,127325,873000],"NM":[24000,48005,83655,358000],"NY":[30017,57904,100515,553012],"NC":[30000,53270,91454,501021],"ND":[33000,57005,96000,360000],"OH":[28783,53850,93570,496000],"OK":[27560,50000,81152,439601],"OR":[30000,57015,99320,518100],"PA":[33000,57968,96027,510654],"RI":[30000,62000,100421,532715],"SC":[29502,54000,90666,571022],"SD":[30000,55861,85468,352801],"TN":[30000,52001,91200,378038],"TX":[27501,52000,95324,510000],"UT":[29940,54060,94000,533100],"VT":[35051,60000,93152,411709],"VA":[30503,60000,112701,457800],"WA":[38020,71111,119875,541500],"WV":[29000,50000,81621,376000],"WI":[30730,55370,87251,504800],"WY":[28010,55602,93650,415100],"US":[30000,55584,99500,507102]};
+const collapsedJobs=new Set(config.jobs.map(job=>job.id));
+function drawJobs(){closeCustomSelect();const el=$('#jobs');el.innerHTML=config.jobs.map((j,i)=>`<article class="job ${collapsedJobs.has(j.id)?'is-collapsed':''}" data-id="${escaped(j.id)}"><div class="job-head"><button class="job-toggle" data-toggle-job type="button" aria-expanded="${!collapsedJobs.has(j.id)}" aria-label="${tr('직장 설정 접기 또는 펼치기','Collapse or expand job settings')}"><span class="job-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span><span class="job-title">${escaped(j.name||'Job '+(i+1))}</span></button>${config.jobs.length>1?'<button class="remove" data-remove="1" type="button">삭제</button>':''}</div><div class="job-body"><div class="form"><div class="field"><label>직장 이름</label><input data-prop="name" value="${escaped(j.name)}" maxlength="40"></div><div class="field"><label>세전 연봉 (USD)</label><div class="inputeye"><input data-prop="gross" type="${inputHidden.has(j.id+':gross')?'password':'number'}" inputmode="decimal" min="0" value="${num(j.gross)}"><button class="privacy" data-inputhide="gross" type="button" aria-label="세전 연봉 숨기기">${inputHidden.has(j.id+':gross')?eyeOff:eyeOn}</button></div></div><div class="field"><label>AIP 보너스 (기본급의 %)</label><input data-prop="aipPercent" type="number" min="0" max="100" step=".5" value="${num(j.aipPercent,100)}"></div><div class="field"><label>비정기 보너스 (연간 예상 $)</label><input data-prop="extraBonus" type="number" min="0" step="100" value="${num(j.extraBonus)}"></div><div class="field"><label>세전 Traditional 401(k) 공제 (연간 $)</label><input data-prop="pretax401" type="number" min="0" step="100" value="${num(j.pretax401)}"></div><div class="field"><label>입사일</label><input data-prop="hireDate" type="date" value="${escaped(j.hireDate)}"></div><div class="field"><label>급여 1회 실수령액 (USD)</label><div class="inputeye"><input data-prop="netOverride" type="${inputHidden.has(j.id+':netOverride')?'password':'number'}" inputmode="decimal" min="0" step="0.01" value="${(j.netOverride!==null?num(j.netOverride):autoPaycheck(j)).toFixed(2)}"><button class="privacy" data-inputhide="netOverride" type="button" aria-label="실수령액 숨기기">${inputHidden.has(j.id+':netOverride')?eyeOff:eyeOn}</button></div><div class="paycheck-help"><span class="paycheck-source">${j.netOverride===null?'자동 계산 · Arizona 세금 추정':'직접 수정한 금액'}</span><button class="linkbtn auto-net" type="button" ${j.netOverride===null?'disabled':''}>자동 계산으로 복원</button></div></div><div class="field"><label>급여 지급 주기</label><select data-prop="frequency">${[['weekly','매주 (52회)'],['biweekly','격주 (26회)'],['semimonthly','월 2회 (24회)'],['monthly','매월 (12회)']].map(([v,t])=>`<option value="${v}" ${j.frequency===v?'selected':''}>${t}</option>`).join('')}</select></div><div class="field"><label>연평균 연봉 인상률 (%)</label><input data-prop="raise" type="number" min="-50" max="100" step=".5" value="${Number(j.raise)||0}"></div></div><hr class="job-divider"><div class="fieldmark">근무 스케줄</div><div class="form"><div class="field"><label>출근 시간</label><input data-prop="start" type="time" value="${escaped(j.start)}"></div><div class="field"><label>하루 근무시간 (휴식 제외)</label><input data-prop="hours" type="number" min=".5" max="24" step=".5" value="${num(j.hours,24)}"></div><div class="field"><label>점심/휴식시간 (분)</label><input data-prop="breakMinutes" type="number" min="0" max="240" step="15" value="${num(j.breakMinutes,240)}"></div><div class="field"><label>점심/휴식 시작 시각</label><input data-prop="breakStart" type="time" value="${escaped(j.breakStart||'12:00')}"></div><div class="field"><label>점심/휴식 수입 계산</label><select data-prop="breakMode"><option value="unpaid" ${j.breakMode!=='paid'?'selected':''}>${tr('제외 (무급 · 카운터 정지)','Exclude (unpaid · counter pauses)')}</option><option value="paid" ${j.breakMode==='paid'?'selected':''}>${tr('포함 (유급 · 계속 증가)','Include (paid · keeps counting)')}</option></select><div class="help">${tr('유급 선택 시 휴식시간도 하루 총 유급시간에 포함돼 시간당 수입이 낮아집니다.','With a paid break, the same daily salary is spread over more paid hours, so the hourly rate is lower.')}</div></div><div class="field wide"><label>근무 요일</label><div class="weekdays">${[['일',0],['월',1],['화',2],['수',3],['목',4],['금',5],['토',6]].map(([t,d])=>`<button class="weekday ${j.weekdays.includes(d)?'active':''}" data-day="${d}" type="button" aria-pressed="${j.weekdays.includes(d)}">${t}</button>`).join('')}</div></div></div><section class="overtime-panel" aria-label="${tr('오늘 초과근무','Today overtime')}"><div class="fieldmark">${tr('오늘 초과근무','Today overtime')}</div><label class="overtime-switch-row"><span class="overtime-switch-label">${tr('오늘 초과근무 사용','Enable today’s overtime')}</span><input data-ot="enabled" type="checkbox" role="switch" aria-label="${tr('오늘 초과근무 사용','Enable today’s overtime')}" ${todaysOvertime(j).enabled?'checked':''}><span class="overtime-switch-track" aria-hidden="true"></span><span class="overtime-switch-state" data-ot-state>${todaysOvertime(j).enabled?tr('ON','ON'):tr('OFF','OFF')}</span></label><div class="overtime-details" data-ot-details ${!todaysOvertime(j).enabled?'hidden':''}><div class="overtime-grid"><div class="field"><label>${tr('초과근무 시작 시각','Overtime start time')}</label><input data-ot="startTime" type="time" value="${escaped(todaysOvertime(j).startTime||overtimeDefaultStart(j))}" ${!todaysOvertime(j).enabled?'disabled':''}></div><div class="field"><label>${tr('추가 근무시간','Additional overtime hours')}</label><input data-ot="hours" type="number" inputmode="decimal" min="0" max="12" step=".5" value="${Math.max(0,Math.min(12,Number(todaysOvertime(j).hours)||0))}" ${!todaysOvertime(j).enabled?'disabled':''}></div><div class="field"><label>${tr('초과근무 수당 배수','Overtime pay multiplier')}</label><select data-ot="multiplier" ${!todaysOvertime(j).enabled?'disabled':''}>${[0,1,1.5,2].map(x=>'<option value="'+x+'" '+(overtimeMultiplier(todaysOvertime(j))===x?'selected':'')+'>'+x+'×</option>').join('')}<option value="custom" ${![0,1,1.5,2].includes(overtimeMultiplier(todaysOvertime(j)))?'selected':''}>${tr('직접 입력','Custom')}</option></select></div><div class="field"><label>${tr('직접 배수 입력 (0~10×)','Enter multiplier (0–10×)')}</label><input data-ot="custom" type="number" inputmode="decimal" min="0" max="10" step=".25" value="${overtimeMultiplier(todaysOvertime(j))}" ${!todaysOvertime(j).enabled?'disabled':''}></div></div><p class="job-note">${tr('선택한 시작 시각부터 입력한 시간만큼 수입을 누적합니다. 정규 근무시간과 겹치지 않도록 설정하세요. 야간 근무는 자정 이후 시작을 자동 인식합니다. 다음 날은 자동 OFF됩니다.','Earnings accrue from the selected start time for the chosen hours. Avoid overlap with regular shifts. Overnight shifts recognize after-midnight starts. Automatically OFF tomorrow.')}</p></div></div></section><section class="overtime-recurring" aria-label="${tr('반복 초과근무 설정','Recurring overtime schedule')}"><div class="overtime-recurring-header"><span class="fieldmark">${tr('반복 초과근무 · 자동 누적','Recurring overtime · automatic accrual')}</span><span class="overtime-recurring-tag">${tr('매주 반복','Weekly')}</span></div><label class="overtime-switch-row"><span class="overtime-switch-label">${tr('요일별 초과근무 자동 계산','Automatically count overtime on selected weekdays')}</span><input data-weekly-ot="enabled" type="checkbox" role="switch" aria-label="${tr('반복 초과근무 사용','Enable recurring overtime')}" ${currentWeeklyOvertime(j).enabled?'checked':''}><span class="overtime-switch-track" aria-hidden="true"></span><span class="overtime-switch-state" data-weekly-state>${currentWeeklyOvertime(j).enabled?'ON':'OFF'}</span></label><div class="overtime-details" data-weekly-details ${!currentWeeklyOvertime(j).enabled?'hidden':''}><div class="overtime-grid"><div class="field wide"><label>${tr('자동 누적할 요일','Recurring weekdays')}</label><div class="weekdays">${[['일',0],['월',1],['화',2],['수',3],['목',4],['금',5],['토',6]].map(([t,d])=>'<button class="weekday '+(currentWeeklyOvertime(j).weekdays.includes(d)?'active':'')+'" data-weekly-day="'+d+'" type="button" aria-pressed="'+currentWeeklyOvertime(j).weekdays.includes(d)+'">'+(lang==='en'?['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d]:t)+'</button>').join('')}</div></div><div class="field"><label>${tr('반복 초과근무 시작 시각','Recurring start time')}</label><input data-weekly-ot="startTime" type="time" value="${escaped(currentWeeklyOvertime(j).startTime)}"></div><div class="field"><label>${tr('하루 추가 근무시간','Additional hours per day')}</label><input data-weekly-ot="hours" type="number" inputmode="decimal" min="0" max="12" step=".5" value="${currentWeeklyOvertime(j).hours}"></div><div class="field"><label>${tr('반복 초과근무 수당 배수','Recurring overtime multiplier')}</label><input data-weekly-ot="multiplier" type="number" inputmode="decimal" min="0" max="10" step=".25" value="${currentWeeklyOvertime(j).multiplier}"></div></div><p class="job-note">${tr('오늘부터 설정한 요일마다 자동 누적됩니다. 브라우저를 열지 않은 날도 다음 방문 시 계산되며, 오늘 초과근무 설정은 해당 날짜만 우선 적용됩니다. 변경 전 기간의 반복 규칙은 유지됩니다.','Starts accruing on selected weekdays from today, including days when the site was closed. Today’s manual override takes precedence for that date; earlier recurring rules are preserved.')}</p></div></section><p class="job-note">예상 연간 보너스: <b class="bonus-value">${money(annualBonus(j))}</b> · 예상 총보상: <b class="comp-value">${money(totalComp(j))}</b> · 예상 연간 실수령액: <b class="net-value">${money(annualNet(j))}</b></p><p class="job-note">${tr('휴식 제외: 설정한 시각부터 금액 정지 · 휴식 포함: 근무 시작부터 퇴근까지 계속 증가','Unpaid: counter pauses at break start · Paid: earnings continue through the break')}</p></div></article>`).join('');translateTree(el);enhanceSelects(el);
+ document.querySelectorAll('.job').forEach(box=>{const j=config.jobs.find(x=>x.id===box.dataset.id);box.querySelector('[data-toggle-job]')?.addEventListener('click',()=>{const closed=!collapsedJobs.has(j.id);if(closed)collapsedJobs.add(j.id);else collapsedJobs.delete(j.id);box.classList.toggle('is-collapsed',closed);box.querySelector('[data-toggle-job]').setAttribute('aria-expanded',String(!closed));});box.querySelectorAll('[data-prop]').forEach(input=>{const prop=input.dataset.prop;const update=()=>{const value=['gross','netOverride','hours','breakMinutes','raise','pretax401','aipPercent','extraBonus'].includes(prop)?Number(input.value):input.value;if(Object.is(j[prop],value))return;j[prop]=value;save();render();if(prop==='netOverride'){const btn=box.querySelector('.auto-net');if(btn)btn.disabled=false;} const title=box.querySelector('.job-title');if(prop==='name'&&title)title.textContent=j.name||'직장'};input.addEventListener('input',update);input.addEventListener('change',()=>{update();if(pendingSave!==null)flushSave()})});box.querySelectorAll('[data-weekly-ot]').forEach(input=>{
+  input.addEventListener('change',()=>{
+   const field=input.dataset.weeklyOt;
+   const changes={};
+   if(field==='enabled')changes.enabled=input.checked;
+   if(field==='startTime'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(input.value))changes.startTime=input.value;
+   if(field==='hours')changes.hours=Math.max(0,Math.min(12,Number(input.value)||0));
+   if(field==='multiplier')changes.multiplier=Math.max(0,Math.min(10,Number(input.value)||0));
+   setWeeklyOvertime(j,changes);
+   save();drawJobs();render();
+  });
+ });
+ box.querySelectorAll('[data-weekly-day]').forEach(button=>button.addEventListener('click',()=>{
+  const day=Number(button.dataset.weeklyDay),rule=currentWeeklyOvertime(j);
+  const days=rule.weekdays.includes(day)?rule.weekdays.filter(x=>x!==day):[...rule.weekdays,day].sort((a,b)=>a-b);
+  setWeeklyOvertime(j,{weekdays:days});
+  save();drawJobs();render();
+ }));
+ box.querySelectorAll('[data-ot]').forEach(input=>{
+  const apply=()=>{
+   const key=overtimeDate(new Date());
+   const previous=j.overtimeRecords?.[key]||todaysOvertime(j);
+   const field=input.dataset.ot,record={...previous};
+   if(field==='enabled')record.enabled=input.checked;
+   if(field==='startTime'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(input.value))record.startTime=input.value;
+   if(field==='hours')record.hours=Math.max(0,Math.min(12,Number(input.value)||0));
+   if(field==='multiplier')record.multiplier=input.value==='custom'?(previous.multiplier&&![0,1,1.5,2].includes(previous.multiplier)?overtimeMultiplier(previous):2.5):Number(input.value);
+   if(field==='custom'){
+    const parsed=Number(input.value);
+    if(Number.isFinite(parsed)&&input.value.trim()!=='')record.multiplier=Math.max(0,Math.min(10,parsed));
+   }
+   // The default start time shown in the UI is saved with each new record.
+   if(!record.startTime)record.startTime=box.querySelector('[data-ot="startTime"]').value;
+   j.overtimeRecords??={};
+   j.overtimeRecords[key]=record;
+   const on=record.enabled,chosen=box.querySelector('[data-ot="multiplier"]');
+   const custom=box.querySelector('[data-ot="custom"]');
+   if(field==='enabled'){
+    const details=box.querySelector('[data-ot-details]');
+    details.hidden=!on;
+    const state=box.querySelector('[data-ot-state]');
+    state.textContent=on?'ON':'OFF';
+    input.setAttribute('aria-checked',String(on));
+    for(const name of ['startTime','hours','multiplier','custom'])box.querySelector('[data-ot="'+name+'"]').disabled=!on;
+   }
+   if(field==='multiplier')custom.value=overtimeMultiplier(record);
+   if(field==='custom')chosen.value=[0,1,1.5,2].includes(record.multiplier)?String(record.multiplier):'custom';
+   syncCustomSelect(chosen);
+   save();render();
+  };
+  input.addEventListener('change',apply);
+  if(input.dataset.ot==='hours'||input.dataset.ot==='custom')input.addEventListener('input',apply);
+ });box.querySelectorAll('[data-day]').forEach(btn=>btn.addEventListener('click',()=>{const d=Number(btn.dataset.day);if(j.weekdays.includes(d)){if(j.weekdays.length===1)return;j.weekdays=j.weekdays.filter(x=>x!==d)}else{j.weekdays=[...j.weekdays,d].sort()}btn.classList.toggle('active',j.weekdays.includes(d));btn.setAttribute('aria-pressed',String(j.weekdays.includes(d)));save();render()}));box.querySelector('.auto-net')?.addEventListener('click',()=>{j.netOverride=null;save();render()});box.querySelector('[data-remove]')?.addEventListener('click',()=>{config.jobs=config.jobs.filter(x=>x.id!==j.id);save();drawJobs();render()});box.querySelectorAll('[data-inputhide]').forEach(btn=>btn.addEventListener('click',()=>{const key=j.id+':'+btn.dataset.inputhide;inputHidden.has(key)?inputHidden.delete(key):inputHidden.add(key);const inp=box.querySelector(`[data-prop="${btn.dataset.inputhide}"]`);inp.type=inputHidden.has(key)?'password':'number';btn.innerHTML=inputHidden.has(key)?eyeOff:eyeOn;btn.setAttribute('aria-pressed',String(inputHidden.has(key)))}))})}
+const INCOME_RANK_2026=REFERENCE_DATA.us;
 const INCOME_RANK_STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","DC":"District of Columbia","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 function rankTopShare(income,points){if(!(income>0))return null;
   const thresholds=[0,...points],quantiles=[0,25,50,75,99];
@@ -266,7 +953,7 @@ function rankTopShare(income,points){if(!(income>0))return null;
   }}
   return 1;
 }
-const GLOBAL_COUNTRIES={"KR":{"name":"South Korea","ko":"대한민국","currency":"KRW","points":[17928549,33572879,55369466,89108078,117851802,247605837]},"JP":{"name":"Japan","ko":"일본","currency":"JPY","points":[1764317,3871255,4708274,6977260,15226777,43387598]},"CA":{"name":"Canada","ko":"캐나다","currency":"CAD","points":[30504,65154,108654,168970,230182,444266]},"GB":{"name":"United Kingdom","ko":"영국","currency":"GBP","points":[23061,36348,55598,85995,118856,238788]},"AU":{"name":"Australia","ko":"호주","currency":"AUD","points":[37924,85031,141068,214259,277451,563430]},"FR":{"name":"France","ko":"프랑스","currency":"EUR","points":[20756,37524,56638,82817,107541,233032]},"ES":{"name":"Spain","ko":"스페인","currency":"EUR","points":[17964,27803,40634,57819,78634,163711]},"IT":{"name":"Italy","ko":"이탈리아","currency":"EUR","points":[17682,30296,45044,65922,90977,171078]},"US":{"name":"United States","ko":"미국","currency":"USD","points":[25450,52806,100188,174245,253031,583732]}};
+const GLOBAL_COUNTRIES=REFERENCE_DATA.world;
 const GLOBAL_PERCENTILES=[25,50,75,90,95,99];
 const GLOBAL_FX_CACHE_KEY='salary-flow-country-fx';
 let globalFx={currency:'',rate:0,date:'',pending:false,error:false},globalFxRequest=0;
@@ -317,9 +1004,9 @@ function renderCountryRank(){
  const formatRank=(value,points,percentage)=>value<points[0]?tr('상위 75% 밖','Below P25'):value>=points[5]?tr('상위 1% 이내','Top 1%+'):tr('상위 약 ','Top ~')+percentage.toFixed(1)+'%';
  const formatMoney=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:rec.currency,maximumFractionDigits:0}).format(v);
  $('#intlTitle').textContent=tr('국가별 소득 상위 % 비교','Country income percentile comparison');
- $('#intlYear').textContent=tr('2024년 WID 자료','WID income data · 2024');
+ $('#intlYear').textContent=tr(REFERENCE_DATA.years.world+'년 WID 자료','WID income data · '+REFERENCE_DATA.years.world);
  $('#intlCountryLabel').textContent=tr('비교할 국가','Country');
- $('#intlUSLabel').textContent=tr('미국 소득 상위 비율 · WID 2024','United States income rank · WID 2024');
+ $('#intlUSLabel').textContent=tr('미국 소득 상위 비율 · WID '+REFERENCE_DATA.years.world,'United States income rank · WID '+REFERENCE_DATA.years.world);
  $('#intlRankLabel').textContent=tr(label+' 소득 상위 비율',label+' income rank');
  $('#intlIncomeLabel').textContent=tr('현지 통화로 환산한 연봉','Annual income in local currency');
  $('#intlMedianLabel').textContent=tr('현지 소득 중앙값','Local income median');
@@ -327,7 +1014,7 @@ function renderCountryRank(){
  $('#intlRank').textContent=masked?'••••':!ready?'—':formatRank(localGross,rec.points,rank);
  $('#intlIncome').textContent=masked?'••••':ready?formatMoney(localGross):'—';
  $('#intlMedian').textContent=masked?'••••':formatMoney(rec.points[1]);
- let note=tr('미국과 선택 국가 모두 WID 2024 성인(20세 이상) 세전 국민소득 분포로 비교합니다. 위 미국 주별 DQYDJ 순위와는 다른 통계입니다. 현재 환율로 환산하며 물가·구매력·통계연도 차이를 보정하지 않은 참고용 추정치입니다.','Both country rankings use WID 2024 pre-tax national income distributions for adults 20+. This differs from the DQYDJ US state rankings above. Market FX conversion does not adjust for purchasing power, inflation, or data-year differences.');
+ let note=tr('미국과 선택 국가 모두 WID '+REFERENCE_DATA.years.world+'년 성인(20세 이상) 세전 국민소득 분포로 비교합니다. 위 미국 주별 DQYDJ 순위와는 다른 통계입니다. 현재 환율로 환산하며 물가·구매력·통계연도 차이를 보정하지 않은 참고용 추정치입니다.','Both country rankings use WID '+REFERENCE_DATA.years.world+' pre-tax national income distributions for adults 20+. This differs from the DQYDJ US state rankings above. Market FX conversion does not adjust for purchasing power, inflation, or data-year differences.');
  if(!ready)note=tr('환율을 가져오지 못해 국가별 순위를 계산할 수 없습니다. ','Country rank unavailable until a valid exchange rate loads. ')+note;
  else if(globalFx.error)note=tr('저장된 환율 사용','Using cached FX rate')+' · '+note;
  else if(rec.currency!=='USD')note=tr('환율 기준일: ','FX date: ')+(globalFx.date||'—')+' · '+note;
@@ -355,8 +1042,8 @@ function renderRankings(){
  $('#rankHomeMedian').textContent=tr('중앙값: ','Median: ')+(hiddenRank?'••••':money(INCOME_RANK_2026[home][1]));
  $('#rankCompareMedian').textContent=tr('중앙값: ','Median: ')+(hiddenRank?'••••':money(INCOME_RANK_2026[comparison][1]));
  $('#rankIncomeNote').textContent=tr('비교 연소득: ','Compared annual income: ')+(hiddenRank?'••••':money(gross));
- $('#rankTitle').textContent=tr('내 소득은 상위 몇 %?','What income percentile am I in?');
- $('#rankDataYear').textContent=tr('2026 발표 · 2025년 개인 소득 자료 · 세전 기준','2026 edition · 2025 personal income · pre-tax');
+ $('#rankTitle').textContent=tr('내 소득은 상위 몇 %?','What income percentile am I in?');const rankKicker=document.querySelector('.rank-kicker');if(rankKicker)rankKicker.textContent='INCOME RANK · '+REFERENCE_DATA.years.us;
+ $('#rankDataYear').textContent=tr(REFERENCE_DATA.years.us+' 발표 · '+REFERENCE_DATA.years.usIncome+'년 개인 소득 자료 · 세전 기준',REFERENCE_DATA.years.us+' edition · '+REFERENCE_DATA.years.usIncome+' personal income · pre-tax');
  $('#rankUsLabel').textContent=tr('미국 전체','United States');
  $('#rankCompareLabel').textContent=tr('비교할 주','Compare another state');
  $('#rankAccuracy').textContent=tr('25·50·75·99백분위 기준점 사이의 근사값 · 정확한 순위 아님','Approximation between P25/P50/P75/P99 · not an exact rank');
@@ -365,14 +1052,127 @@ function renderRankings(){
  $('#rankHide').setAttribute('aria-label',$('#rankHide').title);$('#rankHide').textContent=hiddenRank?'◉':'◌';
 }
 
-const moneyKeys=['today','target','remaining','rate','lifetime','week','year','day'];
-function applyPrivacy(){moneyKeys.forEach(k=>{const el=$(`[data-money="${k}"]`),button=$(`[data-hide="${k}"]`);if(!el||!button)return;const displayValue=hidden.has(k)?'••••••':el.dataset.raw||'$0.00';if(el.textContent!==displayValue)el.textContent=displayValue;el.classList.toggle('masked',hidden.has(k));const concealed=hidden.has(k);if(button.dataset.concealed!==String(concealed)){button.innerHTML=concealed?eyeOff:eyeOn;button.dataset.concealed=String(concealed)}const title=concealed?tr('금액 표시','Show amount'):tr('금액 숨기기','Hide amount');if(button.title!==title){button.title=title;button.setAttribute('aria-label',title)}button.setAttribute('aria-pressed',String(concealed))});const all=moneyKeys.every(k=>hidden.has(k));$('#privacyAll').textContent=all?tr('전체 표시','Show all'):tr('전체 숨기기','Hide all')}
-function setMoney(key,v,d=2,suffix=''){const el=$(`[data-money="${key}"]`);el.dataset.raw=money(v,d)+suffix}
-function syncPaychecks(){for(const box of $$('.job')){const j=config.jobs.find(x=>x.id===box.dataset.id);if(!j)continue;const input=box.querySelector('[data-prop="netOverride"]');if(input&&document.activeElement!==input)input.value=paycheck(j).toFixed(2);const label=box.querySelector('.paycheck-source');if(label)label.textContent=j.netOverride===null?tr('자동 계산 · Arizona 세금 추정','Auto-calculated · Arizona tax estimate'):tr('직접 수정한 금액','Manually adjusted');const btn=box.querySelector('.auto-net');if(btn){btn.disabled=j.netOverride===null;btn.textContent=tr('자동 계산으로 복원','Reset to auto');}const note=box.querySelector('.net-value');if(note)note.textContent=money(annualNet(j));const bonus=box.querySelector('.bonus-value');if(bonus)bonus.textContent=money(annualBonus(j));const comp=box.querySelector('.comp-value');if(comp)comp.textContent=money(totalComp(j));}}
-function render(){renderRankings();renderCountryRank();displayTax();syncPaychecks();const now=new Date(),ts=now.getTime()/1000,day=startDay(now),dayS=day.getTime()/1000,dow=(now.getDay()+6)%7,monday=new Date(day);monday.setDate(monday.getDate()-dow);const weekS=monday.getTime()/1000,yearS=new Date(now.getFullYear(),0,1).getTime()/1000;let earned=0,target=0,week=0,year=0,lifetime=0,remaining=0,rate=0,paidSecs=0,allSecs=0,working=false,jobWorkTimes=[],jobEndTimes=[];
-for(const j of config.jobs){let sr=yearlyRate(j),t=elapsedWork(dayS,ts,j),todayTarget=j.weekdays.includes(day.getDay())?paidHours(j)*3600:0;t=Math.min(todayTarget,t);const act=elapsedWork(ts-1,ts,j)>0.001; earned+=t*sr;target+=todayTarget*sr;remaining+=Math.max(0,todayTarget-t)*sr;week+=elapsedWork(weekS,ts,j)*sr;year+=elapsedWork(yearS,ts,j)*sr;lifetime+=career(j,now);paidSecs+=t;allSecs+=todayTarget;jobWorkTimes.push({name:j.name||'Job '+(jobWorkTimes.length+1),hours:t/3600});jobEndTimes.push({name:j.name||'Job '+(jobEndTimes.length+1),scheduled:j.weekdays.includes(day.getDay()),start:dayS+secClock(j.start),end:shiftEndTime(day,j)});if(act){rate+=sr;working=true}}
-setMoney('today',earned,2);setMoney('target',target,0);setMoney('remaining',remaining,0);setMoney('rate',rate,2,'/s');setMoney('lifetime',lifetime,0);setMoney('week',week,0);setMoney('year',year,0);setMoney('day',target,0);
-$('#progress').style.width=(target>0?Math.min(100,Math.max(0,100*earned/target)):0)+'%';$('#worked').innerHTML=jobWorkTimes.map(x=>'<span class="worked-item"><span class="worked-name" title="'+escaped(x.name)+'">'+escaped(x.name)+'</span><span>'+x.hours.toFixed(2)+tr('시간','h')+'</span></span>').join('<span class="worked-separator" aria-hidden="true">|</span>')+(jobWorkTimes.length?'<span class="worked-separator" aria-hidden="true">|</span>':'')+'<span class="worked-item worked-total">'+tr('오늘 누적 근무','Total worked today')+' '+(paidSecs/3600).toFixed(2)+tr('시간','h')+'</span>';const scheduledEnd=jobEndTimes.filter(x=>x.scheduled);const latestEnd=scheduledEnd.length?Math.max(...scheduledEnd.map(x=>x.end)):0;const countdownItem=x=>'<span class="end-job"><span class="end-name" title="'+escaped(x.name)+'">'+escaped(x.name)+'</span> '+(x.scheduled?(ts>=x.end?tr('퇴근 완료','Shift ended'):durationCountdown(x.end-ts)):tr('휴무','Day off'))+'</span>';$('#endCountdown').innerHTML=jobEndTimes.map(countdownItem).join('<span class="end-separator" aria-hidden="true">|</span>')+(jobEndTimes.length?'<span class="end-separator" aria-hidden="true">|</span>':'')+'<span class="end-total">'+tr('모든 업무 종료까지','Until all shifts end')+' '+(latestEnd?ts>=latestEnd?tr('퇴근 완료','All shifts ended'):durationCountdown(latestEnd-ts):tr('휴무','Day off'))+'</span>';$('#percent').textContent=target>0?(100*earned/target).toFixed(1)+'%':tr('휴무일','Day off');$('#pulse').classList.toggle('off',!working);$('#workStatus').textContent=working?tr('LIVE · 지금 수입 누적 중','LIVE · Earnings accumulating'):tr('OFF DUTY · 근무 시간 외','OFF DUTY · Outside work hours');$('#clock').textContent=now.toLocaleTimeString(lang==='ko'?'ko-KR':'en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'});$('#todayDescription').textContent=config.mode==='gross'?tr('오늘 근무로 발생한 추정 세전 수입','Estimated gross earnings from today’s work'):tr('2026 Arizona 세후 추정 / 직접 수정된 실수령액','2026 Arizona net estimate / adjusted take-home pay');$('#careerExplain').textContent=config.mode==='gross'?tr('과거 연도는 연봉·인상률 추정, 올해는 실제 근무 스케줄에 맞춰 누적','Past years estimated from salary and raises; current year follows work schedules'):tr('과거 소득은 추정, 올해는 현재 세후 시급과 근무 일정으로 누적 · 과거 세법 미반영','Historical income estimated; this year accumulates using current net hourly rate and work schedules');applyPrivacy();}
-document.querySelectorAll('[data-hide]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.hide;hidden.has(k)?hidden.delete(k):hidden.add(k);applyPrivacy()}));$('#privacyAll').onclick=()=>{if(moneyKeys.every(k=>hidden.has(k))&&hidden.has('ranking'))hidden.clear();else{moneyKeys.forEach(k=>hidden.add(k));hidden.add('ranking')}applyPrivacy();renderRankings()};function setMode(mode){config.mode=mode;$('#grossBtn').setAttribute('aria-pressed',String(mode==='gross'));$('#netBtn').setAttribute('aria-pressed',String(mode==='net'));save();render()}$('#grossBtn').onclick=()=>setMode('gross');$('#netBtn').onclick=()=>setMode('net');$('#addJob').onclick=()=>{if(config.jobs.length>=8){alert(tr('직장은 최대 8개까지 추가할 수 있습니다.','You can add up to 8 jobs.'));return}config.jobs.push(newJob(config.jobs.length+1));save();drawJobs();render()};$('#reset').onclick=()=>{if(!confirm(tr('저장된 모든 급여 설정을 초기화할까요?','Reset all saved salary settings?')))return;config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azDeduction:16100,jobs:[newJob()]};$('#taxState').value='AZ';[['filing','single'],['outside',0],['hsa',0],['extraDeduction',0],['azDeduction',16100]].forEach(([id,v])=>$('#'+id).value=v);hidden.clear();inputHidden.clear();collapsedJobs.clear();$('#currencySelect').value='USD';loadDisplayCurrency('USD');$('#includeBonusDaily').checked=false;save();drawJobs();setMode('gross')};[['filing','filing'],['outside','outside'],['hsa','hsa'],['extraDeduction','extraDeduction'],['azDeduction','azDeduction']].forEach(([id,key])=>{const el=$('#'+id);el.value=config[key]??(key==='azDeduction'?16100:0);el.addEventListener('input',()=>{config[key]=key==='filing'?el.value:Number(el.value)||0;save();render()});el.addEventListener('change',()=>{config[key]=key==='filing'?el.value:Number(el.value)||0;save();render()})});const bonusToggle=$('#includeBonusDaily');bonusToggle.checked=!!config.includeBonusDaily;bonusToggle.addEventListener('change',()=>{config.includeBonusDaily=bonusToggle.checked;save();render()});const currencySelect=$('#currencySelect');currencySelect.value=CURRENCY_CHOICES.includes(config.currency)?config.currency:'USD';config.currency=currencySelect.value;currencySelect.addEventListener('change',()=>{config.currency=currencySelect.value;save();loadDisplayCurrency(config.currency)});const countrySelect=$('#intlCountry');countrySelect.value=GLOBAL_COUNTRIES[config.countryCompare]?config.countryCompare:'KR';config.countryCompare=countrySelect.value;countrySelect.addEventListener('change',()=>{config.countryCompare=countrySelect.value;save();loadCountryRate()});loadCountryRate();const rankSelect=$('#rankCompareState');rankSelect.value=INCOME_RANK_STATE_NAMES[config.rankCompareState]?config.rankCompareState:'CA';rankSelect.addEventListener('change',()=>{config.rankCompareState=rankSelect.value;save();renderRankings()});$('#rankHide').addEventListener('click',()=>{hidden.has('ranking')?hidden.delete('ranking'):hidden.add('ranking');renderRankings()});const stateSelect=$('#taxState');stateSelect.value=TAX_STATES[config.taxState]?config.taxState:'AZ';config.taxState=stateSelect.value;stateSelect.addEventListener('change',()=>{config.taxState=stateSelect.value;save();render();drawJobs()});drawJobs();refreshLanguage();initializeAds();setMode(config.mode);loadDisplayCurrency(config.currency);setInterval(render,200);document.addEventListener('visibilitychange',render);
+const moneyKeys=['today','target','remaining','rate','lifetime','week','month','year','day'];
+const MONEY_ELEMENTS={};
+function moneyElement(key){return MONEY_ELEMENTS[key]||(MONEY_ELEMENTS[key]=$(`[data-money="${key}"]`));}
+function updateText(selector,value){const el=$(selector);if(el&&el.textContent!==value)el.textContent=value;}
+function updateHtml(selector,value){const el=$(selector);if(el&&el.innerHTML!==value)el.innerHTML=value;}
+function applyPrivacy(){
+ moneyKeys.forEach(k=>{
+  const el=moneyElement(k),button=$(`[data-hide="${k}"]`);
+  if(!el||!button)return;
+  const concealed=hidden.has(k),displayValue=concealed?'••••••':el.dataset.raw||'$0.00';
+  if(el.textContent!==displayValue)el.textContent=displayValue;
+  if(el.classList.contains('masked')!==concealed)el.classList.toggle('masked',concealed);
+  if(button.dataset.concealed!==String(concealed)){
+   button.innerHTML=concealed?eyeOff:eyeOn;button.dataset.concealed=String(concealed);
+  }
+  const title=concealed?tr('금액 표시','Show amount'):tr('금액 숨기기','Hide amount');
+  if(button.title!==title){button.title=title;button.setAttribute('aria-label',title);}
+  if(button.getAttribute('aria-pressed')!==String(concealed))button.setAttribute('aria-pressed',String(concealed));
+ });
+ const all=moneyKeys.every(k=>hidden.has(k));
+ updateText('#privacyAll',all?tr('전체 표시','Show all'):tr('전체 숨기기','Hide all'));
+}
+function setMoney(key,v,d=2,suffix=''){
+ const el=moneyElement(key);if(!el)return;
+ const raw=money(v,d)+suffix;
+ if(el.dataset.raw!==raw)el.dataset.raw=raw;
+ if(!hidden.has(key)&&el.textContent!==raw)el.textContent=raw;
+}
+function syncPaychecks(){for(const box of $$('.job')){const j=config.jobs.find(x=>x.id===box.dataset.id);if(!j)continue;const input=box.querySelector('[data-prop="netOverride"]');if(input&&document.activeElement!==input){const v=paycheck(j).toFixed(2);if(input.value!==v)input.value=v;}const label=box.querySelector('.paycheck-source');if(label){const v=j.netOverride===null?tr('자동 계산 · Arizona 세금 추정','Auto-calculated · Arizona tax estimate'):tr('직접 수정한 금액','Manually adjusted');if(label.textContent!==v)label.textContent=v;}const btn=box.querySelector('.auto-net');if(btn){btn.disabled=j.netOverride===null;const v=tr('자동 계산으로 복원','Reset to auto');if(btn.textContent!==v)btn.textContent=v;}const note=box.querySelector('.net-value');if(note){const v=money(annualNet(j));if(note.textContent!==v)note.textContent=v;}const bonus=box.querySelector('.bonus-value');if(bonus){const v=money(annualBonus(j));if(bonus.textContent!==v)bonus.textContent=v;}const comp=box.querySelector('.comp-value');if(comp){const v=money(totalComp(j));if(comp.textContent!==v)comp.textContent=v;}}}
+// Cache calendar-period baselines and each job's earning rate until a setting/day changes.
+// Only today's elapsed working seconds change on the 200ms ticker.
+let earningsSnapshot=null,lastStatusSecond=-1,lastStaticKey='';
+function render(){
+ const now=new Date(),ts=now.getTime()/1000,day=startDay(now),dayS=day.getTime()/1000;
+ let rebuilt=false;
+ if(earningsSnapshot&&earningsSnapshot.dayS!==dayS)drawJobs(); // Today's overtime controls reset on local date rollover.
+ if(!earningsSnapshot||earningsSnapshot.dayS!==dayS||earningsSnapshot.revision!==earningsRevision){
+  const dow=(now.getDay()+6)%7,monday=new Date(day);monday.setDate(monday.getDate()-dow);
+  const weekS=monday.getTime()/1000,monthS=new Date(now.getFullYear(),now.getMonth(),1).getTime()/1000,yearS=new Date(now.getFullYear(),0,1).getTime()/1000;
+  const jobs=config.jobs.map((j,i)=>{
+   const sr=yearlyRate(j),todayTarget=j.weekdays.includes(day.getDay())?paidHours(j)*3600:0;
+   const otWindow=overtimeWindow(overtimeDate(day),j,todaysOvertime(j,day));
+   const otRate=overtimeRate(j);
+   // Build today's intersecting overtime windows once, not every 200ms.
+   // Compile dated overtime once per settings/day change, then reuse it for all
+   // period baselines and live calculations instead of rescanning weekly rules.
+   const historyStart=Math.min(weekS,monthS,yearS,Math.min(dayS,hireTime(j)/1000));
+   const otAllWindows=overtimeWindows(j,historyStart,dayS+48*3600);
+   const otLiveWindows=otAllWindows.filter(w=>w.end>dayS&&w.start<dayS+48*3600);
+   const otTarget=otWindow?(otWindow.end-otWindow.start)*otRate*otWindow.multiplier:0;
+   return {job:j,rate:sr,clock:cachedTodayWorkClock(day,j),otRate,otLiveWindows,target:todayTarget,otTarget,otWindow,
+    weekBase:elapsedWork(weekS,dayS,j)*sr+overtimeAccrued(weekS,dayS,j,otRate,otAllWindows).money,
+    monthBase:elapsedWork(monthS,dayS,j)*sr+overtimeAccrued(monthS,dayS,j,otRate,otAllWindows).money,
+    yearBase:elapsedWork(yearS,dayS,j)*sr+overtimeAccrued(yearS,dayS,j,otRate,otAllWindows).money,
+    lifetimeBase:career(j,day)+overtimeAccrued(Math.min(dayS,hireTime(j)/1000),dayS,j,otRate,otAllWindows).money,
+    name:j.name||'Job '+(i+1),
+    scheduledRegular:j.weekdays.includes(day.getDay()),scheduled:j.weekdays.includes(day.getDay())||!!otWindow,
+    start:dayS+secClock(j.start),end:shiftEndTime(day,j)};
+  });
+  earningsSnapshot={revision:earningsRevision,dayS,jobs,
+   target:jobs.reduce((v,j)=>v+j.target*j.rate+j.otTarget,0),
+   allSecs:jobs.reduce((v,j)=>v+j.target,0),
+   weekBase:jobs.reduce((v,j)=>v+j.weekBase,0),
+   monthBase:jobs.reduce((v,j)=>v+j.monthBase,0),
+   yearBase:jobs.reduce((v,j)=>v+j.yearBase,0),
+   lifetimeBase:jobs.reduce((v,j)=>v+j.lifetimeBase,0)};
+  rebuilt=true;
+ }
+ const staticKey=[earningsRevision,lang,activeCurrency,fxRate,fxPending,globalFx.currency,globalFx.rate,globalFx.error].join('|');
+ const staticChanged=staticKey!==lastStaticKey;
+ if(rebuilt||staticChanged){
+  renderRankings();renderCountryRank();displayTax();syncPaychecks();
+  lastStaticKey=staticKey;
+  syncCustomSelects();
+ }
+ const snapshot=earningsSnapshot;
+ let earned=0,periodEarned=0,remaining=0,rate=0,paidSecs=0,working=false;
+ const jobWorkTimes=[],jobEndTimes=[];
+ for(const item of snapshot.jobs){
+  const j=item.job,todayRaw=item.clock.today(ts),worked=Math.min(item.target,todayRaw);
+  const active=item.clock.active(ts)>0.001;
+  const overtime=overtimeAccrued(dayS,ts,j,item.otRate,item.otLiveWindows);
+  const overtimeCurrent=overtimeAccrued(Math.max(dayS,ts-1),ts,j,item.otRate,item.otLiveWindows);
+  const currentOtRate=overtimeCurrent.activeRate;
+  earned+=worked*item.rate+overtime.money;
+  periodEarned+=todayRaw*item.rate+overtime.money;
+  remaining+=Math.max(0,item.target-worked)*item.rate+Math.max(0,item.otTarget-(item.otWindow?overtimeAccrued(item.otWindow.start,ts,j,item.otRate,item.otLiveWindows).money:0));
+  paidSecs+=worked+overtime.seconds;
+  jobWorkTimes.push({name:item.name,hours:(worked+overtime.seconds)/3600});
+  jobEndTimes.push({...item,end:item.otWindow?(item.scheduledRegular?Math.max(item.end,item.otWindow.end):item.otWindow.end):item.end});
+  if(active){rate+=item.rate;working=true}
+  if(currentOtRate>0){rate+=currentOtRate;working=true}
+ }
+ // Live counters interpolate from midnight baseline; no annual loops on each tick.
+ setMoney('today',earned,2);
+ setMoney('remaining',remaining,0);
+ const second=Math.floor(ts);
+ if(rebuilt||second!==lastStatusSecond||staticChanged){
+  setMoney('target',snapshot.target,0);
+  setMoney('rate',rate,2,'/s');
+  setMoney('lifetime',snapshot.lifetimeBase+periodEarned,0);
+  setMoney('week',snapshot.weekBase+periodEarned,0);
+  setMoney('month',snapshot.monthBase+periodEarned,0);
+  setMoney('year',snapshot.yearBase+periodEarned,0);
+  setMoney('day',snapshot.target,0);
+  updateHtml('#worked',jobWorkTimes.map(x=>'<span class="worked-item"><span class="worked-name" title="'+escaped(x.name)+'">'+escaped(x.name)+'</span><span>'+x.hours.toFixed(2)+tr('시간','h')+'</span></span>').join('<span class="worked-separator" aria-hidden="true">|</span>')+(jobWorkTimes.length?'<span class="worked-separator" aria-hidden="true">|</span>':'')+'<span class="worked-item worked-total">'+tr('오늘 누적 근무','Total worked today')+' '+(paidSecs/3600).toFixed(2)+tr('시간','h')+'</span>');
+  const scheduledEnd=jobEndTimes.filter(x=>x.scheduled);
+  const latestEnd=scheduledEnd.length?Math.max(...scheduledEnd.map(x=>x.end)):0;
+  const countdownItem=x=>'<span class="end-job"><span class="end-name" title="'+escaped(x.name)+'">'+escaped(x.name)+'</span> '+(x.scheduled?(ts>=x.end?tr('퇴근 완료','Shift ended'):durationCountdown(x.end-ts)):tr('휴무','Day off'))+'</span>';
+  updateHtml('#endCountdown',jobEndTimes.map(countdownItem).join('<span class="end-separator" aria-hidden="true">|</span>')+(jobEndTimes.length?'<span class="end-separator" aria-hidden="true">|</span>':'')+'<span class="end-total">'+tr('모든 업무 종료까지','Until all shifts end')+' '+(latestEnd?ts>=latestEnd?tr('퇴근 완료','All shifts ended'):durationCountdown(latestEnd-ts):tr('휴무','Day off'))+'</span>');
+  updateText('#percent',snapshot.target>0?(100*earned/snapshot.target).toFixed(1)+'%':tr('휴무일','Day off'));
+  updateText('#workStatus',working?tr('LIVE · 지금 수입 누적 중','LIVE · Earnings accumulating'):tr('OFF DUTY · 근무 시간 외','OFF DUTY · Outside work hours'));
+  updateText('#clock',now.toLocaleTimeString(lang==='ko'?'ko-KR':'en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'}));
+  updateText('#todayDescription',config.mode==='gross'?tr('오늘 근무로 발생한 추정 세전 수입','Estimated gross earnings from today’s work'):tr(REFERENCE_DATA.years.tax+' Arizona 세후 추정 / 직접 수정된 실수령액',REFERENCE_DATA.years.tax+' Arizona net estimate / adjusted take-home pay'));
+  updateText('#careerExplain',config.mode==='gross'?tr('과거 연도는 연봉·인상률 추정, 올해는 실제 근무 스케줄에 맞춰 누적','Past years estimated from salary and raises; current year follows work schedules'):tr('과거 소득은 추정, 올해는 현재 세후 시급과 근무 일정으로 누적 · 과거 세법 미반영','Historical income estimated; this year accumulates using current net hourly rate and work schedules'));
+  lastStatusSecond=second;
+ }
+ const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';if($('#progress').style.width!==progressWidth)$('#progress').style.width=progressWidth;
+ const pulse=$('#pulse');if(pulse.classList.contains('off')===working)pulse.classList.toggle('off',!working);
+ if(rebuilt||staticChanged)applyPrivacy();
+}
+document.querySelectorAll('[data-hide]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.hide;hidden.has(k)?hidden.delete(k):hidden.add(k);applyPrivacy()}));$('#privacyAll').onclick=()=>{if(moneyKeys.every(k=>hidden.has(k))&&hidden.has('ranking'))hidden.clear();else{moneyKeys.forEach(k=>hidden.add(k));hidden.add('ranking')}applyPrivacy();renderRankings()};function setMode(mode){config.mode=mode;$('#grossBtn').setAttribute('aria-pressed',String(mode==='gross'));$('#netBtn').setAttribute('aria-pressed',String(mode==='net'));save();render()}$('#grossBtn').onclick=()=>setMode('gross');$('#netBtn').onclick=()=>setMode('net');$('#addJob').onclick=()=>{if(config.jobs.length>=8){alert(tr('직장은 최대 8개까지 추가할 수 있습니다.','You can add up to 8 jobs.'));return}const job=newJob(config.jobs.length+1);config.jobs.push(job);collapsedJobs.add(job.id);save();drawJobs();render()};$('#reset').onclick=()=>{if(!confirm(tr('저장된 모든 급여 설정을 초기화할까요?','Reset all saved salary settings?')))return;config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azDeduction:standardArizonaDeduction('single'),azDeductionCustomized:false,jobs:[newJob()]};$('#taxState').value='AZ';[['filing','single'],['outside',0],['hsa',0],['extraDeduction',0],['azDeduction',standardArizonaDeduction('single')]].forEach(([id,v])=>$('#'+id).value=v);hidden.clear();inputHidden.clear();collapsedJobs.clear();config.jobs.forEach(job=>collapsedJobs.add(job.id));$('#currencySelect').value='USD';loadDisplayCurrency('USD');$('#includeBonusDaily').checked=false;save();drawJobs();setMode('gross')};[['filing','filing'],['outside','outside'],['hsa','hsa'],['extraDeduction','extraDeduction'],['azDeduction','azDeduction']].forEach(([id,key])=>{const el=$('#'+id);el.value=config[key]??(key==='azDeduction'?standardArizonaDeduction(config.filing):0);const onEdit=()=>{config[key]=key==='filing'?el.value:Number(el.value)||0;if(key==='azDeduction')config.azDeductionCustomized=true;if(key==='filing'&&!config.azDeductionCustomized){config.azDeduction=standardArizonaDeduction(config.filing);$('#azDeduction').value=config.azDeduction;}save();render()};el.addEventListener('input',onEdit);el.addEventListener('change',onEdit)});const bonusToggle=$('#includeBonusDaily');bonusToggle.checked=!!config.includeBonusDaily;bonusToggle.addEventListener('change',()=>{config.includeBonusDaily=bonusToggle.checked;save();render()});const currencySelect=$('#currencySelect');currencySelect.value=CURRENCY_CHOICES.includes(config.currency)?config.currency:'USD';config.currency=currencySelect.value;currencySelect.addEventListener('change',()=>{config.currency=currencySelect.value;save();loadDisplayCurrency(config.currency)});const countrySelect=$('#intlCountry');countrySelect.value=GLOBAL_COUNTRIES[config.countryCompare]?config.countryCompare:'KR';config.countryCompare=countrySelect.value;countrySelect.addEventListener('change',()=>{config.countryCompare=countrySelect.value;save();loadCountryRate()});loadCountryRate();const rankSelect=$('#rankCompareState');rankSelect.value=INCOME_RANK_STATE_NAMES[config.rankCompareState]?config.rankCompareState:'CA';rankSelect.addEventListener('change',()=>{config.rankCompareState=rankSelect.value;save();renderRankings()});$('#rankHide').addEventListener('click',()=>{hidden.has('ranking')?hidden.delete('ranking'):hidden.add('ranking');renderRankings()});const stateSelect=$('#taxState');stateSelect.value=TAX_STATES[config.taxState]?config.taxState:'AZ';config.taxState=stateSelect.value;stateSelect.addEventListener('change',()=>{config.taxState=stateSelect.value;save();render();drawJobs()});drawJobs();enhanceSelects(document);refreshLanguage();$('#referenceStatusPanel').addEventListener('toggle',()=>{if($('#referenceStatusPanel').open)loadReferenceAudit()});initializeAds();setMode(config.mode);loadDisplayCurrency(config.currency);let liveTimer=null;function resumeTicker(){if(liveTimer!==null){clearInterval(liveTimer);liveTimer=null}if(!document.hidden){render();liveTimer=setInterval(render,200)}}document.addEventListener('visibilitychange',resumeTicker);resumeTicker();
 })();
 </script></body></html>
