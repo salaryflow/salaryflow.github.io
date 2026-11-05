@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "incomeYear": 2024,
+  "source": "https://wid.world/data/",
+  "retrieval": "snapshot from existing Salary Flow code; verify before changing",
+  "values": {
+    "KR": {
+      "name": "South Korea",
+      "ko": "대한민국",
+      "currency": "KRW",
+      "points": [
+        17928549,
+        33572879,
+        55369466,
+        89108078,
+        117851802,
+        247605837
+      ]
+    },
+    "JP": {
+      "name": "Japan",
+      "ko": "일본",
+      "currency": "JPY",
+      "points": [
+        1764317,
+        3871255,
+        4708274,
+        6977260,
+        15226777,
+        43387598
+      ]
+    },
+    "CA": {
+      "name": "Canada",
+      "ko": "캐나다",
+      "currency": "CAD",
+      "points": [
+        30504,
+        65154,
+        108654,
+        168970,
+        230182,
+        444266
+      ]
+    },
+    "GB": {
+      "name": "United Kingdom",
+      "ko": "영국",
+      "currency": "GBP",
+      "points": [
+        23061,
+        36348,
+        55598,
+        85995,
+        118856,
+        238788
+      ]
+    },
+    "AU": {
+      "name": "Australia",
+      "ko": "호주",
+      "currency": "AUD",
+      "points": [
+        37924,
+        85031,
+        141068,
+        214259,
+        277451,
+        563430
+      ]
+    },
+    "FR": {
+      "name": "France",
+      "ko": "프랑스",
+      "currency": "EUR",
+      "points": [
+        20756,
+        37524,
+        56638,
+        82817,
+        107541,
+        233032
+      ]
+    },
+    "ES": {
+      "name": "Spain",
+      "ko": "스페인",
+      "currency": "EUR",
+      "points": [
+        17964,
+        27803,
+        40634,
+        57819,
+        78634,
+        163711
+      ]
+    },
+    "IT": {
+      "name": "Italy",
+      "ko": "이탈리아",
+      "currency": "EUR",
+      "points": [
+        17682,
+        30296,
+        45044,
+        65922,
+        90977,
+        171078
+      ]
+    },
+    "US": {
+      "name": "United States",
+      "ko": "미국",
+      "currency": "USD",
+      "points": [
+        25450,
+        52806,
+        100188,
+        174245,
+        253031,
+        583732
+      ]
+    }
+  }
+}

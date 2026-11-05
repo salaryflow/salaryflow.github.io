@@ -1,0 +1,48 @@
+name: Validate reference data
+# Fast, deterministic PR gate. External government websites are checked by the weekly audit.
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: salaryflow-pr-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify datasets and embedded offline defaults
+        run: |
+          node scripts/validate-data.mjs
+          python3 scripts/validate_reference_data.py
+          node scripts/sync-reference-baseline.mjs --check
+          node scripts/test-reference-baseline.mjs
+          node scripts/test-reference-fallback.mjs
+      - name: Verify dashboard behavior and earnings
+        run: |
+          node scripts/test-reference-status.mjs
+          node scripts/test-job-default-collapse.mjs
+          node scripts/test-month-earnings.mjs
+          node scripts/test-earnings-performance.mjs
+          node scripts/test-client-performance.mjs
+          node scripts/test-today-overtime.mjs
+          node scripts/test-recurring-overtime.mjs
+          node scripts/test-overtime-layout.mjs
+          node scripts/test-overtime-inputs.mjs
+          node scripts/test-custom-select.mjs
+          node scripts/test-earnings-grid.mjs
+          node scripts/test-dynamic-reference-years.mjs
+          node scripts/test-reference-audit-ui.mjs
+      - name: Verify update pipeline parsers and atomic rollover
+        run: |
+          node scripts/test-activate-tax-year.mjs
+          node scripts/test-arizona-candidate.mjs
+          python3 -m unittest discover -s scripts -p 'test_propose_ssa_payroll.py' -v
+          node scripts/test-data-pipeline.mjs
+          node scripts/test-irs-parser.mjs

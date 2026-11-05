@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const s=readFileSync('index.html','utf8');
+const ui=s.slice(s.indexOf('function updateReferenceYearLabels(){'),s.indexOf('function refreshLanguage(){'));
+assert(ui.length>500);
+for(const field of ['years.tax','years.arizona','years.us','years.world','years.payroll'])assert(ui.includes(field),'Missing dynamic year source '+field);
+for(const id of ['taxStateYearLabel','azDeductionYearHelp','rankSourceLink','taxYearsNotice','earningsYearsNotice'])assert(ui.includes("'#"+id+"'"),'Missing year-bound field '+id);
+assert(s.includes('updateReferenceYearLabels();drawJobs();render()'),'Year labels must refresh during initialization and language switch');
+assert(s.includes("WID '+REFERENCE_DATA.years.world+' pre-tax"),'WID narrative must use actual dataset year');
+assert(!ui.includes("'TAX ESTIMATE · 2026'"),'Tax banner hardcoded');
+assert(s.includes('const REFERENCE_DATA=await loadReferenceData();'),'Reference loader unchanged');
+assert(s.includes('if(!value){value=REFERENCE_BASELINE[k]'),'Offline fallback must survive');
+assert(s.includes('const ARIZONA_RULES=REFERENCE_DATA.arizona;'),'Arizona calculation rule unchanged');
+console.log('PASS: display years follow loaded IRS, SSA, AZ, DQYDJ and WID data; fallback intact');

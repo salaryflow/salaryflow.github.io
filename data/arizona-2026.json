@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "taxYear": 2026,
+  "source": "https://www.azleg.gov/legtext/57leg/2R/summary/S.4168-1861ATT_ASENACTED.DOCX.htm",
+  "retrieval": "Enacted Arizona HB4168/SB1861 (2026-2027 omnibus) standard deduction amounts and Arizona Department of Revenue flat 2.5% state taxable income rate. Wage-only estimate; special income additions/subtractions and credits excluded.",
+  "rate": 0.025,
+  "standardDeduction": {
+    "single": 15750,
+    "mfs": 15750,
+    "mfj": 31500,
+    "hoh": 23625
+  },
+  "charityMax": {
+    "single": 1000,
+    "mfs": 1000,
+    "mfj": 2000,
+    "hoh": 1000
+  }
+}

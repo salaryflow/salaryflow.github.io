@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "taxYear": 2026,
+  "source": "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
+  "retrieval": "snapshot from existing Salary Flow code; verify before changing",
+  "values": {
+    "single": {
+      "ded": 16100,
+      "br": [
+        12400,
+        50400,
+        105700,
+        201775,
+        256225,
+        640600
+      ]
+    },
+    "mfj": {
+      "ded": 32200,
+      "br": [
+        24800,
+        100800,
+        211400,
+        403550,
+        512450,
+        768700
+      ]
+    },
+    "hoh": {
+      "ded": 24150,
+      "br": [
+        17700,
+        67450,
+        105700,
+        201750,
+        256200,
+        640600
+      ]
+    },
+    "mfs": {
+      "ded": 16100,
+      "br": [
+        12400,
+        50400,
+        105700,
+        201775,
+        256225,
+        384350
+      ]
+    }
+  }
+}
