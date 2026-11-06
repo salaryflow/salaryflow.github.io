@@ -37,6 +37,9 @@ jobs:
           node scripts/test-overtime-layout.mjs
           node scripts/test-overtime-inputs.mjs
           node scripts/test-custom-select.mjs
+          node scripts/test-census-rank.mjs
+          python3 -m unittest scripts/test_build_census_rank.py -v
+          python3 scripts/validate_census_rank.py
           node scripts/test-earnings-grid.mjs
           node scripts/test-dynamic-reference-years.mjs
           node scripts/test-reference-audit-ui.mjs
