@@ -22,7 +22,7 @@ class TestDate extends Date{
 }
 const values=new Map(),nodes=new Map();
 const $=selector=>{
- if(!nodes.has(selector))nodes.set(selector,{textContent:'',innerHTML:'',style:{},classList:{toggle(){},contains(){return false}},dataset:{}});
+ if(!nodes.has(selector))nodes.set(selector,{textContent:'',innerHTML:'',style:{_props:{},getPropertyValue(k){return this._props[k]||''},setProperty(k,v){this._props[k]=v}},classList:{toggle(){},contains(){return false}},dataset:{}});
  return nodes.get(selector);
 };
 const context={

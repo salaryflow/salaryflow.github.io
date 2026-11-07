@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - name: Validate versioned data and fail-safe defaults
@@ -42,7 +42,7 @@ jobs:
           PY
       - name: Create or update failure issue
         if: failure() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const title = 'Reference-data audit needs review';

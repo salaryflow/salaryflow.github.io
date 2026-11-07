@@ -1311,7 +1311,8 @@ function updateText(selector,value){const el=$(selector);if(el&&el.textContent!=
 function updateHtml(selector,value){const el=$(selector);if(el&&el.innerHTML!==value)el.innerHTML=value;}
 function applyPrivacy(){
  moneyKeys.forEach(k=>{
-  const el=moneyElement(k),button=$(`[data-hide="${k}"]`);
+  // Direct lookup keeps this handler usable in isolated privacy-control tests.
+  const el=$(`[data-money="${k}"]`),button=$(`[data-hide="${k}"]`);
   if(!el||!button)return;
   const concealed=hidden.has(k),displayValue=concealed?'••••••':el.dataset.raw||'$0.00';
   if(el.textContent!==displayValue)el.textContent=displayValue;
@@ -1327,7 +1328,7 @@ function applyPrivacy(){
  updateText('#privacyAll',all?tr('전체 표시','Show all'):tr('전체 숨기기','Hide all'));
 }
 function setMoney(key,v,d=2,suffix=''){
- const el=moneyElement(key);if(!el)return;
+ const el=typeof moneyElement==='function'?moneyElement(key):$(`[data-money="${key}"]`);if(!el)return;
  const raw=money(v,d)+suffix;
  if(el.dataset.raw!==raw)el.dataset.raw=raw;
  if(!hidden.has(key)&&el.textContent!==raw)el.textContent=raw;
@@ -1377,9 +1378,12 @@ const DUCK_STATE_ASSETS={
 const DUCK_ART_BASE='assets/ducks/';
 const DUCK_ART_FALLBACK=DUCK_ART_BASE+'duck_03_work_start_A.svg';
 const duckArtImage=$('#duckStateArt');
-duckArtImage.addEventListener('error',()=>{
- if(!duckArtImage.src.endsWith('/duck_03_work_start_A.svg'))duckArtImage.src=DUCK_ART_FALLBACK;
-});
+// Native browsers support event listeners; isolated CI DOM stubs may not.
+if(duckArtImage && typeof duckArtImage.addEventListener==='function'){
+ duckArtImage.addEventListener('error',()=>{
+  if(!duckArtImage.src.endsWith('/duck_03_work_start_A.svg'))duckArtImage.src=DUCK_ART_FALLBACK;
+ });
+}
 // Stable pseudo-random moods: six expressive states, 20% total of five-minute work windows.
 // Only interrupt regular active work; never replace day-off, breaks, after work,
 // overtime or the final-hour celebration. No flicker during the 200ms render loop.
@@ -1415,7 +1419,14 @@ function updateShiftDuck(details){
  node.dataset.duckState=state;node.dataset.duckPose=pose;
  if(typeof node.setAttribute==='function')node.setAttribute('aria-label',lang==='ko'?'오리: '+label[0]:'Duck: '+label[1]);
  const asset=DUCK_ART_BASE+(DUCK_STATE_ASSETS[state]||DUCK_STATE_ASSETS.steady)[poseIndex];
- if(duckArtImage.getAttribute('src')!==asset)duckArtImage.setAttribute('src',asset);
+ const stateArt=$('#duckStateArt');
+ if(stateArt){
+  const current=typeof stateArt.getAttribute==='function'?stateArt.getAttribute('src'):stateArt.src;
+  if(current!==asset){
+   if(typeof stateArt.setAttribute==='function')stateArt.setAttribute('src',asset);
+   else stateArt.src=asset;
+  }
+ }
  const dashboard=$('#dashboardDuck');if(dashboard&&typeof dashboard.setAttribute==='function')dashboard.setAttribute('data-duck-theme',state);
  if(caption.textContent!==label[lang==='ko'?0:1])caption.textContent=label[lang==='ko'?0:1];
 }
