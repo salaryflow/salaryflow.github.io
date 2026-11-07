@@ -1263,7 +1263,9 @@ const DUCK_STATE_ASSETS={
  lunch:['duck_09_almost_off_A.svg','duck_10_almost_off_B.svg'],
  afternoon:['duck_13_overtime_A.svg','duck_14_overtime_B.svg'],
  annoyed:['duck_19_annoyed_A.svg','duck_20_annoyed_B.svg'],
- lazy:['duck_21_lazy_A.svg','duck_22_lazy_B.svg']
+ lazy:['duck_21_lazy_A.svg','duck_22_lazy_B.svg'],
+ meh:['duck_23_meh_A.svg','duck_24_meh_B.svg'],
+ really:['duck_25_really_A.svg','duck_26_really_B.svg']
 };
 const DUCK_ART_BASE='assets/ducks/';
 const DUCK_ART_FALLBACK=DUCK_ART_BASE+'duck_03_work_start_A.svg';
@@ -1271,7 +1273,7 @@ const duckArtImage=$('#duckStateArt');
 duckArtImage.addEventListener('error',()=>{
  if(!duckArtImage.src.endsWith('/duck_03_work_start_A.svg'))duckArtImage.src=DUCK_ART_FALLBACK;
 });
-// Stable pseudo-random moods: ~20% of five-minute work windows.
+// Stable pseudo-random moods: four expressive states, 5% each of five-minute work windows.
 // Only interrupt regular active work; never replace day-off, breaks, after work,
 // overtime or the final-hour celebration. No flicker during the 200ms render loop.
 function randomWorkDuckState(baseState,details){
@@ -1279,8 +1281,10 @@ function randomWorkDuckState(baseState,details){
  if(!['start','steady','focus','lunch','afternoon'].includes(baseState))return baseState;
  const window=Math.floor(details.now/300);
  const sample=(Math.imul(window^0x9e3779b9,1103515245)>>>0)%100;
- if(sample<10)return 'annoyed';
- if(sample<20)return 'lazy';
+ if(sample<5)return 'annoyed';
+ if(sample<10)return 'lazy';
+ if(sample<15)return 'meh';
+ if(sample<20)return 'really';
  return baseState;
 }
 function updateShiftDuck(details){
@@ -1289,7 +1293,7 @@ function updateShiftDuck(details){
  const pose=poseIndex===0?'a':'b';
  if(state===lastDuckState&&lastDuckLang===lang&&$('#duckScene').dataset.duckPose===pose)return;
  lastDuckState=state;lastDuckLang=lang;
- const labels={before:['아직 시작 전','Before work'],start:['이제 시작!','Just started'],focus:['불꽃 집중 모드','Hyper focus'],steady:['차곡차곡 수입 중','Making progress'],lunch:['점심이 기다려져!','Lunch is coming!'],afternoon:['오후 피로 누적','Afternoon fatigue'],annoyed:['짜증나는 업무 중','Annoyed at work'],lazy:['일하기 싫은 순간','Feeling lazy'],almost:['거의 퇴근!','Almost done'],done:['오늘도 수고했어!','Shift complete'],overtime:['아직 안 끝남…','Working overtime'],break:['잠깐 쉬는 중','On a break'],off:['오늘은 쉬는 날','Day off']};
+ const labels={before:['아직 시작 전','Before work'],start:['이제 시작!','Just started'],focus:['불꽃 집중 모드','Hyper focus'],steady:['차곡차곡 수입 중','Making progress'],lunch:['점심이 기다려져!','Lunch is coming!'],afternoon:['오후 피로 누적','Afternoon fatigue'],annoyed:['짜증나는 업무 중','Annoyed at work'],lazy:['일하기 싫은 순간','Feeling lazy'],meh:['그냥 그런 날','Feeling meh'],really:['진짜로?','Seriously?'],almost:['거의 퇴근!','Almost done'],done:['오늘도 수고했어!','Shift complete'],overtime:['아직 안 끝남…','Working overtime'],break:['잠깐 쉬는 중','On a break'],off:['오늘은 쉬는 날','Day off']};
  const node=$('#duckScene'),caption=$('#duckCaption'),label=labels[state];
  node.dataset.duckState=state;node.dataset.duckPose=pose;
  if(typeof node.setAttribute==='function')node.setAttribute('aria-label',lang==='ko'?'오리: '+label[0]:'Duck: '+label[1]);
