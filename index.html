@@ -180,13 +180,71 @@ body{background:linear-gradient(160deg,#f1f7fa 0%,#f8fafc 52%,#edf5f4 100%);colo
 /* Low-contrast secondary labels highlighted by Lighthouse. */
 .job-head .job-chevron,.worked-separator,.end-countdown .end-separator{color:#566d7c}
 .ad-caption,.rank-eyebrow{color:#586d7e}
+
+/* Duck uses the original SalaryFlow card, with a localized soft glow only beside the mascot. */
+.dashboard{--duck-glow:#b8b3d326;position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 240px 190px at 100% 0%,var(--duck-glow) 0%,transparent 78%),#f7fafc;border-color:#dce6eb;box-shadow:0 8px 24px #233a4c0d;transition:border-color .35s ease}
+.dashboard::before{content:none}
+.dashboard[data-duck-theme="before"]{--duck-glow:#9b91ce24}
+.dashboard[data-duck-theme="start"]{--duck-glow:#e4b47c24}
+.dashboard[data-duck-theme="focus"]{--duck-glow:#75acdd24}
+.dashboard[data-duck-theme="steady"]{--duck-glow:#ac9fdf22}
+.dashboard[data-duck-theme="almost"]{--duck-glow:#edac8026}
+.dashboard[data-duck-theme="done"]{--duck-glow:#9a90d020}
+.dashboard[data-duck-theme="overtime"]{--duck-glow:#cba3c321}
+.dashboard[data-duck-theme="break"]{--duck-glow:#8fbedb20}
+.dashboard[data-duck-theme="off"]{--duck-glow:#85bfc51d}
+.duck-hero{display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:12px;align-items:center;min-width:0}
+.duck-income{min-width:0}
+.duck-income .huge{font-size:clamp(39px,7vw,79px);color:#087e5b}
+.duck-income .primary-label{margin-top:18px}
+.duck-income .fine{color:#445d6b}
+.duck-scene{width:168px;min-width:0;align-self:end;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.duck-art{display:block;width:168px;height:154px;max-width:100%;overflow:visible}
+.duck-caption{display:block;font-size:11px;line-height:1.3;font-weight:800;color:#536678;margin:0 0 2px}
+.dashboard .eyeline,.dashboard .clock{color:#486173}
+.dashboard .bar{background:#dcebe5}
+.dashboard .fine{color:#445d6b}
+/* Light card typography must stay legible in both app themes. */
+.dashboard .primary-label{color:#263f4d}
+.dashboard .mini strong,.dashboard #percent,.dashboard #worked,.dashboard #endCountdown,.dashboard #workStatus{color:#263f4d}
+.dashboard .privacy{color:#526a78}
+.dashboard .privacy:hover{background:#e7eff1}
+.dashboard .bar>div#progress{background:linear-gradient(90deg,#159b78,#45bd96)}
+
+@media(max-width:600px){
+ .duck-hero{grid-template-columns:minmax(0,1fr) 105px;gap:5px}
+ .duck-scene{width:105px}
+ .duck-art{width:105px;height:105px}
+ .duck-caption{font-size:10px;max-width:108px}
+ .duck-income .huge{font-size:clamp(30px,8vw,55px)}
+ .duck-income .primary-label{font-size:14px;line-height:1.4}
+}
+@media(max-width:370px){
+ .duck-hero{grid-template-columns:minmax(0,1fr) 78px}
+ .duck-scene{width:78px}
+ .duck-art{width:78px;height:83px}
+ .duck-income .huge{font-size:clamp(27px,8.2vw,37px)}
+ .duck-caption{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.dashboard{transition:none}}
+/* The bar ends under the left half of the 26px duck face, so green cannot extend past it at 100%. */
+/* The duck face rides the live fill endpoint; the bar stays unclipped and readable. */
+.dashboard .bar{position:relative;overflow:visible}
+.dashboard .bar>div{border-radius:30px}
+.duck-progress-face{position:absolute;z-index:2;top:50%;left:clamp(13px,var(--duck-progress-position,0%),calc(100% - 13px));width:26px;height:26px;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:left .2s linear,opacity .15s ease;filter:drop-shadow(0 2px 3px #0005)}
+.duck-progress-face.is-visible{opacity:1}
+.duck-progress-face svg{display:block;width:100%;height:100%}
+@media(prefers-reduced-motion:reduce){.duck-progress-face{transition:none}}
+
+/* Dedicated original SVG artworks: never stretch or rotate one image to fake multiple poses. */
+.duck-art{object-fit:contain;object-position:center;user-select:none}
 </style>
 </head>
 <body><main class="wrap">
 <div class="top"><div class="brand">SALARY FLOW</div><div class="top-controls"><div class="currency-control"><label id="currencyLabel" for="currencySelect">표시 통화</label><select id="currencySelect" aria-label="Display currency"><option value="USD">USD</option><option value="KRW">KRW</option><option value="EUR">EUR</option><option value="JPY">JPY</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="CHF">CHF</option><option value="CNY">CNY</option><option value="INR">INR</option><option value="SGD">SGD</option><option value="HKD">HKD</option><option value="TWD">TWD</option><option value="MXN">MXN</option><option value="PHP">PHP</option><option value="THB">THB</option><option value="VND">VND</option><option value="BRL">BRL</option><option value="AED">AED</option><option value="NZD">NZD</option></select></div><div class="lang-switch" role="group" aria-label="Language / 언어"><button id="langKo" class="is-active" type="button" aria-pressed="true">한국어</button><button id="langEn" type="button" aria-pressed="false">English</button></div><button id="privacyAll" class="ghost" type="button">전체 숨기기</button></div></div>
 <div id="fxStatus" class="fx-status" aria-live="polite">기준 통화: USD · 세금 및 급여 입력은 USD</div><h1>오늘도, 돈은 쌓이는 중.</h1><p class="sub">오늘 번 돈을 실시간으로 확인하세요. 세전·실수령액을 전환하고 여러 직장을 합산할 수 있습니다.</p>
 <div class="mode" role="group" aria-label="표시할 수입 기준"><button id="grossBtn" type="button" aria-pressed="true">Gross · 세전</button><button id="netBtn" type="button" aria-pressed="false">Net · 실수령</button></div>
-<section class="dashboard" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div><div class="bar"><div id="progress"></div></div><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
+<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
 <section class="total"><div class="mini-label">TOTAL · 입사 이후 누적 수입 (추정)</div><div class="moneyline"><div class="amount" data-money="lifetime">$0.00</div><button class="privacy" data-hide="lifetime"></button></div><div class="fine" id="careerExplain">각 직장의 입사일과 현재 연봉을 기준으로 추정</div></section>
 <div class="stats"><div class="stat"><div class="fine">이번 주 수입</div><div class="moneyline"><div class="amount" data-money="week">$0.00</div><button class="privacy" data-hide="week"></button></div></div><div class="stat"><div class="fine">이번 달 수입</div><div class="moneyline"><div class="amount" data-money="month">$0.00</div><button class="privacy" data-hide="month"></button></div></div><div class="stat"><div class="fine">올해 수입</div><div class="moneyline"><div class="amount" data-money="year">$0.00</div><button class="privacy" data-hide="year"></button></div></div><div class="stat"><div class="fine">하루 수입 (오늘)</div><div class="moneyline"><div class="amount" data-money="day">$0.00</div><button class="privacy" data-hide="day"></button></div></div></div>
 <details class="rank-section" id="incomeRankSection" aria-label="Income percentile estimates">
@@ -1003,19 +1061,53 @@ async function loadCensusIncomeRank(){
 const GLOBAL_COUNTRIES=REFERENCE_DATA.world;
 const GLOBAL_PERCENTILES=[25,50,75,90,95,99];
 const GLOBAL_FX_CACHE_KEY='salary-flow-country-fx';
-let globalFx={currency:'',rate:0,date:'',pending:false,error:false},globalFxRequest=0;
-function estimateCountryTop(value,breaks){
- if(!(value>0))return null;
- if(value<breaks[0])return 75;
- if(value>=breaks[breaks.length-1])return 1;
- for(let i=0;i<breaks.length-1;i++){
-  if(value<=breaks[i+1]){
-   const p=GLOBAL_PERCENTILES[i]+(GLOBAL_PERCENTILES[i+1]-GLOBAL_PERCENTILES[i])*(Math.log(value)-Math.log(breaks[i]))/(Math.log(breaks[i+1])-Math.log(breaks[i]));
-   return 100-p;
+// Every country (including US) uses the same WID pretax-income definition.
+// Never infer a fractional rank from sparse 6-point snapshots.
+let WID_DETAILED=null;
+function verifiedWidDetailed(data){
+ if(!data||data.schema!==1||data.incomeYear!==2024||data.variable!=='tptinc992j'||data.priceVariable!=='inyixx999i'||!data.source?.startsWith('https://wid.world/'))return false;
+ if(Object.keys(data.values||{}).sort().join(',')!==Object.keys(GLOBAL_COUNTRIES).sort().join(','))return false;
+ return Object.values(data.values).every(entry=>{
+  const p=entry?.points;
+  return Array.isArray(p)&&p.length>=6&&p.every((point,i)=>
+   Array.isArray(point)&&point.length===2&&Number.isInteger(point[0])&&point[0]>=1&&point[0]<=99&&
+   Number.isFinite(point[1])&&point[1]>0&&(!i||(point[0]>p[i-1][0]&&point[1]>=p[i-1][1])))&&
+   [50,90,95,99].every(q=>p.some(point=>point[0]===q));
+ });
+}
+function widPercentilePairs(code){
+ const detailed=WID_DETAILED?.values?.[code]?.points;
+ return detailed||GLOBAL_PERCENTILES.map((p,i)=>[p,GLOBAL_COUNTRIES[code].points[i]]);
+}
+function countryRankBand(value,pairs){
+ if(!(value>0)||!Array.isArray(pairs)||pairs.length<2)return null;
+ if(value<pairs[0][1])return {below:true,threshold:pairs[0][0]};
+ for(let i=pairs.length-1;i>=0;i--){
+  if(value>=pairs[i][1]){
+   if(i===pairs.length-1)return {top:100-pairs[i][0]};
+   return {low:100-pairs[i+1][0],high:100-pairs[i][0]};
   }
  }
- return 1;
+ return null;
 }
+function formatCountryRank(value,pairs){
+ const band=countryRankBand(value,pairs);
+ if(!band)return '—';
+ if(band.below)return tr('상위 '+(100-band.threshold)+'% 밖','Below top '+(100-band.threshold)+'%');
+ if(band.top!==undefined)return tr('상위 '+band.top+'% 이내','Top '+band.top+'%');
+ return tr('상위 약 ','Approx. top ')+band.low+'–'+band.high+'%';
+}
+async function loadWidDetailed(){
+ try{
+  const res=await fetch('./data/income-world-wid-percentiles-2024.json',{cache:'no-cache'});
+  if(!res.ok)throw Error('Detailed WID series not published');
+  const data=await res.json();
+  if(!verifiedWidDetailed(data))throw Error('WID detailed percentile file failed verification');
+  WID_DETAILED=data;
+ }catch(error){console.warn('WID details unavailable; showing only bounded ranges from existing points',error)}
+ renderCountryRank();
+}
+let globalFx={currency:'',rate:0,date:'',pending:false,error:false},globalFxRequest=0;
 async function loadCountryRate(){
  const code=config.countryCompare,record=GLOBAL_COUNTRIES[code],currency=record.currency,id=++globalFxRequest;
  globalFx={currency,rate:0,date:'',pending:true,error:false};
@@ -1045,10 +1137,8 @@ function renderCountryRank(){
  const ready=globalFx.currency===rec.currency&&globalFx.rate>0;
  const masked=hidden.has('ranking');
  const localGross=gross*(ready?globalFx.rate:0);
- const rank=ready?estimateCountryTop(localGross,rec.points):null;
- const usPoints=GLOBAL_COUNTRIES.US.points;
- const usRank=estimateCountryTop(gross,usPoints);
- const formatRank=(value,points,percentage)=>value<points[0]?tr('상위 75% 밖','Below P25'):value>=points[5]?tr('상위 1% 이내','Top 1%+'):tr('상위 약 ','Top ~')+percentage.toFixed(1)+'%';
+ const localPairs=widPercentilePairs(config.countryCompare in GLOBAL_COUNTRIES?config.countryCompare:'KR');
+ const usPairs=widPercentilePairs('US');
  const formatMoney=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:rec.currency,maximumFractionDigits:0}).format(v);
  $('#intlTitle').textContent=tr('국가별 소득 상위 % 비교','Country income percentile comparison');
  $('#intlYear').textContent=tr(REFERENCE_DATA.years.world+'년 WID 자료','WID income data · '+REFERENCE_DATA.years.world);
@@ -1057,14 +1147,15 @@ function renderCountryRank(){
  $('#intlRankLabel').textContent=tr(label+' 소득 상위 비율',label+' income rank');
  $('#intlIncomeLabel').textContent=tr('현지 통화로 환산한 연봉','Annual income in local currency');
  $('#intlMedianLabel').textContent=tr('현지 소득 중앙값','Local income median');
- $('#intlUSRank').textContent=masked?'••••':formatRank(gross,usPoints,usRank);
- $('#intlRank').textContent=masked?'••••':!ready?'—':formatRank(localGross,rec.points,rank);
+ $('#intlUSRank').textContent=masked?'••••':formatCountryRank(gross,usPairs);
+ $('#intlRank').textContent=masked?'••••':!ready?'—':formatCountryRank(localGross,localPairs);
  $('#intlIncome').textContent=masked?'••••':ready?formatMoney(localGross):'—';
- $('#intlMedian').textContent=masked?'••••':formatMoney(rec.points[1]);
- let note=tr('미국과 선택 국가 모두 WID '+REFERENCE_DATA.years.world+'년 성인(20세 이상) 세전 국민소득 분포로 비교합니다. 위 미국 주별 DQYDJ 순위와는 다른 통계입니다. 현재 환율로 환산하며 물가·구매력·통계연도 차이를 보정하지 않은 참고용 추정치입니다.','Both country rankings use WID '+REFERENCE_DATA.years.world+' pre-tax national income distributions for adults 20+. This differs from the DQYDJ US state rankings above. Market FX conversion does not adjust for purchasing power, inflation, or data-year differences.');
+ $('#intlMedian').textContent=masked?'••••':formatMoney((localPairs.find(p=>p[0]===50)||[50,rec.points[1]])[1]);
+ let note=tr('미국과 선택 국가 모두 WID '+REFERENCE_DATA.years.world+'년 성인(20세 이상) 세전 국민소득 분포로 비교합니다. 위 미국·주별 Census 근로소득 순위와는 다른 통계입니다. 현재 환율로 환산하며 물가·구매력·통계연도 차이를 보정하지 않은 참고용 추정치입니다.','Both country rankings use WID '+REFERENCE_DATA.years.world+' pre-tax national income distributions for adults 20+. This differs from the Census earnings rankings above. Market FX conversion does not adjust for purchasing power, inflation, or data-year differences.');
  if(!ready)note=tr('환율을 가져오지 못해 국가별 순위를 계산할 수 없습니다. ','Country rank unavailable until a valid exchange rate loads. ')+note;
  else if(globalFx.error)note=tr('저장된 환율 사용','Using cached FX rate')+' · '+note;
  else if(rec.currency!=='USD')note=tr('환율 기준일: ','FX date: ')+(globalFx.date||'—')+' · '+note;
+ note+=WID_DETAILED?tr(' · WID 발표 분위값 기반 구간 표시(보간 없음).',' · Published WID percentile bands, no interpolation.'):tr(' · 일부 국가 상세 분위 데이터 미확인: 6개 기존 기준점의 넓은 구간만 표시(보간 없음).',' · Detailed WID percentiles unavailable: only broad bands between six existing thresholds (no interpolation).');
  $('#intlNotice').textContent=note;
  const slug=rec.name.toLowerCase().replaceAll(' ','-');
  $('#intlDetailLink').href='https://rankmyincome.com/countries/'+slug+'/';
@@ -1142,6 +1233,71 @@ function syncPaychecks(){for(const box of $$('.job')){const j=config.jobs.find(x
 // Cache calendar-period baselines and each job's earning rate until a setting/day changes.
 // Only today's elapsed working seconds change on the 200ms ticker.
 let earningsSnapshot=null,lastStatusSecond=-1,lastStaticKey='';
+let lastDuckState='',lastDuckLang='';
+function shiftDuckState({scheduled,working,overtime,now,firstStart,latestEnd,progress}){
+ if(overtime)return 'overtime';
+ if(!scheduled)return 'off';
+ if(latestEnd>0&&now>=latestEnd)return 'done';
+ if(firstStart>0&&now<firstStart)return 'before';
+ if(!working)return 'break';
+ if(progress>=.8||(latestEnd-now)<=3600)return 'almost';
+ // Use local wall-clock time only while actually working; configured breaks and days off win.
+ const local=new Date(now*1000),hour=local.getHours()+local.getMinutes()/60;
+ if(hour>=11.5&&hour<12)return 'lunch';
+ if(hour>=13&&hour<15)return 'focus';
+ if(hour>=15)return 'afternoon';
+ if(progress<.2)return 'start';
+ return 'steady';
+}
+// Each state has two independent, user-supplied SVG artworks, switched every 25 seconds.
+const DUCK_STATE_ASSETS={
+ before:['duck_01_before_work_A.svg','duck_02_before_work_B.svg'],
+ start:['duck_03_work_start_A.svg','duck_04_work_start_B.svg'],
+ focus:['duck_05_focus_A.svg','duck_06_focus_B.svg'],
+ steady:['duck_07_cruise_A.svg','duck_08_cruise_B.svg'],
+ almost:['duck_09_almost_off_A.svg','duck_10_almost_off_B.svg'],
+ done:['duck_11_off_A.svg','duck_12_off_B.svg'],
+ overtime:['duck_13_overtime_A.svg','duck_14_overtime_B.svg'],
+ break:['duck_15_break_A.svg','duck_16_break_B.svg'],
+ off:['duck_17_day_off_A.svg','duck_18_day_off_B.svg'],
+ lunch:['duck_09_almost_off_A.svg','duck_10_almost_off_B.svg'],
+ afternoon:['duck_13_overtime_A.svg','duck_14_overtime_B.svg'],
+ annoyed:['duck_19_annoyed_A.svg','duck_20_annoyed_B.svg'],
+ lazy:['duck_21_lazy_A.svg','duck_22_lazy_B.svg']
+};
+const DUCK_ART_BASE='assets/ducks/';
+const DUCK_ART_FALLBACK=DUCK_ART_BASE+'duck_03_work_start_A.svg';
+const duckArtImage=$('#duckStateArt');
+duckArtImage.addEventListener('error',()=>{
+ if(!duckArtImage.src.endsWith('/duck_03_work_start_A.svg'))duckArtImage.src=DUCK_ART_FALLBACK;
+});
+// Stable pseudo-random moods: ~20% of five-minute work windows.
+// Only interrupt regular active work; never replace day-off, breaks, after work,
+// overtime or the final-hour celebration. No flicker during the 200ms render loop.
+function randomWorkDuckState(baseState,details){
+ if(!details.scheduled||!details.working||details.overtime)return baseState;
+ if(!['start','steady','focus','lunch','afternoon'].includes(baseState))return baseState;
+ const window=Math.floor(details.now/300);
+ const sample=(Math.imul(window^0x9e3779b9,1103515245)>>>0)%100;
+ if(sample<10)return 'annoyed';
+ if(sample<20)return 'lazy';
+ return baseState;
+}
+function updateShiftDuck(details){
+ const state=randomWorkDuckState(shiftDuckState(details),details);
+ const poseIndex=Math.floor(details.now/25)%2;
+ const pose=poseIndex===0?'a':'b';
+ if(state===lastDuckState&&lastDuckLang===lang&&$('#duckScene').dataset.duckPose===pose)return;
+ lastDuckState=state;lastDuckLang=lang;
+ const labels={before:['아직 시작 전','Before work'],start:['이제 시작!','Just started'],focus:['불꽃 집중 모드','Hyper focus'],steady:['차곡차곡 수입 중','Making progress'],lunch:['점심이 기다려져!','Lunch is coming!'],afternoon:['오후 피로 누적','Afternoon fatigue'],annoyed:['짜증나는 업무 중','Annoyed at work'],lazy:['일하기 싫은 순간','Feeling lazy'],almost:['거의 퇴근!','Almost done'],done:['오늘도 수고했어!','Shift complete'],overtime:['아직 안 끝남…','Working overtime'],break:['잠깐 쉬는 중','On a break'],off:['오늘은 쉬는 날','Day off']};
+ const node=$('#duckScene'),caption=$('#duckCaption'),label=labels[state];
+ node.dataset.duckState=state;node.dataset.duckPose=pose;
+ if(typeof node.setAttribute==='function')node.setAttribute('aria-label',lang==='ko'?'오리: '+label[0]:'Duck: '+label[1]);
+ const asset=DUCK_ART_BASE+(DUCK_STATE_ASSETS[state]||DUCK_STATE_ASSETS.steady)[poseIndex];
+ if(duckArtImage.getAttribute('src')!==asset)duckArtImage.setAttribute('src',asset);
+ const dashboard=$('#dashboardDuck');if(dashboard&&typeof dashboard.setAttribute==='function')dashboard.setAttribute('data-duck-theme',state);
+ if(caption.textContent!==label[lang==='ko'?0:1])caption.textContent=label[lang==='ko'?0:1];
+}
 function render(){
  const now=new Date(),ts=now.getTime()/1000,day=startDay(now),dayS=day.getTime()/1000;
  let rebuilt=false;
@@ -1186,7 +1342,7 @@ function render(){
   syncCustomSelects();
  }
  const snapshot=earningsSnapshot;
- let earned=0,periodEarned=0,remaining=0,rate=0,paidSecs=0,working=false;
+ let earned=0,periodEarned=0,remaining=0,rate=0,paidSecs=0,working=false;let overtimeWorking=false;
  const jobWorkTimes=[],jobEndTimes=[];
  for(const item of snapshot.jobs){
   const j=item.job,todayRaw=item.clock.today(ts),worked=Math.min(item.target,todayRaw);
@@ -1201,7 +1357,7 @@ function render(){
   jobWorkTimes.push({name:item.name,hours:(worked+overtime.seconds)/3600});
   jobEndTimes.push({...item,end:item.otWindow?(item.scheduledRegular?Math.max(item.end,item.otWindow.end):item.otWindow.end):item.end});
   if(active){rate+=item.rate;working=true}
-  if(currentOtRate>0){rate+=currentOtRate;working=true}
+  if(currentOtRate>0){rate+=currentOtRate;working=true;overtimeWorking=true}
  }
  // Live counters interpolate from midnight baseline; no annual loops on each tick.
  setMoney('today',earned,2);
@@ -1218,6 +1374,9 @@ function render(){
   updateHtml('#worked',jobWorkTimes.map(x=>'<span class="worked-item"><span class="worked-name" title="'+escaped(x.name)+'">'+escaped(x.name)+'</span><span>'+x.hours.toFixed(2)+tr('시간','h')+'</span></span>').join('<span class="worked-separator" aria-hidden="true">|</span>')+(jobWorkTimes.length?'<span class="worked-separator" aria-hidden="true">|</span>':'')+'<span class="worked-item worked-total">'+tr('오늘 누적 근무','Total worked today')+' '+(paidSecs/3600).toFixed(2)+tr('시간','h')+'</span>');
   const scheduledEnd=jobEndTimes.filter(x=>x.scheduled);
   const latestEnd=scheduledEnd.length?Math.max(...scheduledEnd.map(x=>x.end)):0;
+  const firstStart=scheduledEnd.length?Math.min(...scheduledEnd.map(x=>x.otWindow&&!x.scheduledRegular?x.otWindow.start:x.start)):0;
+  const targetProgress=snapshot.allSecs>0?Math.min(1,paidSecs/snapshot.allSecs):0;
+  updateShiftDuck({scheduled:scheduledEnd.length>0,working,overtime:overtimeWorking,now:ts,firstStart,latestEnd,progress:targetProgress});
   const countdownItem=x=>'<span class="end-job"><span class="end-name" title="'+escaped(x.name)+'">'+escaped(x.name)+'</span> '+(x.scheduled?(ts>=x.end?tr('퇴근 완료','Shift ended'):durationCountdown(x.end-ts)):tr('휴무','Day off'))+'</span>';
   updateHtml('#endCountdown',jobEndTimes.map(countdownItem).join('<span class="end-separator" aria-hidden="true">|</span>')+(jobEndTimes.length?'<span class="end-separator" aria-hidden="true">|</span>':'')+'<span class="end-total">'+tr('모든 업무 종료까지','Until all shifts end')+' '+(latestEnd?ts>=latestEnd?tr('퇴근 완료','All shifts ended'):durationCountdown(latestEnd-ts):tr('휴무','Day off'))+'</span>');
   updateText('#percent',snapshot.target>0?(100*earned/snapshot.target).toFixed(1)+'%':tr('휴무일','Day off'));
@@ -1227,10 +1386,11 @@ function render(){
   updateText('#careerExplain',config.mode==='gross'?tr('과거 연도는 연봉·인상률 추정, 올해는 실제 근무 스케줄에 맞춰 누적','Past years estimated from salary and raises; current year follows work schedules'):tr('과거 소득은 추정, 올해는 현재 세후 시급과 근무 일정으로 누적 · 과거 세법 미반영','Historical income estimated; this year accumulates using current net hourly rate and work schedules'));
   lastStatusSecond=second;
  }
- const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';if($('#progress').style.width!==progressWidth)$('#progress').style.width=progressWidth;
+ const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'max(0px, calc('+progressWidth+' - 13px))':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);
  const pulse=$('#pulse');if(pulse.classList.contains('off')===working)pulse.classList.toggle('off',!working);
  if(rebuilt||staticChanged)applyPrivacy();
 }
-document.querySelectorAll('[data-hide]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.hide;hidden.has(k)?hidden.delete(k):hidden.add(k);applyPrivacy()}));$('#privacyAll').onclick=()=>{if(moneyKeys.every(k=>hidden.has(k))&&hidden.has('ranking'))hidden.clear();else{moneyKeys.forEach(k=>hidden.add(k));hidden.add('ranking')}applyPrivacy();renderRankings()};function setMode(mode){config.mode=mode;$('#grossBtn').setAttribute('aria-pressed',String(mode==='gross'));$('#netBtn').setAttribute('aria-pressed',String(mode==='net'));save();render()}$('#grossBtn').onclick=()=>setMode('gross');$('#netBtn').onclick=()=>setMode('net');$('#addJob').onclick=()=>{if(config.jobs.length>=8){alert(tr('직장은 최대 8개까지 추가할 수 있습니다.','You can add up to 8 jobs.'));return}const job=newJob(config.jobs.length+1);config.jobs.push(job);collapsedJobs.add(job.id);save();drawJobs();render()};$('#reset').onclick=()=>{if(!confirm(tr('저장된 모든 급여 설정을 초기화할까요?','Reset all saved salary settings?')))return;config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azDeduction:standardArizonaDeduction('single'),azDeductionCustomized:false,jobs:[newJob()]};$('#taxState').value='AZ';[['filing','single'],['outside',0],['hsa',0],['extraDeduction',0],['azDeduction',standardArizonaDeduction('single')]].forEach(([id,v])=>$('#'+id).value=v);hidden.clear();inputHidden.clear();collapsedJobs.clear();config.jobs.forEach(job=>collapsedJobs.add(job.id));$('#currencySelect').value='USD';loadDisplayCurrency('USD');$('#includeBonusDaily').checked=false;save();drawJobs();setMode('gross')};[['filing','filing'],['outside','outside'],['hsa','hsa'],['extraDeduction','extraDeduction'],['azDeduction','azDeduction']].forEach(([id,key])=>{const el=$('#'+id);el.value=config[key]??(key==='azDeduction'?standardArizonaDeduction(config.filing):0);const onEdit=()=>{config[key]=key==='filing'?el.value:Number(el.value)||0;if(key==='azDeduction')config.azDeductionCustomized=true;if(key==='filing'&&!config.azDeductionCustomized){config.azDeduction=standardArizonaDeduction(config.filing);$('#azDeduction').value=config.azDeduction;}save();render()};el.addEventListener('input',onEdit);el.addEventListener('change',onEdit)});const bonusToggle=$('#includeBonusDaily');bonusToggle.checked=!!config.includeBonusDaily;bonusToggle.addEventListener('change',()=>{config.includeBonusDaily=bonusToggle.checked;save();render()});const currencySelect=$('#currencySelect');currencySelect.value=CURRENCY_CHOICES.includes(config.currency)?config.currency:'USD';config.currency=currencySelect.value;currencySelect.addEventListener('change',()=>{config.currency=currencySelect.value;save();loadDisplayCurrency(config.currency)});const countrySelect=$('#intlCountry');countrySelect.value=GLOBAL_COUNTRIES[config.countryCompare]?config.countryCompare:'KR';config.countryCompare=countrySelect.value;countrySelect.addEventListener('change',()=>{config.countryCompare=countrySelect.value;save();loadCountryRate()});loadCountryRate();const rankSelect=$('#rankCompareState');rankSelect.value=INCOME_RANK_STATE_NAMES[config.rankCompareState]?config.rankCompareState:'CA';rankSelect.addEventListener('change',()=>{config.rankCompareState=rankSelect.value;save();renderRankings()});$('#rankHide').addEventListener('click',()=>{hidden.has('ranking')?hidden.delete('ranking'):hidden.add('ranking');renderRankings()});const stateSelect=$('#taxState');stateSelect.value=TAX_STATES[config.taxState]?config.taxState:'AZ';config.taxState=stateSelect.value;stateSelect.addEventListener('change',()=>{config.taxState=stateSelect.value;save();render();drawJobs()});drawJobs();enhanceSelects(document);refreshLanguage();$('#referenceStatusPanel').addEventListener('toggle',()=>{if($('#referenceStatusPanel').open)loadReferenceAudit()});initializeAds();setMode(config.mode);loadDisplayCurrency(config.currency);loadCensusIncomeRank();let liveTimer=null;function resumeTicker(){if(liveTimer!==null){clearInterval(liveTimer);liveTimer=null}if(!document.hidden){render();liveTimer=setInterval(render,200)}}document.addEventListener('visibilitychange',resumeTicker);resumeTicker();
+document.querySelectorAll('[data-hide]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.hide;hidden.has(k)?hidden.delete(k):hidden.add(k);applyPrivacy()}));$('#privacyAll').onclick=()=>{if(moneyKeys.every(k=>hidden.has(k))&&hidden.has('ranking'))hidden.clear();else{moneyKeys.forEach(k=>hidden.add(k));hidden.add('ranking')}applyPrivacy();renderRankings()};function setMode(mode){config.mode=mode;$('#grossBtn').setAttribute('aria-pressed',String(mode==='gross'));$('#netBtn').setAttribute('aria-pressed',String(mode==='net'));save();render()}$('#grossBtn').onclick=()=>setMode('gross');$('#netBtn').onclick=()=>setMode('net');$('#addJob').onclick=()=>{if(config.jobs.length>=8){alert(tr('직장은 최대 8개까지 추가할 수 있습니다.','You can add up to 8 jobs.'));return}const job=newJob(config.jobs.length+1);config.jobs.push(job);collapsedJobs.add(job.id);save();drawJobs();render()};$('#reset').onclick=()=>{if(!confirm(tr('저장된 모든 급여 설정을 초기화할까요?','Reset all saved salary settings?')))return;config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azDeduction:standardArizonaDeduction('single'),azDeductionCustomized:false,jobs:[newJob()]};$('#taxState').value='AZ';[['filing','single'],['outside',0],['hsa',0],['extraDeduction',0],['azDeduction',standardArizonaDeduction('single')]].forEach(([id,v])=>$('#'+id).value=v);hidden.clear();inputHidden.clear();collapsedJobs.clear();config.jobs.forEach(job=>collapsedJobs.add(job.id));$('#currencySelect').value='USD';loadDisplayCurrency('USD');$('#includeBonusDaily').checked=false;save();drawJobs();setMode('gross')};[['filing','filing'],['outside','outside'],['hsa','hsa'],['extraDeduction','extraDeduction'],['azDeduction','azDeduction']].forEach(([id,key])=>{const el=$('#'+id);el.value=config[key]??(key==='azDeduction'?standardArizonaDeduction(config.filing):0);const onEdit=()=>{config[key]=key==='filing'?el.value:Number(el.value)||0;if(key==='azDeduction')config.azDeductionCustomized=true;if(key==='filing'&&!config.azDeductionCustomized){config.azDeduction=standardArizonaDeduction(config.filing);$('#azDeduction').value=config.azDeduction;}save();render()};el.addEventListener('input',onEdit);el.addEventListener('change',onEdit)});const bonusToggle=$('#includeBonusDaily');bonusToggle.checked=!!config.includeBonusDaily;bonusToggle.addEventListener('change',()=>{config.includeBonusDaily=bonusToggle.checked;save();render()});const currencySelect=$('#currencySelect');currencySelect.value=CURRENCY_CHOICES.includes(config.currency)?config.currency:'USD';config.currency=currencySelect.value;currencySelect.addEventListener('change',()=>{config.currency=currencySelect.value;save();loadDisplayCurrency(config.currency)});const countrySelect=$('#intlCountry');countrySelect.value=GLOBAL_COUNTRIES[config.countryCompare]?config.countryCompare:'KR';config.countryCompare=countrySelect.value;countrySelect.addEventListener('change',()=>{config.countryCompare=countrySelect.value;save();loadCountryRate()});loadCountryRate();const rankSelect=$('#rankCompareState');rankSelect.value=INCOME_RANK_STATE_NAMES[config.rankCompareState]?config.rankCompareState:'CA';rankSelect.addEventListener('change',()=>{config.rankCompareState=rankSelect.value;save();renderRankings()});$('#rankHide').addEventListener('click',()=>{hidden.has('ranking')?hidden.delete('ranking'):hidden.add('ranking');renderRankings()});const stateSelect=$('#taxState');stateSelect.value=TAX_STATES[config.taxState]?config.taxState:'AZ';config.taxState=stateSelect.value;stateSelect.addEventListener('change',()=>{config.taxState=stateSelect.value;save();render();drawJobs()});drawJobs();enhanceSelects(document);refreshLanguage();$('#referenceStatusPanel').addEventListener('toggle',()=>{if($('#referenceStatusPanel').open)loadReferenceAudit()});initializeAds();setMode(config.mode);loadDisplayCurrency(config.currency);loadCensusIncomeRank();loadWidDetailed();let liveTimer=null;function resumeTicker(){if(liveTimer!==null){clearInterval(liveTimer);liveTimer=null}if(!document.hidden){render();liveTimer=setInterval(render,200)}}document.addEventListener('visibilitychange',resumeTicker);resumeTicker();
 })();
+
 </script></body></html>
