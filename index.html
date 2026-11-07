@@ -1267,7 +1267,9 @@ const DUCK_STATE_ASSETS={
  meh:['duck_23_meh_A.svg','duck_24_meh_B.svg'],
  really:['duck_25_really_A.svg','duck_26_really_B.svg'],
  dizzy:['duck_27_dizzy_A.svg','duck_28_dizzy_B.svg'],
- sigh:['duck_29_sigh_A.svg','duck_30_sigh_B.svg']
+ sigh:['duck_29_sigh_A.svg','duck_30_sigh_B.svg'],
+ gym:['duck_31_gym_A.svg','duck_32_gym_B.svg'],
+ tennis:['duck_33_tennis_A.svg','duck_34_tennis_B.svg']
 };
 const DUCK_ART_BASE='assets/ducks/';
 const DUCK_ART_FALLBACK=DUCK_ART_BASE+'duck_03_work_start_A.svg';
@@ -1291,13 +1293,21 @@ function randomWorkDuckState(baseState,details){
  if(sample<20)return 'sigh';
  return baseState;
 }
+// Stable, after-work-only rotation: finished, gym or tennis, in five-minute windows.
+// Off days, breaks and overtime never enter this rotation.
+function afterWorkDuckState(state,details){
+ if(state!=='done')return state;
+ const slot=Math.floor(details.now/300);
+ const choice=(Math.imul(slot^0x7f4a7c15,1664525)>>>0)%3;
+ return choice===0?'gym':choice===1?'tennis':'done';
+}
 function updateShiftDuck(details){
- const state=randomWorkDuckState(shiftDuckState(details),details);
+ const state=afterWorkDuckState(randomWorkDuckState(shiftDuckState(details),details),details);
  const poseIndex=Math.floor(details.now/25)%2;
  const pose=poseIndex===0?'a':'b';
  if(state===lastDuckState&&lastDuckLang===lang&&$('#duckScene').dataset.duckPose===pose)return;
  lastDuckState=state;lastDuckLang=lang;
- const labels={before:['아직 시작 전','Before work'],start:['이제 시작!','Just started'],focus:['불꽃 집중 모드','Hyper focus'],steady:['차곡차곡 수입 중','Making progress'],lunch:['점심이 기다려져!','Lunch is coming!'],afternoon:['오후 피로 누적','Afternoon fatigue'],annoyed:['짜증나는 업무 중','Annoyed at work'],lazy:['일하기 싫은 순간','Feeling lazy'],meh:['그냥 그런 날','Feeling meh'],really:['진짜로?','Seriously?'],dizzy:['어질어질','Feeling dizzy'],sigh:['한숨 나오는 중','Sighing at work'],almost:['거의 퇴근!','Almost done'],done:['오늘도 수고했어!','Shift complete'],overtime:['아직 안 끝남…','Working overtime'],break:['잠깐 쉬는 중','On a break'],off:['오늘은 쉬는 날','Day off']};
+ const labels={before:['아직 시작 전','Before work'],start:['이제 시작!','Just started'],focus:['불꽃 집중 모드','Hyper focus'],steady:['차곡차곡 수입 중','Making progress'],lunch:['점심이 기다려져!','Lunch is coming!'],afternoon:['오후 피로 누적','Afternoon fatigue'],annoyed:['짜증나는 업무 중','Annoyed at work'],lazy:['일하기 싫은 순간','Feeling lazy'],meh:['그냥 그런 날','Feeling meh'],really:['진짜로?','Seriously?'],dizzy:['어질어질','Feeling dizzy'],sigh:['한숨 나오는 중','Sighing at work'],gym:['퇴근 후 운동','After-work gym'],tennis:['퇴근 후 테니스','After-work tennis'],almost:['거의 퇴근!','Almost done'],done:['오늘도 수고했어!','Shift complete'],overtime:['아직 안 끝남…','Working overtime'],break:['잠깐 쉬는 중','On a break'],off:['오늘은 쉬는 날','Day off']};
  const node=$('#duckScene'),caption=$('#duckCaption'),label=labels[state];
  node.dataset.duckState=state;node.dataset.duckPose=pose;
  if(typeof node.setAttribute==='function')node.setAttribute('aria-label',lang==='ko'?'오리: '+label[0]:'Duck: '+label[1]);
