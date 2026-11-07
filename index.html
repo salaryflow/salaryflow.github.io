@@ -236,15 +236,115 @@ body{background:linear-gradient(160deg,#f1f7fa 0%,#f8fafc 52%,#edf5f4 100%);colo
 .duck-progress-face svg{display:block;width:100%;height:100%}
 @media(prefers-reduced-motion:reduce){.duck-progress-face{transition:none}}
 
+/* Mobile dashboard should size to content, not obsolete fixed heights. */
+@media(max-width:700px){.dashboard{min-height:0;height:auto}}
+
+/* Today Earned secondary information: one calm time/progress section and 3 uniform metric cards. */
+.dashboard .shift-progress-panel{
+ margin-top:20px;padding:17px 18px 18px;border:1px solid #d6e6ed;
+ border-radius:17px;background:linear-gradient(140deg,#f5fafe,#eff8f8);
+ min-width:0;
+}
+.dashboard .shift-progress-panel .spread{gap:12px;align-items:flex-start}
+.dashboard .shift-progress-panel .work-tracking{gap:7px}
+.dashboard .shift-progress-panel #endCountdown{font-size:13px;line-height:1.5}
+.dashboard .shift-progress-panel #percent{
+ flex-shrink:0;padding:4px 9px;border-radius:99px;
+ background:#e3f4ed;color:#176f59;font-size:12px;font-weight:800;
+ font-variant-numeric:tabular-nums
+}
+.dashboard .shift-progress-panel .bar{margin-top:17px;margin-bottom:0}
+.dashboard .triples{gap:10px;margin-top:12px;align-items:stretch}
+.dashboard .triples>.mini{
+ min-width:0;display:flex;flex-direction:column;justify-content:space-between;
+ align-items:stretch;gap:9px;padding:15px 14px;
+ border:1px solid #d8e7ee;border-radius:15px;background:#f8fbfe;
+}
+.dashboard .triples>.mini>.fine{
+ min-height:2.6em;margin:0;color:#587184;font-size:12px;
+ line-height:1.35;font-weight:650
+}
+.dashboard .triples>.mini .moneyline{width:100%;min-width:0;grid-template-columns:minmax(0,1fr) 29px;column-gap:4px}
+.dashboard .triples>.mini strong{
+ min-width:0;overflow-wrap:anywhere;font-size:clamp(16px,2.3vw,22px);
+ line-height:1.25;color:#203f50
+}
+.dashboard .triples>.mini .privacy{width:29px;height:29px;min-width:29px}
+@media(max-width:600px){
+ .dashboard .shift-progress-panel{padding:14px 13px 16px;margin-top:9px;border-radius:14px}
+ .dashboard .shift-progress-panel .spread{gap:8px}
+ .dashboard .shift-progress-panel #percent{font-size:11px;padding:4px 7px}
+ .dashboard .triples{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:8px}
+ .dashboard .triples>.mini{padding:11px 8px;gap:7px;border-radius:12px}
+ .dashboard .triples>.mini>.fine{font-size:10px;min-height:3.9em;line-height:1.3}
+ .dashboard .triples>.mini strong{font-size:clamp(12px,3.05vw,17px)}
+ .dashboard .triples>.mini .moneyline{grid-template-columns:minmax(0,1fr) 23px;column-gap:0}
+ .dashboard .triples>.mini .privacy{width:23px;height:27px;min-width:23px;padding:3px}
+}
+@media(max-width:370px){
+ .dashboard .triples{grid-template-columns:minmax(0,1fr);gap:7px}
+ .dashboard .triples>.mini{flex-direction:row;align-items:center;padding:10px 12px}
+ .dashboard .triples>.mini>.fine{min-height:0;flex:1}
+ .dashboard .triples>.mini .moneyline{width:auto;min-width:100px;max-width:56%}
+ .dashboard .triples>.mini strong{font-size:16px}
+}
+
 /* Dedicated original SVG artworks: never stretch or rotate one image to fake multiple poses. */
 .duck-art{object-fit:contain;object-position:center;user-select:none}
+
+/* Normalize browser-native date/time fields to the exact same box as job inputs. */
+.job .field input[type="date"],.job .field input[type="time"]{
+ -webkit-appearance:none;appearance:none;
+ display:block;width:100%;min-width:0;max-width:100%;
+ height:44px;min-height:44px;max-height:44px;
+ margin:0;padding:10px 11px;border:1px solid #3c556d;
+ border-radius:10px;box-sizing:border-box;
+ font-family:inherit;font-size:15px;font-weight:400;line-height:22px;
+ text-align:left;overflow:hidden;
+}
+.job .overtime-grid .field input[type="date"],.job .overtime-grid .field input[type="time"]{border-color:#96bcae}
+.job .field input[type="date"]::-webkit-date-and-time-value,
+.job .field input[type="time"]::-webkit-date-and-time-value{min-height:22px;text-align:left}
+.job .field input[type="date"]::-webkit-datetime-edit,
+.job .field input[type="time"]::-webkit-datetime-edit{padding:0;line-height:22px}
+.job .field input[type="date"]::-webkit-calendar-picker-indicator,
+.job .field input[type="time"]::-webkit-calendar-picker-indicator{margin:0 0 0 4px;padding:0;flex-shrink:0}
+@media(max-width:600px){
+ .job .field input[type="date"],.job .field input[type="time"]{font-size:16px}
+}
+
+/* Job editor: consistent label baselines and control dimensions across rows. */
+.job .form,.job .overtime-grid{align-items:start;min-width:0}
+.job .form > .field,.job .overtime-grid > .field{min-width:0;width:100%}
+.job .form > .field > label,.job .overtime-grid > .field > label{
+ display:flex;align-items:flex-end;min-height:2.9em;line-height:1.45;margin-bottom:7px;
+ overflow-wrap:break-word
+}
+.job .field > input:not([type="checkbox"]),.job .field > select,.job .field .inputeye > input{
+ display:block;width:100%;max-width:100%;min-width:0;height:44px;min-height:44px;
+ box-sizing:border-box;line-height:normal
+}
+.job .field .inputeye{width:100%;min-width:0}
+.job .field .inputeye > input{padding-right:48px}
+.job .inputeye .privacy{top:50%;transform:translateY(-50%);right:5px}
+@media(max-width:700px){
+ .job .form{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ .job{padding:14px}
+ .job .form,.job .overtime-grid{grid-template-columns:minmax(0,1fr)}
+ .job .field.wide{grid-column:auto}
+ .job .form > .field > label,.job .overtime-grid > .field > label{min-height:0}
+ .job .field > input:not([type="checkbox"]),.job .field > select,.job .field .inputeye > input{font-size:16px}
+}
+
 </style>
 </head>
 <body><main class="wrap">
 <div class="top"><div class="brand">SALARY FLOW</div><div class="top-controls"><div class="currency-control"><label id="currencyLabel" for="currencySelect">표시 통화</label><select id="currencySelect" aria-label="Display currency"><option value="USD">USD</option><option value="KRW">KRW</option><option value="EUR">EUR</option><option value="JPY">JPY</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="CHF">CHF</option><option value="CNY">CNY</option><option value="INR">INR</option><option value="SGD">SGD</option><option value="HKD">HKD</option><option value="TWD">TWD</option><option value="MXN">MXN</option><option value="PHP">PHP</option><option value="THB">THB</option><option value="VND">VND</option><option value="BRL">BRL</option><option value="AED">AED</option><option value="NZD">NZD</option></select></div><div class="lang-switch" role="group" aria-label="Language / 언어"><button id="langKo" class="is-active" type="button" aria-pressed="true">한국어</button><button id="langEn" type="button" aria-pressed="false">English</button></div><button id="privacyAll" class="ghost" type="button">전체 숨기기</button></div></div>
 <div id="fxStatus" class="fx-status" aria-live="polite">기준 통화: USD · 세금 및 급여 입력은 USD</div><h1>오늘도, 돈은 쌓이는 중.</h1><p class="sub">오늘 번 돈을 실시간으로 확인하세요. 세전·실수령액을 전환하고 여러 직장을 합산할 수 있습니다.</p>
 <div class="mode" role="group" aria-label="표시할 수입 기준"><button id="grossBtn" type="button" aria-pressed="true">Gross · 세전</button><button id="netBtn" type="button" aria-pressed="false">Net · 실수령</button></div>
-<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
+<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="shift-progress-panel" aria-label="근무 진행 상황"><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
 <section class="total"><div class="mini-label">TOTAL · 입사 이후 누적 수입 (추정)</div><div class="moneyline"><div class="amount" data-money="lifetime">$0.00</div><button class="privacy" data-hide="lifetime"></button></div><div class="fine" id="careerExplain">각 직장의 입사일과 현재 연봉을 기준으로 추정</div></section>
 <div class="stats"><div class="stat"><div class="fine">이번 주 수입</div><div class="moneyline"><div class="amount" data-money="week">$0.00</div><button class="privacy" data-hide="week"></button></div></div><div class="stat"><div class="fine">이번 달 수입</div><div class="moneyline"><div class="amount" data-money="month">$0.00</div><button class="privacy" data-hide="month"></button></div></div><div class="stat"><div class="fine">올해 수입</div><div class="moneyline"><div class="amount" data-money="year">$0.00</div><button class="privacy" data-hide="year"></button></div></div><div class="stat"><div class="fine">하루 수입 (오늘)</div><div class="moneyline"><div class="amount" data-money="day">$0.00</div><button class="privacy" data-hide="day"></button></div></div></div>
 <details class="rank-section" id="incomeRankSection" aria-label="Income percentile estimates">
