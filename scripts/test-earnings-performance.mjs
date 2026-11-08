@@ -22,7 +22,7 @@ class TestDate extends Date{
 }
 const values=new Map(),nodes=new Map();
 const $=selector=>{
- if(!nodes.has(selector))nodes.set(selector,{textContent:'',innerHTML:'',style:{_props:{},getPropertyValue(k){return this._props[k]||''},setProperty(k,v){this._props[k]=v}},classList:{toggle(){},contains(){return false}},dataset:{}});
+ if(!nodes.has(selector))nodes.set(selector,{textContent:'',innerHTML:'',style:{_props:{},getPropertyValue(k){return this._props[k]||''},setProperty(k,v){this._props[k]=v}},classList:{toggle(){},contains(){return false},add(){},remove(){}},dataset:{}});
  return nodes.get(selector);
 };
 const context={
@@ -37,6 +37,7 @@ const context={
  syncCustomSelects:()=>{},
  setMoney:(k,v)=>values.set(k,v),applyPrivacy:()=>{},updateText:(k,v)=>{if($(k).textContent!==v)$(k).textContent=v},updateHtml:(k,v)=>{if($(k).innerHTML!==v)$(k).innerHTML=v},escaped:x=>x,
  tr:(ko,en)=>context.lang==='en'?en:ko,
+ money:(v,d=2)=>'$'+Number(v).toFixed(d),paycheck:()=>1000,hidden:new Set(),document:{title:''},setTimeout:()=>0,clearTimeout:()=>{},
 };
 vm.createContext(context);
 vm.runInContext(helpers+'\n'+render+'\nglobalThis.tick=render;globalThis.calcElapsed=elapsedWork;globalThis.bump=()=>earningsRevision++;',context);
