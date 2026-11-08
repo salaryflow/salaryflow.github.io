@@ -23,6 +23,7 @@ jobs:
           python3 scripts/validate_reference_data.py
           node scripts/sync-reference-baseline.mjs --check
           node scripts/test-reference-baseline.mjs
+          node scripts/test-payday-overtime.mjs
           node scripts/test-reference-fallback.mjs
       - name: Verify dashboard behavior and earnings
         run: |
