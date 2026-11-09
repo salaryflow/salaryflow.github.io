@@ -412,6 +412,23 @@ body{background:linear-gradient(160deg,#eaf2f6 0%,#f0f5f8 52%,#e7f1ef 100%);colo
 .shift-subprogress-fill{height:100%;width:0;background:linear-gradient(90deg,#159b78,#45bd96);border-radius:inherit;transition:width .3s linear}
 .shift-subprogress-note{font-size:11px;color:#698090;line-height:1.45;margin:0}
 @media(prefers-reduced-motion:reduce){.shift-subprogress-chevron,.shift-subprogress-fill{transition:none}}
+
+/* Visible earning motion without changing the actual percentage: animate light inside only the active segment. */
+.shift-subprogress-track{height:12px;position:relative;overflow:hidden}
+.shift-subprogress-fill{position:relative;min-width:0;background:linear-gradient(90deg,#0b9471,#34c79a);transition:width .25s linear;overflow:hidden}
+.shift-subprogress-row.is-earning .shift-subprogress-fill::before{
+ content:"";position:absolute;inset:0;
+ background:repeating-linear-gradient(110deg,transparent 0px,transparent 12px,rgba(255,255,255,.40) 13px,rgba(255,255,255,.40) 20px,transparent 21px,transparent 34px);
+ background-size:68px 100%;animation:shift-earning-flow 1.25s linear infinite;
+}
+.shift-subprogress-row.is-earning .shift-subprogress-fill::after{
+ content:"";position:absolute;right:0;top:0;bottom:0;width:7px;
+ background:#dcfff3;box-shadow:0 0 9px 3px #e5fff6;animation:shift-earning-glow 1.4s ease-in-out infinite;
+}
+.shift-subprogress-row.is-earning .shift-subprogress-line strong{color:#067e5a}
+@keyframes shift-earning-flow{from{background-position:0 0}to{background-position:68px 0}}
+@keyframes shift-earning-glow{0%,100%{opacity:.35}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.shift-subprogress-row.is-earning .shift-subprogress-fill::before,.shift-subprogress-row.is-earning .shift-subprogress-fill::after{animation:none}}
 </style>
 </head>
 <body><main class="wrap">
@@ -1640,12 +1657,20 @@ function renderShiftSubprogress(snapshot,ts,dayS){
  const panel=$('#shiftSubprogress');
  if(!panel || !panel.open)return; // Keep the collapsed dashboard lightweight.
  let morningTarget=0,afternoonTarget=0,morningEarned=0,afternoonEarned=0;
+ let morningActive=false,afternoonActive=false;
  for(const item of snapshot.jobs){
   const j=item.job;
   const start=item.start,hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60;
   const chosen=dayS+secClock(j.breakStart||'12:00');
   const boundary=(chosen>=start&&chosen+breakSeconds<=item.end)
     ?chosen:start+Math.min(4*3600,hours/2);
+  // The earning animation is based on real active work, not a synthetic percentage.
+  const regularActive=item.scheduledRegular&&item.clock.active(ts)>0.001;
+  const overtimeActive=item.otLiveWindows.some(w=>ts>=w.start&&ts<w.end);
+  if(regularActive||overtimeActive){
+   if(ts<boundary)morningActive=true;
+   else afternoonActive=true;
+  }
   // Match each job's own lunch boundary. Paid breaks remain paid.
   const regularBefore=Math.min(item.target,Math.max(0,item.clock.today(boundary)));
   const regularEarned=Math.min(item.target,Math.max(0,item.clock.today(ts)));
@@ -1670,6 +1695,8 @@ function renderShiftSubprogress(snapshot,ts,dayS){
   const percent=$('#shift'+part+'Percent'),fill=$('#shift'+part+'Fill');
   if(percent)percent.textContent=Math.round(pct)+'%';
   if(fill)fill.style.width=pct+'%';
+  const row=fill&&fill.closest?fill.closest('.shift-subprogress-row'):null;
+  if(row)row.classList.toggle('is-earning',target>0&&pct>0&&(part==='Morning'?morningActive:afternoonActive));
  }
  const words=lang==='ko'
   ?['오전 · 점심 전','오후 · 점심 후','오전 · 오후 상세 진행률','직장별 근무·점심시간을 반영한 합산 예상 수입 기준']
