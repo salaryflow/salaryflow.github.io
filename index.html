@@ -397,79 +397,54 @@ body{background:linear-gradient(160deg,#eaf2f6 0%,#f0f5f8 52%,#e7f1ef 100%);colo
 @media(max-width:600px){.collapsible-summary{padding:16px 15px}.collapsible-heading{font-size:17px}.earnings-body,.payday-body{padding:15px}.earnings-panel .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.earnings-panel .stat{padding:11px}.earnings-panel .stat .amount{font-size:clamp(15px,4.5vw,22px)}}
 @media(prefers-reduced-motion:reduce){.collapsible-chevron{transition:none}}
 
-/* Optional morning/afternoon detail under the original daily duck progress. */
-.shift-subprogress{margin-top:12px;border:1px solid #d6e6ed;border-radius:12px;background:#fff;overflow:hidden}
-.shift-subprogress-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;list-style:none;cursor:pointer;color:#365c69;font-size:12px;font-weight:750}
-.shift-subprogress-toggle::-webkit-details-marker{display:none}
-.shift-subprogress-toggle:hover{background:#f2f8f8}
-.shift-subprogress-toggle:focus-visible{outline:2px solid #087e5b;outline-offset:-2px}
-.shift-subprogress-chevron{width:8px;height:8px;border-right:2px solid #607588;border-bottom:2px solid #607588;transform:rotate(45deg);transition:transform .2s;margin-right:4px}
-.shift-subprogress[open] .shift-subprogress-chevron{transform:rotate(225deg)}
-.shift-subprogress-body{padding:12px 13px 13px;border-top:1px solid #e3ebef;display:grid;gap:13px}
-.shift-subprogress-line{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;font-size:12px;color:#506977}
-.shift-subprogress-line strong{font-variant-numeric:tabular-nums;color:#167f61}
-.shift-subprogress-track{height:8px;border-radius:20px;background:#e0ece9;overflow:hidden}
-.shift-subprogress-fill{height:100%;width:0;background:linear-gradient(90deg,#159b78,#45bd96);border-radius:inherit;transition:width .3s linear}
-.shift-subprogress-note{font-size:11px;color:#698090;line-height:1.45;margin:0}
-@media(prefers-reduced-motion:reduce){.shift-subprogress-chevron,.shift-subprogress-fill{transition:none}}
+/* Morning/afternoon split lives on the main bar: a lunch tick plus one compact line. */
+.lunch-tick{position:absolute;top:-4px;bottom:-4px;width:0;border-left:2px dashed #7f97a7;opacity:.85;left:var(--lunch-position,50%);pointer-events:none;display:none}
+.lunch-tick.is-visible{display:block}
 
-/* Visible earning motion without changing the actual percentage: animate light inside only the active segment. */
-.shift-subprogress-track{height:12px;position:relative;overflow:hidden}
-.shift-subprogress-fill{position:relative;min-width:0;background:linear-gradient(90deg,#0b9471,#34c79a);transition:width .25s linear;overflow:hidden}
-.shift-subprogress-row.is-earning .shift-subprogress-fill::before{
- content:"";position:absolute;inset:0;
- background:repeating-linear-gradient(110deg,transparent 0px,transparent 12px,rgba(255,255,255,.40) 13px,rgba(255,255,255,.40) 20px,transparent 21px,transparent 34px);
- background-size:68px 100%;animation:shift-earning-flow 1.25s linear infinite;
-}
-.shift-subprogress-row.is-earning .shift-subprogress-fill::after{
- content:"";position:absolute;right:0;top:0;bottom:0;width:7px;
- background:#dcfff3;box-shadow:0 0 9px 3px #e5fff6;animation:shift-earning-glow 1.4s ease-in-out infinite;
-}
-.shift-subprogress-row.is-earning .shift-subprogress-line strong{color:#067e5a}
-@keyframes shift-earning-flow{from{background-position:0 0}to{background-position:68px 0}}
-@keyframes shift-earning-glow{0%,100%{opacity:.35}50%{opacity:1}}
-@media(prefers-reduced-motion:reduce){.shift-subprogress-row.is-earning .shift-subprogress-fill::before,.shift-subprogress-row.is-earning .shift-subprogress-fill::after{animation:none}}
-
-/* Distinct subprogress: true daily segment progress + an obvious 10-second live-fill meter. */
-.shift-subprogress-body{gap:19px}
-.shift-subprogress-track{height:18px;background:#e7edf4;border-radius:999px;overflow:hidden}
-.shift-subprogress-fill{border-radius:999px;transition:width .2s linear}
-.shift-subprogress-row:first-child .shift-subprogress-fill{background:linear-gradient(90deg,#3169ce,#62a5fa)}
-.shift-subprogress-row:nth-child(2) .shift-subprogress-fill{background:linear-gradient(90deg,#d38326,#ffc16a)}
-.shift-subprogress-row:first-child .shift-subprogress-line strong{color:#2659b4}
-.shift-subprogress-row:nth-child(2) .shift-subprogress-line strong{color:#a85b12}
-.shift-subprogress-row.is-earning .shift-subprogress-fill::before,
-.shift-subprogress-row.is-earning .shift-subprogress-fill::after{content:none;animation:none}
-.shift-live{display:none;margin-top:10px;padding:9px 10px 10px;border-radius:12px;background:#f4f7fb;border:1px solid #dce5ef}
-.shift-subprogress-row.is-earning .shift-live{display:block}
-.shift-live-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;font-size:11px;font-weight:750;color:#425d76}
-.shift-live-indicator{display:inline-flex;align-items:center;gap:6px}
-.shift-live-indicator::before{content:"";width:7px;height:7px;border-radius:50%;background:#238bdb;box-shadow:0 0 0 3px #dceeff}
-.shift-subprogress-row:nth-child(2) .shift-live-indicator::before{background:#e69b37;box-shadow:0 0 0 3px #fff0d6}
-.shift-live-track{height:12px;border-radius:999px;overflow:hidden;background:#dde7f0}
-.shift-live-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#2f68d3,#7bb8ff);transition:width .15s linear}
-.shift-subprogress-row:nth-child(2) .shift-live-fill{background:linear-gradient(90deg,#c77920,#ffd17c)}
-@media(prefers-reduced-motion:reduce){.shift-live-fill{transition:none}}
-
-/* One slim bar per segment, showing actual accumulated progress without resetting. */
-.shift-subprogress-body{gap:14px}
-.shift-subprogress-track{height:7px;background:#e0e8ee;border-radius:999px;overflow:hidden}
-.shift-subprogress-fill{height:100%;border-radius:999px;transition:width .2s linear}
-.shift-subprogress-row:first-child .shift-subprogress-fill{background:linear-gradient(90deg,#3976d5,#72a9ef)}
-.shift-subprogress-row:nth-child(2) .shift-subprogress-fill{background:linear-gradient(90deg,#b8792d,#e8ab5b)}
-.shift-subprogress-row:first-child .shift-subprogress-line strong{color:#285cb0}
-.shift-subprogress-row:nth-child(2) .shift-subprogress-line strong{color:#9c601c}
-.shift-subprogress-row.is-earning .shift-subprogress-fill::before,
-.shift-subprogress-row.is-earning .shift-subprogress-fill::after{content:none;animation:none}
-.shift-subprogress-note{font-size:11px}
-@media(prefers-reduced-motion:reduce){.shift-subprogress-fill{transition:none}}
+.shift-split{display:flex;justify-content:space-between;gap:12px;margin-top:9px;font-size:12px;color:#5d7584;font-variant-numeric:tabular-nums}
+.shift-split b{color:#16735a;font-weight:800}
+.shift-split .is-done b{color:#16735a}.shift-split .is-done::after{content:" ✓";color:#16846e;font-weight:800}
+.shift-split .is-active{color:#28465a;font-weight:700}
+/* Coin meter: fills once per coin of real earnings, so motion is visible every few seconds. */
+.coin-meter{margin-top:12px;max-width:340px}
+.coin-meter[hidden]{display:none}
+.coin-meter-head{display:flex;align-items:center;gap:8px;font-size:12px;color:#5d7584;font-variant-numeric:tabular-nums;margin-bottom:6px}
+.coin-meter-head b{color:#28465a}
+.coin-count{margin-left:auto;font-weight:800;color:#a66a10}
+.coin-icon{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffe7a3,#f2b632 60%,#c98a12);color:#7a4f00;font-size:10px;font-weight:900;box-shadow:inset 0 -1px 0 #b07a10}
+.coin-track{position:relative;height:10px;border-radius:999px;background:#f3ead6;overflow:hidden;box-shadow:inset 0 1px 2px #0000000f}
+.coin-fill{height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#f2b632,#ffd76a);transition:width .25s linear}
+.coin-meter.is-idle .coin-fill{background:#e3d3ad}
+.coin-meter.pop .coin-icon{animation:coin-pop .6s ease-out}
+.coin-meter.pop .coin-count{animation:coin-count .6s ease-out}
+.coin-plus{position:absolute;right:6px;top:-2px;font-size:12px;font-weight:900;color:#a66a10;opacity:0;pointer-events:none}
+.coin-meter.pop .coin-plus{animation:coin-plus .9s ease-out}
+.coin-meter-head{position:relative}
+@keyframes coin-pop{0%{transform:scale(1)}40%{transform:scale(1.45) rotate(-12deg)}100%{transform:scale(1)}}
+@keyframes coin-count{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes coin-plus{0%{opacity:0;transform:translateY(6px)}25%{opacity:1}100%{opacity:0;transform:translateY(-14px)}}
+@media(prefers-reduced-motion:reduce){.coin-fill{transition:none}.coin-meter.pop .coin-icon,.coin-meter.pop .coin-count,.coin-meter.pop .coin-plus{animation:none}}
+/* Live earnings chart: a 2-minute zoom whose grid scrolls with real earnings, over a whole-day curve. */
+.live-chart{margin-top:14px;border:1px solid #dbe8ec;border-radius:14px;background:#fff;padding:11px 12px 10px}
+.live-chart[hidden]{display:none}
+.live-chart-head{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#5d7584;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.live-chart-head b{color:#16735a}
+.live-chart-tag{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:#28465a;letter-spacing:.02em}
+.live-chart-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:#18a57e;box-shadow:0 0 0 3px #d5f3e8;animation:live-dot 1.6s ease-in-out infinite}
+.live-chart.is-idle .live-chart-tag::before{background:#9db3c1;box-shadow:0 0 0 3px #e7eef2;animation:none}
+@keyframes live-dot{50%{box-shadow:0 0 0 6px #d5f3e800}}
+.live-chart canvas{display:block;width:100%}
+#liveZoom{height:150px}
+#liveDay{height:64px;margin-top:8px;border-top:1px dashed #e3ecef;padding-top:6px}
+.live-chart-foot{display:flex;justify-content:space-between;font-size:11px;color:#8197a5;margin-top:3px}
+@media(prefers-reduced-motion:reduce){.live-chart-tag::before{animation:none}}
 </style>
 </head>
 <body><main class="wrap">
 <div class="top"><div class="brand">SALARY FLOW</div><div class="top-controls"><div class="currency-control"><label id="currencyLabel" for="currencySelect">표시 통화</label><select id="currencySelect" aria-label="Display currency"><option value="USD">USD</option><option value="KRW">KRW</option><option value="EUR">EUR</option><option value="JPY">JPY</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="CHF">CHF</option><option value="CNY">CNY</option><option value="INR">INR</option><option value="SGD">SGD</option><option value="HKD">HKD</option><option value="TWD">TWD</option><option value="MXN">MXN</option><option value="PHP">PHP</option><option value="THB">THB</option><option value="VND">VND</option><option value="BRL">BRL</option><option value="AED">AED</option><option value="NZD">NZD</option></select></div><div class="lang-switch" role="group" aria-label="Language / 언어"><button id="langKo" class="is-active" type="button" aria-pressed="true">한국어</button><button id="langEn" type="button" aria-pressed="false">English</button></div><button id="privacyAll" class="ghost" type="button">전체 숨기기</button></div></div>
 <div id="fxStatus" class="fx-status" aria-live="polite">기준 통화: USD · 세금 및 급여 입력은 USD</div><h1>오늘도, 돈은 쌓이는 중.</h1><p class="sub">오늘 번 돈을 실시간으로 확인하세요. 세전·실수령액을 전환하고 여러 직장을 합산할 수 있습니다.</p>
 <div class="mode" role="group" aria-label="표시할 수입 기준"><button id="grossBtn" type="button" aria-pressed="true">Gross · 세전</button><button id="netBtn" type="button" aria-pressed="false">Net · 실수령</button></div>
-<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="shift-progress-panel" aria-label="근무 진행 상황"><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div><details class="shift-subprogress" id="shiftSubprogress"><summary class="shift-subprogress-toggle"><span id="shiftSubprogressTitle">오전 · 오후 상세 진행률</span><span class="shift-subprogress-chevron" aria-hidden="true"></span></summary><div class="shift-subprogress-body"><div class="shift-subprogress-row"><div class="shift-subprogress-line"><span id="shiftMorningLabel">오전 · 점심 전</span><strong id="shiftMorningPercent">0%</strong></div><div class="shift-subprogress-track"><div id="shiftMorningFill" class="shift-subprogress-fill"></div></div></div><div class="shift-subprogress-row"><div class="shift-subprogress-line"><span id="shiftAfternoonLabel">오후 · 점심 후</span><strong id="shiftAfternoonPercent">0%</strong></div><div class="shift-subprogress-track"><div id="shiftAfternoonFill" class="shift-subprogress-fill"></div></div></div><p id="shiftSubprogressNote" class="shift-subprogress-note">직장별 근무·점심시간을 반영한 합산 예상 수입 기준</p></div></details></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
+<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div><div class="coin-meter is-idle" id="coinMeter" hidden><div class="coin-meter-head"><span class="coin-icon" aria-hidden="true">$</span><span id="coinLabel"></span><span class="coin-count" id="coinCount"></span><span class="coin-plus" id="coinPlus"></span></div><div class="coin-track"><div class="coin-fill" id="coinFill"></div></div></div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="shift-progress-panel" aria-label="근무 진행 상황"><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="lunch-tick" id="lunchTick" aria-hidden="true"></span><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div><div class="shift-split" id="shiftSplit" hidden><span id="shiftMorning"></span><span id="shiftAfternoon"></span></div><div class="live-chart" id="liveChart" hidden><div class="live-chart-head"><span class="live-chart-tag" id="liveChartTag">LIVE · 최근 2분</span><span id="liveChartRate"></span></div><canvas id="liveZoom" aria-label="최근 2분 누적 수입 차트" role="img"></canvas><canvas id="liveDay" aria-label="오늘 하루 누적 수입 차트" role="img"></canvas><div class="live-chart-foot"><span id="liveDayStart"></span><span id="liveDayEnd"></span></div></div></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
 <details class="payday-panel collapsible-panel" id="paydayPanel"><summary class="collapsible-summary"><span class="collapsible-heading">PAYDAY · 다음 급여일</span><span class="collapsible-chevron" aria-hidden="true"></span></summary><div class="payday-body"><div class="payday-head"><button class="privacy" data-hide="payday" type="button"></button><span data-money="payday" hidden></span></div><div id="paydayList" class="payday-list" aria-live="off"></div></div></details>
 <details class="earnings-panel collapsible-panel" id="earningsPanel"><summary class="collapsible-summary"><span class="collapsible-heading">TOTAL · 입사 이후 누적 수입 (추정)</span><span class="collapsible-chevron" aria-hidden="true"></span></summary><div class="earnings-body"><div class="total"><div class="moneyline"><div class="amount" data-money="lifetime">$0.00</div><button class="privacy" data-hide="lifetime"></button></div><div class="fine" id="careerExplain">각 직장의 입사일과 현재 연봉을 기준으로 추정</div></div><div class="stats"><div class="stat"><div class="fine">이번 주 수입</div><div class="moneyline"><div class="amount" data-money="week">$0.00</div><button class="privacy" data-hide="week"></button></div></div><div class="stat"><div class="fine">이번 달 수입</div><div class="moneyline"><div class="amount" data-money="month">$0.00</div><button class="privacy" data-hide="month"></button></div></div><div class="stat"><div class="fine">올해 수입</div><div class="moneyline"><div class="amount" data-money="year">$0.00</div><button class="privacy" data-hide="year"></button></div></div><div class="stat"><div class="fine">하루 수입 (오늘)</div><div class="moneyline"><div class="amount" data-money="day">$0.00</div><button class="privacy" data-hide="day"></button></div></div></div></div></details>
 <div class="milestone-toast" id="milestoneToast" role="status" aria-live="polite"></div>
@@ -1710,60 +1685,157 @@ function lunchBreakMessage(end){
  return tr('점심시간 · 오후 근무 '+time+' 시작','Lunch break · afternoon resumes at '+time);
 }
 
-function renderShiftSubprogress(snapshot,ts,dayS){
- const panel=$('#shiftSubprogress');
- if(!panel || !panel.open)return; // Keep the collapsed dashboard lightweight.
- let morningTarget=0,afternoonTarget=0,morningEarned=0,afternoonEarned=0;
- let morningActive=false,afternoonActive=false;
+function shiftSplit(snapshot,ts,dayS){
+ // Each job's lunch start splits its day; paid breaks stay paid. Amounts are real
+ // accrued/target earnings, so the split always agrees with the main bar.
+ let morningTarget=0,afternoonTarget=0,morningEarned=0,afternoonEarned=0,active=false;
  for(const item of snapshot.jobs){
-  const j=item.job;
-  const start=item.start,hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60;
+  const j=item.job,start=item.start,hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60;
   const chosen=dayS+secClock(j.breakStart||'12:00');
-  const boundary=(chosen>=start&&chosen+breakSeconds<=item.end)
-    ?chosen:start+Math.min(4*3600,hours/2);
-  // The earning animation is based on real active work, not a synthetic percentage.
-  const regularActive=item.scheduledRegular&&item.clock.active(ts)>0.001;
-  const overtimeActive=item.otLiveWindows.some(w=>ts>=w.start&&ts<w.end);
-  if(regularActive||overtimeActive){
-   if(ts<boundary)morningActive=true;
-   else afternoonActive=true;
-  }
-  // Match each job's own lunch boundary. Paid breaks remain paid.
+  const boundary=(chosen>=start&&chosen+breakSeconds<=item.end)?chosen:start+Math.min(4*3600,hours/2);
+  if((item.scheduledRegular&&item.clock.active(ts)>0.001)||item.otLiveWindows.some(w=>ts>=w.start&&ts<w.end))active=true;
   const regularBefore=Math.min(item.target,Math.max(0,item.clock.today(boundary)));
   const regularEarned=Math.min(item.target,Math.max(0,item.clock.today(ts)));
   const earnedBefore=Math.min(regularBefore,Math.max(0,item.clock.today(Math.min(ts,boundary))))*item.rate;
-  const regularTotal=item.target*item.rate;
-  const overtimeTotal=item.otTarget;
-  const overtimeBeforeTarget=item.otWindow
-   ?Math.max(0,Math.min(item.otWindow.end,boundary)-item.otWindow.start)*item.otRate*item.otWindow.multiplier:0;
+  const otBeforeTarget=item.otWindow?Math.max(0,Math.min(item.otWindow.end,boundary)-item.otWindow.start)*item.otRate*item.otWindow.multiplier:0;
   const otBefore=overtimeAccrued(dayS,Math.min(ts,boundary),j,item.otRate,item.otLiveWindows).money;
   const otNow=overtimeAccrued(dayS,ts,j,item.otRate,item.otLiveWindows).money;
-  const beforeTarget=regularBefore*item.rate+overtimeBeforeTarget;
-  const beforeEarned=earnedBefore+otBefore;
-  const totalTarget=regularTotal+overtimeTotal;
-  const totalEarned=regularEarned*item.rate+otNow;
-  morningTarget+=beforeTarget;
-  afternoonTarget+=Math.max(0,totalTarget-beforeTarget);
-  morningEarned+=Math.min(beforeTarget,beforeEarned);
-  afternoonEarned+=Math.max(0,totalEarned-beforeEarned);
+  const beforeTarget=regularBefore*item.rate+otBeforeTarget,beforeEarned=earnedBefore+otBefore;
+  const totalTarget=item.target*item.rate+item.otTarget,totalEarned=regularEarned*item.rate+otNow;
+  morningTarget+=beforeTarget;afternoonTarget+=Math.max(0,totalTarget-beforeTarget);
+  morningEarned+=Math.min(beforeTarget,beforeEarned);afternoonEarned+=Math.max(0,totalEarned-beforeEarned);
  }
- for(const [part,earned,target] of [['Morning',morningEarned,morningTarget],['Afternoon',afternoonEarned,afternoonTarget]]){
-  const pct=target>0?Math.min(100,Math.max(0,100*earned/target)):0;
-  const percent=$('#shift'+part+'Percent'),fill=$('#shift'+part+'Fill');
-  const active=target>0&&pct>0&&(part==='Morning'?morningActive:afternoonActive);
-  // Display real cumulative earning progress only. Never reset or loop the bar.
-  if(percent)percent.textContent=(part==='Morning'&&lunchBreakStatus(snapshot,ts,dayS))
-   ?tr('점심 중','Lunch break'):pct.toFixed(4)+'%';
-  if(fill)fill.style.width=pct.toFixed(4)+'%';
-  const row=fill&&fill.closest?fill.closest('.shift-subprogress-row'):null;
-  if(row)row.classList.toggle('is-earning',active);
- }
- const words=lang==='ko'
-  ?['오전 · 점심 전','오후 · 점심 후','오전 · 오후 상세 진행률','직장별 근무·점심시간을 반영한 실제 누적 진행률']
-  :['Morning · Before lunch','Afternoon · After lunch','Morning / afternoon breakdown','Actual cumulative progress based on each job’s schedule and breaks'];
- ['#shiftMorningLabel','#shiftAfternoonLabel','#shiftSubprogressTitle','#shiftSubprogressNote'].forEach((sel,i)=>updateText(sel,words[i]));
- const lunchEnd=lunchBreakStatus(snapshot,ts,dayS);
- if(lunchEnd)updateText('#shiftSubprogressNote',lunchBreakMessage(lunchEnd));
+ return {morningTarget,afternoonTarget,morningEarned,afternoonEarned,active};
+}
+function renderShiftSplit(snapshot,ts,dayS){
+ const split=shiftSplit(snapshot,ts,dayS),total=split.morningTarget+split.afternoonTarget,box=$('#shiftSplit'),tick=$('#lunchTick');
+ const show=total>0&&split.morningTarget>0&&split.afternoonTarget>0;
+ if(box)box.hidden=!show;
+ if(tick){tick.classList.toggle('is-visible',show);if(show){const pos=(100*split.morningTarget/total).toFixed(2)+'%';if(tick.style.getPropertyValue('--lunch-position')!==pos)tick.style.setProperty('--lunch-position',pos)}}
+ if(!show)return;
+ const masked=hidden.has('today'),fmt=v=>masked?'••••':money(v,0);
+ const part=(sel,ko,en,earned,target,isActive)=>{const el=$(sel);if(!el)return;const done=earned>=target-0.005;
+  const html=tr(ko,en)+' <b>'+fmt(earned)+'</b> / '+fmt(target);if(el.innerHTML!==html)el.innerHTML=html;
+  el.classList.toggle('is-done',done);el.classList.toggle('is-active',!done&&isActive)};
+ const inMorning=split.morningEarned<split.morningTarget-0.005;
+ // During an unpaid lunch (all jobs on break) the morning slot explains when work resumes.
+ // Write it once instead of rendering the amount and overwriting it on every tick.
+ const lunchEnd=lunchBreakStatus(snapshot,ts,dayS),morning=$('#shiftMorning');
+ if(lunchEnd&&morning){updateText('#shiftMorning',lunchBreakMessage(lunchEnd));morning.classList.remove('is-active','is-done');}
+ else part('#shiftMorning','오전','Morning',split.morningEarned,split.morningTarget,split.active&&inMorning);
+ part('#shiftAfternoon','오후','Afternoon',split.afternoonEarned,split.afternoonTarget,split.active&&!inMorning);
+}
+// ---------- Live chart ----------
+function earnedAt(snapshot,dayS,t){
+ let v=0;for(const item of snapshot.jobs)v+=Math.min(item.target,Math.max(0,item.clock.today(t)))*item.rate+overtimeAccrued(dayS,t,item.job,item.otRate,item.otLiveWindows).money;
+ return v;
+}
+const LIVE_WINDOW=120,LIVE_LEAD=6;
+let liveCurve={key:'',x0:0,x1:0,pts:[]},liveFrame=0,liveLastDraw=0;
+const liveReduced=()=>window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function liveDayCurve(snapshot){
+ const key=snapshot.revision+'|'+snapshot.dayS;if(liveCurve.key===key)return liveCurve;
+ const jobs=snapshot.jobs.filter(x=>x.scheduled);
+ if(!jobs.length||!(snapshot.target>0))return liveCurve={key,x0:0,x1:0,pts:[]};
+ const x0=Math.min(...jobs.map(x=>Math.min(x.start,x.otWindow?x.otWindow.start:Infinity)));
+ const x1=Math.max(...jobs.map(x=>Math.max(x.end,x.otWindow?x.otWindow.end:0)));
+ const pts=[];for(let k=0;k<=240;k++){const t=x0+(x1-x0)*k/240;pts.push([t,earnedAt(snapshot,snapshot.dayS,t)])}
+ return liveCurve={key,x0,x1,pts};
+}
+function liveCanvas(c){
+ const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth,h=c.clientHeight;
+ if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr)}
+ const g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,w,h);return {g,w,h};
+}
+const NICE=[.01,.02,.05,.1,.2,.25,.5,1,2,5,10,20,25,50,100,200,500,1000];
+function drawLiveZoom(snapshot,dayS,ts,masked){
+ const {g,w,h}=liveCanvas($('#liveZoom'));if(!w)return 0;
+ const padL=masked?6:52,padR=10,padT=8,padB=16,cw=w-padL-padR,ch=h-padT-padB;
+ const t1=ts+LIVE_LEAD,t0=t1-LIVE_WINDOW-LIVE_LEAD,now=earnedAt(snapshot,dayS,ts),then=earnedAt(snapshot,dayS,ts-LIVE_WINDOW);
+ const perSec=Math.max(0,(now-then)/LIVE_WINDOW);
+ // Fixed scale per rate so the slope stays readable; the head sits at ~72% height and the grid slides under it.
+ const span=Math.max(perSec*LIVE_WINDOW*1.45,Math.max(.05,snapshot.target/2000));
+ const yMax=now+span*.28,yMin=yMax-span,X=t=>padL+cw*(t-t0)/(t1-t0),Y=v=>padT+ch*(1-(v-yMin)/(yMax-yMin));
+ const step=NICE.find(v=>span/v<=5)||1000;
+ g.font='11px system-ui,-apple-system,Segoe UI,sans-serif';g.textBaseline='middle';
+ g.strokeStyle='#e8eff2';g.lineWidth=1;g.fillStyle='#7f95a3';
+ for(let v=Math.ceil(yMin/step)*step;v<=yMax;v+=step){const y=Math.round(Y(v))+.5;g.beginPath();g.moveTo(padL,y);g.lineTo(w-padR,y);g.stroke();if(!masked){g.textAlign='right';g.fillText(money(v,step<1?2:0),padL-6,y)}}
+ g.textBaseline='alphabetic';g.textAlign='center';
+ const clockLabel=t=>{const d=new Date(t*1000),hh=d.getHours()%12||12;return hh+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0')};
+ for(let t=Math.ceil(t0/15)*15;t<=t1;t+=15){const x=Math.round(X(t))+.5;g.beginPath();g.moveTo(x,padT);g.lineTo(x,padT+ch);g.stroke();if(t%30===0&&x>padL+22&&x<w-padR-22&&t<=ts)g.fillText(clockLabel(t),x,h-3)}
+ // Earned line + area (sampled each second; earnings are piecewise linear).
+ const pts=[];for(let t=Math.floor(t0);t<=ts;t+=2)pts.push([t,earnedAt(snapshot,dayS,t)]);pts.push([ts,now]);
+ const grad=g.createLinearGradient(0,padT,0,padT+ch);grad.addColorStop(0,'rgba(24,165,126,.32)');grad.addColorStop(1,'rgba(24,165,126,.02)');
+ g.save();g.beginPath();g.rect(padL,padT,cw,ch);g.clip();
+ g.beginPath();g.moveTo(X(pts[0][0]),padT+ch);for(const [t,v] of pts)g.lineTo(X(t),Y(v));g.lineTo(X(ts),padT+ch);g.closePath();g.fillStyle=grad;g.fill();
+ g.beginPath();pts.forEach(([t,v],i)=>i?g.lineTo(X(t),Y(v)):g.moveTo(X(t),Y(v)));g.strokeStyle='#159b78';g.lineWidth=2.4;g.lineJoin='round';g.stroke();
+ g.restore();
+ const hx=X(ts),hy=Y(now),pulse=perSec>0&&!liveReduced()?(Math.sin(performance.now()/260)+1)/2:0;
+ g.beginPath();g.arc(hx,hy,6+pulse*5,0,Math.PI*2);g.fillStyle='rgba(24,165,126,'+(.18-pulse*.12)+')';g.fill();
+ g.beginPath();g.arc(hx,hy,4.2,0,Math.PI*2);g.fillStyle='#fff';g.fill();g.lineWidth=2.4;g.strokeStyle='#159b78';g.stroke();
+ if(!masked){g.textAlign='right';g.textBaseline='bottom';g.font='700 12px system-ui,-apple-system,Segoe UI,sans-serif';g.fillStyle='#16735a';g.fillText(money(now,2),Math.min(hx-8,w-padR),Math.max(padT+14,hy-8))}
+ return perSec;
+}
+function drawLiveDay(snapshot,dayS,ts,masked){
+ const {g,w,h}=liveCanvas($('#liveDay'));const curve=liveDayCurve(snapshot);if(!w||!curve.pts.length)return;
+ const padL=masked?6:52,padR=10,padT=4,padB=4,cw=w-padL-padR,ch=h-padT-padB,top=Math.max(snapshot.target,curve.pts[curve.pts.length-1][1])||1;
+ const X=t=>padL+cw*(t-curve.x0)/(curve.x1-curve.x0),Y=v=>padT+ch*(1-v/top);
+ g.strokeStyle='#e8eff2';g.lineWidth=1;g.beginPath();g.moveTo(padL,Y(top)+.5);g.lineTo(w-padR,Y(top)+.5);g.moveTo(padL,Y(0)-.5);g.lineTo(w-padR,Y(0)-.5);g.stroke();
+ if(!masked){g.font='11px system-ui,-apple-system,Segoe UI,sans-serif';g.fillStyle='#7f95a3';g.textAlign='right';g.textBaseline='top';g.fillText(money(top,0),padL-6,padT);g.textBaseline='bottom';g.fillText(money(0,0),padL-6,h-padB)}
+ // Projected rest of day, dashed.
+ g.beginPath();curve.pts.forEach(([t,v],i)=>i?g.lineTo(X(t),Y(v)):g.moveTo(X(t),Y(v)));g.setLineDash([4,4]);g.strokeStyle='#b6c7d1';g.lineWidth=1.5;g.stroke();g.setLineDash([]);
+ // Earned so far, filled.
+ const tNow=Math.max(curve.x0,Math.min(curve.x1,ts)),nowV=earnedAt(snapshot,dayS,tNow),done=curve.pts.filter(([t])=>t<tNow);done.push([tNow,nowV]);
+ if(done.length>1){const grad=g.createLinearGradient(0,padT,0,padT+ch);grad.addColorStop(0,'rgba(24,165,126,.38)');grad.addColorStop(1,'rgba(24,165,126,.05)');
+  g.beginPath();g.moveTo(X(done[0][0]),Y(0));for(const [t,v] of done)g.lineTo(X(t),Y(v));g.lineTo(X(tNow),Y(0));g.closePath();g.fillStyle=grad;g.fill();
+  g.beginPath();done.forEach(([t,v],i)=>i?g.lineTo(X(t),Y(v)):g.moveTo(X(t),Y(v)));g.strokeStyle='#159b78';g.lineWidth=2;g.stroke();}
+ if(ts>=curve.x0&&ts<=curve.x1){const x=X(tNow);g.strokeStyle='rgba(21,155,120,.35)';g.lineWidth=1;g.beginPath();g.moveTo(x+.5,padT);g.lineTo(x+.5,padT+ch);g.stroke();
+  g.beginPath();g.arc(x,Y(nowV),3.2,0,Math.PI*2);g.fillStyle='#159b78';g.fill();}
+ const fmt=t=>new Date(t*1000).toLocaleTimeString(lang==='ko'?'ko-KR':'en-US',{hour:'numeric',minute:'2-digit'});
+ updateText('#liveDayStart',fmt(curve.x0));updateText('#liveDayEnd',fmt(curve.x1));
+}
+function liveChartFrame(){
+ liveFrame=0;
+ const box=$('#liveChart'),snapshot=earningsSnapshot;
+ if(!box||!snapshot){scheduleLiveChart();return}
+ const curve=liveDayCurve(snapshot);
+ box.hidden=!curve.pts.length;
+ if(box.hidden||document.hidden){scheduleLiveChart(1000);return}
+ const nowMs=performance.now();
+ if(liveReduced()&&nowMs-liveLastDraw<1000){scheduleLiveChart(1000-(nowMs-liveLastDraw));return}
+ liveLastDraw=nowMs;
+ const ts=Date.now()/1000,dayS=snapshot.dayS,masked=hidden.has('today');
+ const perSec=drawLiveZoom(snapshot,dayS,ts,masked);drawLiveDay(snapshot,dayS,ts,masked);
+ box.classList.toggle('is-idle',!(perSec>0));
+ updateText('#liveChartTag',perSec>0?tr('LIVE · 최근 2분','LIVE · last 2 min'):tr('쉬는 중 · 최근 2분','Paused · last 2 min'));
+ updateText('#liveChartRate',masked?'':perSec>0?'+'+money(perSec*60,2)+tr('/분','/min'):'');
+ scheduleLiveChart();
+}
+function scheduleLiveChart(delay){
+ if(liveFrame)return;
+ if(delay)liveFrame=setTimeout(()=>{liveFrame=0;liveFrame=requestAnimationFrame(liveChartFrame)},delay);
+ else liveFrame=requestAnimationFrame(liveChartFrame);
+}
+// Coin meter: pick a coin so a full workday is roughly 300-400 coins (about one every 1-2 minutes).
+const COIN_STEPS=[.1,.25,.5,1,2,5,10,20,50,100];
+let coinLast=null;
+function coinUnit(target){const want=Math.max(.1,target/400);return COIN_STEPS.find(v=>v>=want)||100}
+function renderCoinMeter(snapshot,earned,isEarning){
+ const meter=$('#coinMeter');if(!meter)return;
+ if(hidden.has('today')||!(snapshot.target>0)){meter.hidden=true;coinLast=null;return}
+ meter.hidden=false;
+ const unit=coinUnit(snapshot.target); // snapshot.target is today's expected earnings
+ const coins=Math.floor(earned/unit+1e-9),part=earned-coins*unit,pct=Math.max(0,Math.min(100,100*part/unit));
+ const fill=$('#coinFill'),w=pct.toFixed(2)+'%';
+ // When a coin completes, jump the fill back without animating the drain.
+ if(coinLast&&coinLast.unit===unit&&coins>coinLast.coins){fill.style.transition='none';fill.style.width=w;void fill.offsetWidth;fill.style.transition='';
+  meter.classList.remove('pop');void meter.offsetWidth;meter.classList.add('pop');updateText('#coinPlus','+'+money(unit*(coins-coinLast.coins),unit<1?2:0))}
+ else if(fill.style.width!==w)fill.style.width=w;
+ coinLast={unit,coins};
+ meter.classList.toggle('is-idle',!isEarning);
+ const left=unit-part;
+ updateText('#coinLabel',isEarning?tr('다음 '+money(unit,unit<1?2:0)+'까지 '+money(left,2),'Next '+money(unit,unit<1?2:0)+' in '+money(left,2)):tr(money(unit,unit<1?2:0)+' 코인','Coins of '+money(unit,unit<1?2:0)));
+ updateText('#coinCount','×'+coins.toLocaleString(lang==='ko'?'ko-KR':'en-US'));
 }
 
 function renderPayday(snapshot,day){
@@ -1897,13 +1969,14 @@ function render(){
   checkMilestones(earned,snapshot.yearBase+periodEarned,now);
   lastStatusSecond=second;
  }
- const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'min(calc(100% - 13px), '+progressWidth+')':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);renderShiftSubprogress(snapshot,ts,dayS);
+ const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'min(calc(100% - 13px), '+progressWidth+')':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);renderShiftSplit(snapshot,ts,dayS);renderCoinMeter(snapshot,earned,snapshot.jobs.some(item=>(item.scheduledRegular&&item.clock.active(ts)>0.001)||item.otLiveWindows.some(w=>ts>=w.start&&ts<w.end)));
  const pulse=$('#pulse');if(pulse.classList.contains('off')===working)pulse.classList.toggle('off',!working);
  if(rebuilt||staticChanged)applyPrivacy();
 }
 document.querySelectorAll('[data-hide]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.hide;hidden.has(k)?hidden.delete(k):hidden.add(k);applyPrivacy()}));$('#privacyAll').onclick=()=>{if(moneyKeys.every(k=>hidden.has(k))&&hidden.has('ranking'))hidden.clear();else{moneyKeys.forEach(k=>hidden.add(k));hidden.add('ranking')}applyPrivacy();renderRankings()};function setMode(mode){config.mode=mode;$('#grossBtn').setAttribute('aria-pressed',String(mode==='gross'));$('#netBtn').setAttribute('aria-pressed',String(mode==='net'));save();render()}$('#grossBtn').onclick=()=>setMode('gross');$('#netBtn').onclick=()=>setMode('net');$('#addJob').onclick=()=>{if(config.jobs.length>=8){alert(tr('직장은 최대 8개까지 추가할 수 있습니다.','You can add up to 8 jobs.'));return}const job=newJob(config.jobs.length+1);config.jobs.push(job);collapsedJobs.add(job.id);save();drawJobs();render()};$('#reset').onclick=()=>{if(!confirm(tr('저장된 모든 급여 설정을 초기화할까요?','Reset all saved salary settings?')))return;config={countryCompare:'KR',currency:'USD',rankCompareState:'CA',taxState:'AZ',includeBonusDaily:false,mode:'gross',netMethod:'auto',filing:'single',outside:0,hsa:0,extraDeduction:0,azCharity:0,flsaOvertime:false,w4Status:'match',w4Step2:false,w4Extra:0,azDeduction:standardArizonaDeduction('single'),azDeductionCustomized:false,jobs:[newJob()]};$('#taxState').value='AZ';[['filing','single'],['outside',0],['hsa',0],['extraDeduction',0],['azCharity',0],['azDeduction',standardArizonaDeduction('single')]].forEach(([id,v])=>$('#'+id).value=v);hidden.clear();inputHidden.clear();collapsedJobs.clear();config.jobs.forEach(job=>collapsedJobs.add(job.id));$('#currencySelect').value='USD';loadDisplayCurrency('USD');$('#includeBonusDaily').checked=false;$('#flsaOvertime').checked=false;$('#w4Status').value='match';$('#w4Step2').checked=false;$('#w4Extra').value=0;try{localStorage.removeItem(MILESTONE_KEY)}catch(e){}milestoneState=null;save();drawJobs();setMode('gross')};[['filing','filing'],['outside','outside'],['hsa','hsa'],['extraDeduction','extraDeduction'],['azCharity','azCharity'],['azDeduction','azDeduction']].forEach(([id,key])=>{const el=$('#'+id);el.value=config[key]??(key==='azDeduction'?standardArizonaDeduction(config.filing):0);const onEdit=()=>{config[key]=key==='filing'?el.value:Number(el.value)||0;if(key==='azDeduction')config.azDeductionCustomized=true;if(key==='filing'&&!config.azDeductionCustomized){config.azDeduction=standardArizonaDeduction(config.filing);$('#azDeduction').value=config.azDeduction;}save();render()};el.addEventListener('input',onEdit);el.addEventListener('change',onEdit)});const w4Status=$('#w4Status');w4Status.value=config.w4Status==='single'?'single':'match';w4Status.addEventListener('change',()=>{config.w4Status=w4Status.value;save();render()});const w4Step2=$('#w4Step2');w4Step2.checked=!!config.w4Step2;w4Step2.addEventListener('change',()=>{config.w4Step2=w4Step2.checked;save();render()});const w4Extra=$('#w4Extra');w4Extra.value=num(config.w4Extra);w4Extra.addEventListener('input',()=>{config.w4Extra=Number(w4Extra.value)||0;save();render()});const otToggle=$('#flsaOvertime');otToggle.checked=!!config.flsaOvertime;otToggle.addEventListener('change',()=>{config.flsaOvertime=otToggle.checked;save();render()});const bonusToggle=$('#includeBonusDaily');bonusToggle.checked=!!config.includeBonusDaily;bonusToggle.addEventListener('change',()=>{config.includeBonusDaily=bonusToggle.checked;save();render()});const currencySelect=$('#currencySelect');currencySelect.value=CURRENCY_CHOICES.includes(config.currency)?config.currency:'USD';config.currency=currencySelect.value;currencySelect.addEventListener('change',()=>{config.currency=currencySelect.value;save();loadDisplayCurrency(config.currency)});const countrySelect=$('#intlCountry');countrySelect.value=GLOBAL_COUNTRIES[config.countryCompare]?config.countryCompare:'KR';config.countryCompare=countrySelect.value;countrySelect.addEventListener('change',()=>{config.countryCompare=countrySelect.value;save();loadCountryRate()});loadCountryRate();const rankSelect=$('#rankCompareState');rankSelect.value=INCOME_RANK_STATE_NAMES[config.rankCompareState]?config.rankCompareState:'CA';rankSelect.addEventListener('change',()=>{config.rankCompareState=rankSelect.value;save();renderRankings()});$('#rankHide').addEventListener('click',()=>{hidden.has('ranking')?hidden.delete('ranking'):hidden.add('ranking');renderRankings()});const stateSelect=$('#taxState');stateSelect.value=TAX_STATES[config.taxState]?config.taxState:'AZ';config.taxState=stateSelect.value;stateSelect.addEventListener('change',()=>{config.taxState=stateSelect.value;save();render();drawJobs()});drawJobs();enhanceSelects(document);refreshLanguage();$('#referenceStatusPanel').addEventListener('toggle',()=>{if($('#referenceStatusPanel').open)loadReferenceAudit()});initializeAds();setMode(config.mode);loadDisplayCurrency(config.currency);loadCensusIncomeRank();loadWidDetailed();let liveTimer=null;function resumeTicker(){if(liveTimer!==null){clearInterval(liveTimer);liveTimer=null}if(!document.hidden){render();liveTimer=setInterval(render,200)}}document.addEventListener('visibilitychange',resumeTicker);resumeTicker();
 // Installable app + offline fallback; failures (file://, private mode) are harmless.
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){const registerSW=()=>navigator.serviceWorker.register('sw.js').catch(()=>{});if(document.readyState==='complete')registerSW();else window.addEventListener('load',registerSW,{once:true});}
+if(typeof requestAnimationFrame==='function')scheduleLiveChart();
 })();
 
 </script></body></html>
