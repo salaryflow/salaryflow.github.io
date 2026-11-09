@@ -1687,6 +1687,25 @@ function updateShiftDuck(details){
  if(caption.textContent!==label[lang==='ko'?0:1])caption.textContent=label[lang==='ko'?0:1];
 }
 
+
+function lunchBreakStatus(snapshot,ts,dayS){
+ let latestEnd=0;
+ for(const item of snapshot.jobs){
+  const j=item.job;
+  if(!item.scheduledRegular||j.breakMode==='paid')continue;
+  const start=item.start,hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60;
+  if(!(breakSeconds>0))continue;
+  const chosen=dayS+secClock(j.breakStart||'12:00');
+  const begin=chosen>=start&&chosen+breakSeconds<=item.end?chosen:start+Math.min(4*3600,hours/2);
+  if(ts>=begin&&ts<begin+breakSeconds)latestEnd=Math.max(latestEnd,begin+breakSeconds);
+ }
+ return latestEnd;
+}
+function lunchBreakMessage(end){
+ const time=new Date(end*1000).toLocaleTimeString(lang==='ko'?'ko-KR':'en-US',{hour:'numeric',minute:'2-digit'});
+ return tr('점심시간 · 오후 근무 '+time+' 시작','Lunch break · afternoon resumes at '+time);
+}
+
 function renderShiftSubprogress(snapshot,ts,dayS){
  const panel=$('#shiftSubprogress');
  if(!panel || !panel.open)return; // Keep the collapsed dashboard lightweight.
@@ -1729,7 +1748,8 @@ function renderShiftSubprogress(snapshot,ts,dayS){
   const percent=$('#shift'+part+'Percent'),fill=$('#shift'+part+'Fill');
   const active=target>0&&pct>0&&(part==='Morning'?morningActive:afternoonActive);
   // Display real cumulative earning progress only. Never reset or loop the bar.
-  if(percent)percent.textContent=pct.toFixed(4)+'%';
+  if(percent)percent.textContent=(part==='Morning'&&lunchBreakStatus(snapshot,ts,dayS))
+   ?tr('점심 중','Lunch break'):pct.toFixed(4)+'%';
   if(fill)fill.style.width=pct.toFixed(4)+'%';
   const row=fill&&fill.closest?fill.closest('.shift-subprogress-row'):null;
   if(row)row.classList.toggle('is-earning',active);
@@ -1738,6 +1758,8 @@ function renderShiftSubprogress(snapshot,ts,dayS){
   ?['오전 · 점심 전','오후 · 점심 후','오전 · 오후 상세 진행률','직장별 근무·점심시간을 반영한 실제 누적 진행률']
   :['Morning · Before lunch','Afternoon · After lunch','Morning / afternoon breakdown','Actual cumulative progress based on each job’s schedule and breaks'];
  ['#shiftMorningLabel','#shiftAfternoonLabel','#shiftSubprogressTitle','#shiftSubprogressNote'].forEach((sel,i)=>updateText(sel,words[i]));
+ const lunchEnd=lunchBreakStatus(snapshot,ts,dayS);
+ if(lunchEnd)updateText('#shiftSubprogressNote',lunchBreakMessage(lunchEnd));
 }
 
 function renderPayday(snapshot,day){
