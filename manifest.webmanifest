@@ -1,0 +1,18 @@
+{
+  "name": "Salary Flow — 오늘 번 돈",
+  "short_name": "Salary Flow",
+  "description": "Real-time earnings tracker with take-home tax estimates for multiple jobs, overtime and paydays.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f8fc",
+  "theme_color": "#f5f8fc",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    {"src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

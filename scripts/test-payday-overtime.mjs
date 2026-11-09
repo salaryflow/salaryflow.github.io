@@ -11,6 +11,7 @@ const slice = (from, to) => {
 };
 const paydayBlock = slice('// Paydays: weekly/biweekly', 'const TAX_STATES=');
 const otBlock = slice('// No Tax on Overtime', 'function progressive(');
+const whBlock = slice('// Multi-job withholding', '// Paydays: weekly/biweekly');
 
 // ---------- paydays ----------
 const ctx = {startDay: d => new Date(d.getFullYear(), d.getMonth(), d.getDate())};
@@ -97,4 +98,43 @@ assert.equal(ot.deduct({gross: 104000, pretax: 0}).deduction, 0, 'Sunsets after 
 ot.REFERENCE_DATA.years.tax = 2026; windows = [{...hourly(100)[0], multiplier: 1}]; ot.bump();
 assert.equal(ot.deduct({gross: 104000, pretax: 0}).premium, 0, '1.0x has no premium');
 
-console.log('PASS: paydays (weekly/biweekly/semimonthly/monthly, weekends, DST) and No Tax on Overtime cap, phase-out, MFS, sunset');
+// ---------- company holidays move paydays ----------
+check({frequency: 'semimonthly', payDays: [5, 20], holidays: ['2026-11-20']}, new Date(2026, 10, 8), '2026-11-05', '2026-11-19', 'company holiday on payday');
+check({frequency: 'semimonthly', payDays: [5, 20], holidays: ['2026-11-20', '2026-11-19']}, new Date(2026, 10, 8), '2026-11-05', '2026-11-18', 'consecutive company holidays');
+check({frequency: 'semimonthly', payDays: [5, 20], holidays: ['bogus']}, new Date(2026, 10, 8), '2026-11-05', '2026-11-20', 'invalid holiday ignored');
+process.env.TZ = 'America/Phoenix';
+const left = vm.runInContext('remainingPaydaysThisYear', ctx);
+assert.equal(left({frequency: 'semimonthly', payDays: [5, 20]}, new Date(2026, 10, 8)), 3, '11/20, 12/4, 12/18 remain');
+
+// ---------- multi-job withholding ----------
+const wctx = {
+  TAX2026: brackets, progressive, num: (v, max = 1e9) => Math.max(0, Math.min(max, Number(v) || 0)),
+  PAYROLL_RULES: {socialSecurityWageBase: 184500, socialSecurityRate: .062, medicareRate: .0145, additionalMedicareRate: .009, additionalMedicareThresholds: {single: 200000, mfj: 250000, mfs: 125000, hoh: 200000}},
+  annualBonus: j => Number(j.gross) * Number(j.aipPercent || 0) / 100 + Number(j.extraBonus || 0),
+  pretax401Annual: j => Number(j.pretax401 || 0), remainingPaydaysThisYear: () => 4,
+  config: {filing: 'single', w4Status: 'match', w4Step2: false, w4Extra: 0, hsa: 0, extraDeduction: 0, outside: 0,
+    jobs: [{name: 'J1', gross: 120000}, {name: 'J2', gross: 120000}]},
+};
+wctx.totalComp = j => Number(j.gross) + wctx.annualBonus(j);
+vm.createContext(wctx);
+vm.runInContext(whBlock + ';globalThis.wh=withholdingCheck;', wctx);
+const fed = progressive(240000 - 16100, brackets.single.br);
+let w = wctx.wh({gross: 240000, federal: fed});
+const perJob = progressive(120000 - 16100, brackets.single.br);
+assert(Math.abs(w.withheld - 2 * perJob) < 1e-6, 'Each employer withholds as if it were the only job');
+assert(Math.abs(w.ssCredit - (2 * 120000 - 184500) * .062) < 1e-6, 'Excess Social Security comes back as a credit');
+assert(Math.abs(w.federal - (fed + 40000 * .009)) < 1e-6, 'Additional Medicare not withheld by either employer is owed');
+assert(Math.abs(w.balance - (fed + 360 - 2 * perJob - 3441)) < 1e-6, 'Balance = tax - withholding - SS credit');
+assert(w.balance > 0 && Math.abs(w.perCheck - w.balance / 4) < 1e-9, 'Shortfall spread over remaining paychecks');
+// Step 2(c) halves the brackets and deduction for each job, which closes most of the gap.
+wctx.config.w4Step2 = true;
+const w2 = wctx.wh({gross: 240000, federal: fed});
+assert(w2.withheld > w.withheld && Math.abs(w2.balance) < Math.abs(w.balance), 'Step 2 increases withholding');
+// Extra 4(c) withholding reduces the balance one-for-one; bonuses use 22%.
+wctx.config.w4Step2 = false; wctx.config.w4Extra = 1000;
+assert(Math.abs(wctx.wh({gross: 240000, federal: fed}).balance - (w.balance - 1000)) < 1e-6, '4(c) extra withholding');
+wctx.config.w4Extra = 0; wctx.config.jobs = [{name: 'J1', gross: 100000, extraBonus: 10000}];
+const wb = wctx.wh({gross: 110000, federal: 0});
+assert(Math.abs(wb.withheld - (progressive(100000 - 16100, brackets.single.br) + 2200)) < 1e-6, 'Bonus at the 22% supplemental rate');
+
+console.log('PASS: paydays (frequencies, weekends, bank and company holidays, DST), multi-job withholding, and No Tax on Overtime cap, phase-out, MFS, sunset');
