@@ -1689,17 +1689,21 @@ function updateShiftDuck(details){
 
 
 function lunchBreakStatus(snapshot,ts,dayS){
- let latestEnd=0;
+ // Multi-job: one employer's lunch must not label the entire dashboard as lunch
+ // while another employer is still paying for active work.
+ let latestEnd=0,hasBreak=false;
  for(const item of snapshot.jobs){
   const j=item.job;
+  if(item.scheduledRegular&&item.clock.active(ts)>0.001)return 0;
+  if(item.otLiveWindows.some(w=>ts>=w.start&&ts<w.end))return 0;
   if(!item.scheduledRegular||j.breakMode==='paid')continue;
   const start=item.start,hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60;
   if(!(breakSeconds>0))continue;
   const chosen=dayS+secClock(j.breakStart||'12:00');
   const begin=chosen>=start&&chosen+breakSeconds<=item.end?chosen:start+Math.min(4*3600,hours/2);
-  if(ts>=begin&&ts<begin+breakSeconds)latestEnd=Math.max(latestEnd,begin+breakSeconds);
+  if(ts>=begin&&ts<begin+breakSeconds){hasBreak=true;latestEnd=Math.max(latestEnd,begin+breakSeconds);}
  }
- return latestEnd;
+ return hasBreak?latestEnd:0;
 }
 function lunchBreakMessage(end){
  const time=new Date(end*1000).toLocaleTimeString(lang==='ko'?'ko-KR':'en-US',{hour:'numeric',minute:'2-digit'});
