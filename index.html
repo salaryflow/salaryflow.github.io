@@ -396,13 +396,29 @@ body{background:linear-gradient(160deg,#eaf2f6 0%,#f0f5f8 52%,#e7f1ef 100%);colo
 .payday-panel .payday-list{margin-top:4px}
 @media(max-width:600px){.collapsible-summary{padding:16px 15px}.collapsible-heading{font-size:17px}.earnings-body,.payday-body{padding:15px}.earnings-panel .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.earnings-panel .stat{padding:11px}.earnings-panel .stat .amount{font-size:clamp(15px,4.5vw,22px)}}
 @media(prefers-reduced-motion:reduce){.collapsible-chevron{transition:none}}
+
+/* Optional morning/afternoon detail under the original daily duck progress. */
+.shift-subprogress{margin-top:12px;border:1px solid #d6e6ed;border-radius:12px;background:#fff;overflow:hidden}
+.shift-subprogress-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;list-style:none;cursor:pointer;color:#365c69;font-size:12px;font-weight:750}
+.shift-subprogress-toggle::-webkit-details-marker{display:none}
+.shift-subprogress-toggle:hover{background:#f2f8f8}
+.shift-subprogress-toggle:focus-visible{outline:2px solid #087e5b;outline-offset:-2px}
+.shift-subprogress-chevron{width:8px;height:8px;border-right:2px solid #607588;border-bottom:2px solid #607588;transform:rotate(45deg);transition:transform .2s;margin-right:4px}
+.shift-subprogress[open] .shift-subprogress-chevron{transform:rotate(225deg)}
+.shift-subprogress-body{padding:12px 13px 13px;border-top:1px solid #e3ebef;display:grid;gap:13px}
+.shift-subprogress-line{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;font-size:12px;color:#506977}
+.shift-subprogress-line strong{font-variant-numeric:tabular-nums;color:#167f61}
+.shift-subprogress-track{height:8px;border-radius:20px;background:#e0ece9;overflow:hidden}
+.shift-subprogress-fill{height:100%;width:0;background:linear-gradient(90deg,#159b78,#45bd96);border-radius:inherit;transition:width .3s linear}
+.shift-subprogress-note{font-size:11px;color:#698090;line-height:1.45;margin:0}
+@media(prefers-reduced-motion:reduce){.shift-subprogress-chevron,.shift-subprogress-fill{transition:none}}
 </style>
 </head>
 <body><main class="wrap">
 <div class="top"><div class="brand">SALARY FLOW</div><div class="top-controls"><div class="currency-control"><label id="currencyLabel" for="currencySelect">표시 통화</label><select id="currencySelect" aria-label="Display currency"><option value="USD">USD</option><option value="KRW">KRW</option><option value="EUR">EUR</option><option value="JPY">JPY</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="CHF">CHF</option><option value="CNY">CNY</option><option value="INR">INR</option><option value="SGD">SGD</option><option value="HKD">HKD</option><option value="TWD">TWD</option><option value="MXN">MXN</option><option value="PHP">PHP</option><option value="THB">THB</option><option value="VND">VND</option><option value="BRL">BRL</option><option value="AED">AED</option><option value="NZD">NZD</option></select></div><div class="lang-switch" role="group" aria-label="Language / 언어"><button id="langKo" class="is-active" type="button" aria-pressed="true">한국어</button><button id="langEn" type="button" aria-pressed="false">English</button></div><button id="privacyAll" class="ghost" type="button">전체 숨기기</button></div></div>
 <div id="fxStatus" class="fx-status" aria-live="polite">기준 통화: USD · 세금 및 급여 입력은 USD</div><h1>오늘도, 돈은 쌓이는 중.</h1><p class="sub">오늘 번 돈을 실시간으로 확인하세요. 세전·실수령액을 전환하고 여러 직장을 합산할 수 있습니다.</p>
 <div class="mode" role="group" aria-label="표시할 수입 기준"><button id="grossBtn" type="button" aria-pressed="true">Gross · 세전</button><button id="netBtn" type="button" aria-pressed="false">Net · 실수령</button></div>
-<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="shift-progress-panel" aria-label="근무 진행 상황"><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
+<section class="dashboard" id="dashboardDuck" data-duck-theme="before" aria-label="오늘 번 돈"><div class="eyeline"><span class="pulse" id="pulse"></span><span id="workStatus">근무 일정 계산 중</span><span class="clock" id="clock"></span></div><div class="duck-hero"><div class="duck-income"><div class="primary-label">TODAY EARNED · 오늘 번 돈</div><div class="moneyline"><div class="amount huge" id="todayMoney" data-money="today">$0.0000</div><button class="privacy" data-hide="today" title="오늘 수입 숨기기"></button></div><div class="fine" id="todayDescription">오늘 근무 시간에 따라 누적된 금액</div></div><div class="duck-scene" id="duckScene" data-duck-state="before" role="img" aria-label="근무 시작 전 오리"><img class="duck-art" id="duckStateArt" src="assets/ducks/duck_01_before_work_A.svg" alt="" decoding="async" draggable="false"><span class="duck-caption" id="duckCaption">아직 시작 전</span></div></div><div class="shift-progress-panel" aria-label="근무 진행 상황"><div class="spread fine"><div class="work-tracking"><div id="worked" class="worked-breakdown" aria-label="오늘 직장별 근무시간">오늘 0시간 근무</div><div id="endCountdown" class="end-countdown" aria-live="off"></div></div><span id="percent">0%</span></div><div class="bar" id="workProgressBar"><div id="progress"></div><span class="duck-progress-face" id="duckProgressFace" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 15C6 7 12 4 18 5c-2-4 4-4 5 2 4 2 5 5 5 10 0 8-6 12-13 12S5 24 6 15Z" fill="#fff2d5" stroke="#463342" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 15q2-3 4 0m7 0q2-3 4 0" fill="none" stroke="#322a39" stroke-width="2.1" stroke-linecap="round"/><ellipse cx="9" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><ellipse cx="25" cy="19" rx="2.7" ry="1.8" fill="#f7b5a4" opacity=".65"/><path d="M13 19q3-3 6 0 5 0 5 3-3 4-7 4-6 0-7-4 0-3 3-3Z" fill="#f9aa2a" stroke="#d8871a" stroke-width="1.6"/></svg></span></div><details class="shift-subprogress" id="shiftSubprogress"><summary class="shift-subprogress-toggle"><span id="shiftSubprogressTitle">오전 · 오후 상세 진행률</span><span class="shift-subprogress-chevron" aria-hidden="true"></span></summary><div class="shift-subprogress-body"><div class="shift-subprogress-row"><div class="shift-subprogress-line"><span id="shiftMorningLabel">오전 · 점심 전</span><strong id="shiftMorningPercent">0%</strong></div><div class="shift-subprogress-track"><div id="shiftMorningFill" class="shift-subprogress-fill"></div></div></div><div class="shift-subprogress-row"><div class="shift-subprogress-line"><span id="shiftAfternoonLabel">오후 · 점심 후</span><strong id="shiftAfternoonPercent">0%</strong></div><div class="shift-subprogress-track"><div id="shiftAfternoonFill" class="shift-subprogress-fill"></div></div></div><p id="shiftSubprogressNote" class="shift-subprogress-note">직장별 근무·점심시간을 반영한 합산 예상 수입 기준</p></div></details></div><div class="triples"><div class="mini"><div class="fine">오늘 하루 예상 총수입</div><div class="moneyline"><strong data-money="target">$0.00</strong><button class="privacy" data-hide="target"></button></div></div><div class="mini"><div class="fine">오늘 남은 수입</div><div class="moneyline"><strong data-money="remaining">$0.00</strong><button class="privacy" data-hide="remaining"></button></div></div><div class="mini"><div class="fine">현재 근무 중 수입 속도</div><div class="moneyline"><strong data-money="rate">$0.0000/s</strong><button class="privacy" data-hide="rate"></button></div></div></div></section>
 <details class="payday-panel collapsible-panel" id="paydayPanel"><summary class="collapsible-summary"><span class="collapsible-heading">PAYDAY · 다음 급여일</span><span class="collapsible-chevron" aria-hidden="true"></span></summary><div class="payday-body"><div class="payday-head"><button class="privacy" data-hide="payday" type="button"></button><span data-money="payday" hidden></span></div><div id="paydayList" class="payday-list" aria-live="off"></div></div></details>
 <details class="earnings-panel collapsible-panel" id="earningsPanel"><summary class="collapsible-summary"><span class="collapsible-heading">TOTAL · 입사 이후 누적 수입 (추정)</span><span class="collapsible-chevron" aria-hidden="true"></span></summary><div class="earnings-body"><div class="total"><div class="moneyline"><div class="amount" data-money="lifetime">$0.00</div><button class="privacy" data-hide="lifetime"></button></div><div class="fine" id="careerExplain">각 직장의 입사일과 현재 연봉을 기준으로 추정</div></div><div class="stats"><div class="stat"><div class="fine">이번 주 수입</div><div class="moneyline"><div class="amount" data-money="week">$0.00</div><button class="privacy" data-hide="week"></button></div></div><div class="stat"><div class="fine">이번 달 수입</div><div class="moneyline"><div class="amount" data-money="month">$0.00</div><button class="privacy" data-hide="month"></button></div></div><div class="stat"><div class="fine">올해 수입</div><div class="moneyline"><div class="amount" data-money="year">$0.00</div><button class="privacy" data-hide="year"></button></div></div><div class="stat"><div class="fine">하루 수입 (오늘)</div><div class="moneyline"><div class="amount" data-money="day">$0.00</div><button class="privacy" data-hide="day"></button></div></div></div></div></details>
 <div class="milestone-toast" id="milestoneToast" role="status" aria-live="polite"></div>
@@ -1619,6 +1635,48 @@ function updateShiftDuck(details){
  const dashboard=$('#dashboardDuck');if(dashboard&&typeof dashboard.setAttribute==='function')dashboard.setAttribute('data-duck-theme',state);
  if(caption.textContent!==label[lang==='ko'?0:1])caption.textContent=label[lang==='ko'?0:1];
 }
+
+function renderShiftSubprogress(snapshot,ts,dayS){
+ const panel=$('#shiftSubprogress');
+ if(!panel || !panel.open)return; // Keep the collapsed dashboard lightweight.
+ let morningTarget=0,afternoonTarget=0,morningEarned=0,afternoonEarned=0;
+ for(const item of snapshot.jobs){
+  const j=item.job;
+  const start=item.start,hours=num(j.hours,24)*3600,breakSeconds=num(j.breakMinutes,240)*60;
+  const chosen=dayS+secClock(j.breakStart||'12:00');
+  const boundary=(chosen>=start&&chosen+breakSeconds<=item.end)
+    ?chosen:start+Math.min(4*3600,hours/2);
+  // Match each job's own lunch boundary. Paid breaks remain paid.
+  const regularBefore=Math.min(item.target,Math.max(0,item.clock.today(boundary)));
+  const regularEarned=Math.min(item.target,Math.max(0,item.clock.today(ts)));
+  const earnedBefore=Math.min(regularBefore,Math.max(0,item.clock.today(Math.min(ts,boundary))))*item.rate;
+  const regularTotal=item.target*item.rate;
+  const overtimeTotal=item.otTarget;
+  const overtimeBeforeTarget=item.otWindow
+   ?Math.max(0,Math.min(item.otWindow.end,boundary)-item.otWindow.start)*item.otRate*item.otWindow.multiplier:0;
+  const otBefore=overtimeAccrued(dayS,Math.min(ts,boundary),j,item.otRate,item.otLiveWindows).money;
+  const otNow=overtimeAccrued(dayS,ts,j,item.otRate,item.otLiveWindows).money;
+  const beforeTarget=regularBefore*item.rate+overtimeBeforeTarget;
+  const beforeEarned=earnedBefore+otBefore;
+  const totalTarget=regularTotal+overtimeTotal;
+  const totalEarned=regularEarned*item.rate+otNow;
+  morningTarget+=beforeTarget;
+  afternoonTarget+=Math.max(0,totalTarget-beforeTarget);
+  morningEarned+=Math.min(beforeTarget,beforeEarned);
+  afternoonEarned+=Math.max(0,totalEarned-beforeEarned);
+ }
+ for(const [part,earned,target] of [['Morning',morningEarned,morningTarget],['Afternoon',afternoonEarned,afternoonTarget]]){
+  const pct=target>0?Math.min(100,Math.max(0,100*earned/target)):0;
+  const percent=$('#shift'+part+'Percent'),fill=$('#shift'+part+'Fill');
+  if(percent)percent.textContent=Math.round(pct)+'%';
+  if(fill)fill.style.width=pct+'%';
+ }
+ const words=lang==='ko'
+  ?['오전 · 점심 전','오후 · 점심 후','오전 · 오후 상세 진행률','직장별 근무·점심시간을 반영한 합산 예상 수입 기준']
+  :['Morning · Before lunch','Afternoon · After lunch','Morning / afternoon breakdown','Combined estimated earnings based on each job’s hours and lunch break'];
+ ['#shiftMorningLabel','#shiftAfternoonLabel','#shiftSubprogressTitle','#shiftSubprogressNote'].forEach((sel,i)=>updateText(sel,words[i]));
+}
+
 function renderPayday(snapshot,day){
  const masked=hidden.has('payday'),locale=lang==='ko'?'ko-KR':'en-US',unit=config.mode==='gross'?tr('세전','gross'):tr('세후','net');
  const html=snapshot.jobs.map(item=>{
@@ -1750,7 +1808,7 @@ function render(){
   checkMilestones(earned,snapshot.yearBase+periodEarned,now);
   lastStatusSecond=second;
  }
- const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'min(calc(100% - 13px), '+progressWidth+')':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);
+ const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'min(calc(100% - 13px), '+progressWidth+')':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);renderShiftSubprogress(snapshot,ts,dayS);
  const pulse=$('#pulse');if(pulse.classList.contains('off')===working)pulse.classList.toggle('off',!working);
  if(rebuilt||staticChanged)applyPrivacy();
 }
