@@ -1750,7 +1750,7 @@ function render(){
   checkMilestones(earned,snapshot.yearBase+periodEarned,now);
   lastStatusSecond=second;
  }
- const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'max(0px, calc('+progressWidth+' - 13px))':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);
+ const progressWidth=(snapshot.target>0?Math.min(100,Math.max(0,100*earned/snapshot.target)):0)+'%';const progressFill=Number.parseFloat(progressWidth)>0?'min(calc(100% - 13px), '+progressWidth+')':'0%';if($('#progress').style.width!==progressFill)$('#progress').style.width=progressFill;const progressBar=$('#workProgressBar');if(progressBar.style.getPropertyValue('--duck-progress-position')!==progressWidth)progressBar.style.setProperty('--duck-progress-position',progressWidth);const duckMarker=$('#duckProgressFace');duckMarker.classList.toggle('is-visible',Number.parseFloat(progressWidth)>0);
  const pulse=$('#pulse');if(pulse.classList.contains('off')===working)pulse.classList.toggle('off',!working);
  if(rebuilt||staticChanged)applyPrivacy();
 }
