@@ -1732,7 +1732,7 @@ function renderShiftSubprogress(snapshot,ts,dayS){
   // Percentage stays honest; the same bar shows a visibly filling 60-second window
   // only while the corresponding phase is earning. No additional LIVE bar.
   const visiblePct=active?((ts%60+60)%60)/60*100:pct;
-  if(percent)percent.textContent=Math.round(pct)+'%';
+  if(percent)percent.textContent=pct.toFixed(4)+'%';
   if(fill)fill.style.width=visiblePct.toFixed(2)+'%';
   const row=fill&&fill.closest?fill.closest('.shift-subprogress-row'):null;
   if(row)row.classList.toggle('is-earning',active);
